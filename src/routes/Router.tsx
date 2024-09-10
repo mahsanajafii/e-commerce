@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-
+import AuthenticationCard from "../components/authenticationCard/AuthenticationCard";
 const routes = createBrowserRouter([
   {
     path: "*",
-    element: <div>arash</div>,
+    element: <AuthenticationCard></AuthenticationCard>,
   },
   {
     path: "/login",
@@ -11,7 +11,7 @@ const routes = createBrowserRouter([
   },
   {
     path: "/register",
-    element: <div>arash</div>,
+    element: <h1>arash</h1>,
   },
 ]);
 

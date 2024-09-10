@@ -58,7 +58,7 @@ const RegisterForm = ({ handleSubmitForm }: Props) => {
           placeholder="رمز عبور خود را دوباره وارد نمایید"
         />
         <button className="flex justify-center items-center bg-pink-600 w-[7.4rem] h-[4.8rem] text-white  rounded-xl mt-8 text-xl">
-          ورود
+          عضویت
         </button>
         <p className="block text-[1.6rem] pb-3 pt-3 ">
           عضو هستید؟{" "}

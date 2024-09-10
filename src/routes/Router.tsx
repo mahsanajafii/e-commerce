@@ -1,17 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
-import AuthenticationCard from "../components/authenticationCard/AuthenticationCard";
+import AuthenticationPage from "../pages/authenticationPage/AuthenticationPage";
+import HomePage from "../pages/homePage/HomePage";
 const routes = createBrowserRouter([
   {
     path: "*",
-    element: <AuthenticationCard></AuthenticationCard>,
+    element: <h1>OOPS PAGE NOT FOUND ! :(</h1>,
+  },
+  {
+    path: "/",
+    element: <HomePage></HomePage>,
   },
   {
     path: "/login",
-    element: <div>arash</div>,
+    element: <AuthenticationPage />,
   },
   {
     path: "/register",
-    element: <h1>arash</h1>,
+    element: <AuthenticationPage />,
   },
 ]);
 

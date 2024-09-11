@@ -3,6 +3,7 @@ import RegisterForm from "../../components/registerForm/RegisterForm";
 import LoginForm from "../../components/loginForm/LoginForm";
 import auth_login_pic from "../../assets/images/auth-light-mode.jpg";
 import { useLocation } from "react-router-dom";
+import SideMenu from "../../components/sidemenu/SideMenu";
 const AuthenticationPage = () => {
   const location = useLocation();
 
@@ -12,7 +13,7 @@ const AuthenticationPage = () => {
 
   return (
     <div className="flex">
-      <div className="bg-red-600 p-14">sidbar</div>
+      <SideMenu/>
       <AuthenticationCard>
         {location.pathname === "/login" ? (
           <LoginForm handleSubmitForm={handleOnSubmit} />

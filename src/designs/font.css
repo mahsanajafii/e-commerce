@@ -1,0 +1,166 @@
+/* ////////////////// IRAN Yekan ////////////////// */
+
+@layer base {
+    @font-face {
+        font-family: 'YekanBakh';
+        src:    url('../assets/fonts/iranyekan/Qs_Iranyekan\ thin.ttf') format('ttf');
+        font-weight: 100;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'YekanBakh';
+        src:    url('../assets/fonts/iranyekan/Qs_Iranyekan\ light.ttf') format('ttf'); 
+        font-weight: 300;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'YekanBakh';
+        src:    url('../assets/fonts/iranyekan/Qs_Iranyekan.ttf') format('ttf'); 
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'YekanBakh';
+        src:    url('../assets/fonts/iranyekan/Qs_Iranyekan\ medium.ttf') format('ttf'); 
+        font-weight: 500;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'YekanBakh';
+        src:    url('../assets/fonts/iranyekan/Qs_Iranyekan\ bold.ttf') format('ttf'); 
+        font-weight: 700;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'YekanBakh';
+        src:    url('../assets/fonts/iranyekan/Qs_Iranyekan\ extrabold.ttf') format('ttf'); 
+        font-weight: 800;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'YekanBakh';
+        src:    url('../assets/fonts/iranyekan/Qs_Iranyekan\ black.ttf') format('ttf'); 
+        font-weight: 900;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'YekanBakh';
+        src:    url('../assets/fonts/iranyekan/Qs_Iranyekan\ extrablack.ttf') format('ttf'); 
+        font-weight: 950;
+        font-style: normal;
+    }
+}
+
+
+/* ///////////////////// Segoe ///////////////////// */
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI.Semilight_p30download.com.ttf') format('ttf');
+        font-weight: 200;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI.Semilight.Italic_p30download.com.ttf') format('ttf');
+        font-weight: 200;
+        font-style: italic;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI.Light_p30download.com.ttf') format('ttf');
+        font-weight: 300;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI.Light.Italic_p30download.com.ttf') format('ttf');
+        font-weight: 300;
+        font-style: italic;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI_p30download.com.ttf') format('ttf');
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI.Italic_p30download.com.ttf') format('ttf');
+        font-weight: 400;
+        font-style: italic;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI.Semibold_p30download.com.ttf') format('ttf');
+        font-weight: 600;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI.Semibold.Italic_p30download.com.ttf') format('ttf');
+        font-weight: 600;
+        font-style: italic;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI.Bold_p30download.com.ttf') format('ttf');
+        font-weight: 700;
+        font-style: normal;
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Segoe.UI';
+        src:    url('../assets/fonts/SegoeUI.ttf-png_p30download.com/Segoe.UI.Bold.Italic_p30download.com.ttf') format('ttf');
+        font-weight: 700;
+        font-style: italic;
+    }
+}

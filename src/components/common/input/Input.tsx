@@ -1,42 +1,42 @@
-import React, {FC, ChangeEvent} from "react";
+import {FC, ChangeEvent} from "react";
 
 interface IInputProps {
-  className?: string;
+  inputStyle: string;
+  labelStyle: string;
   type?: string;
-  title?: string;
   placeholder?: string;
   value?: string;
-  htmlFor?: string;
   label?: string;
-  id?: string;
+  id: string;
+  ref?:React.LegacyRef<HTMLInputElement>
   onChange?: (event:ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input:FC<IInputProps> = ({
-  className,
+  inputStyle,
+  labelStyle,
   type = 'text',
-  title,
   placeholder,
   value,
-  htmlFor,
   label,
   id,
+  ref,
   onChange,
 }) => {
   return (
     <div>
-      <label htmlFor={htmlFor}
-      className={className}>
+      <label htmlFor={id}
+      className={labelStyle}>
         {label}
       </label>
       <input
-        className={`input ${className}`}
+        className={inputStyle}
         type={type}
-        title={title}
         placeholder={placeholder}
         value={value}
         id={id}
         onChange={onChange}
+        ref={ref}
       />
     </div>
   );

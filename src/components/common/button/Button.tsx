@@ -1,7 +1,7 @@
 interface IButtonProps {
   onClick?: () => void;
   children: string;
-  className?: string;
+  className: string;
 }
 
 const Button:React.FC<IButtonProps> = ({onClick, children, className}) => {

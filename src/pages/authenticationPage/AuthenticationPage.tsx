@@ -3,6 +3,7 @@ import RegisterForm from "../../components/registerForm/RegisterForm";
 import LoginForm from "../../components/loginForm/LoginForm";
 import auth_login_pic from "../../assets/images/auth-light-mode.jpg";
 import { useLocation } from "react-router-dom";
+
 const AuthenticationPage = () => {
   const location = useLocation();
 

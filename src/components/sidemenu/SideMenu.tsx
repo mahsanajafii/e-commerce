@@ -1,116 +1,110 @@
 import { MdOutlinePersonAddAlt } from "react-icons/md";
-import DarkMode from "./../darkMode/DarkMode";
 import { IoEnterOutline } from "react-icons/io5";
 import { useState } from "react";
-import { FaHome } from "react-icons/fa";
-import { AiOutlineShopping } from "react-icons/ai";
-import { HiOutlineShoppingCart } from "react-icons/hi";
+import {
+  AiOutlineShopping,
+  AiOutlineHome,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { MdFavorite } from "react-icons/md";
-import Sidebar from "./Sidebar";
+import Sidebar from "./slidebar/Sidebar";
 interface SlideListProps {
   icon: JSX.Element;
   name: string;
 }
 const sideMenuitems: SlideListProps[] = [
-  { icon: <FaHome />, name: "home" },
-  { icon: <AiOutlineShopping />, name: "store" },
-  { icon: <HiOutlineShoppingCart />, name: "Shopping cart" },
-  { icon: <MdFavorite />, name: "favorite" },
+  { icon: <AiOutlineHome size={20} />, name: "داشبورد" },
+  { icon: <AiOutlineShopping size={20} />, name: "فروشگاه" },
+  { icon: <AiOutlineShoppingCart size={20} />, name: "سبد خرید" },
+  { icon: <MdFavorite size={20} />, name: "علاقه مندی ها" },
 ];
 
 const SideMenu = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [isLogin] = useState<boolean>(true);
-  const [user] = useState<string>("admin");
+  const [user] = useState<string>("ادمین");
   const [countOfProduct] = useState<number>(2);
 
   return (
-    
-      <aside
-        className={`h-screen flex justify-between  bg-black text-white flex-col overflow-hidden  transition-all ${
-          expanded ? "w-[360px]" : "w-[80px]"
+    <aside
+      className={`h-screen font-Iran-Yekan flex justify-between  bg-base-menu  text-text-primary  flex-col overflow-hidden  transition-width duration-700 ease-in-out ${
+        expanded ? "w-[22.5rem]" : "w-[5rem]"
+      }`}
+      onClick={() => setExpanded(!expanded)}
+    >
+      <nav
+        className={`  overflow-hidden justify-between items-center   top-5   text-right  transition-width duration-700 ease-in-out flex  flex-col ${
+          expanded ? "w-[20.5rem]" : "w-[5rem]"
         }`}
-        onClick={() => setExpanded(!expanded)}
       >
-        <nav
-          className={`  overflow-x-hidden transition-all   pt-4 top-[20px] left-[654px]   text-right text-[16px]  flex  flex-col ${
-            expanded ? "w-[328px]" : "w-[80px]"
+        <ul
+          className={`flex flex-col  gap-12 pt-4  items-center justify-center overflow-hidden transition-width duration-700 ease-in-out  rounded-sm  ${
+            expanded ? "w-[20.5rem]" : "w-[5rem]"
           }`}
         >
-          <ul
-            className={`flex flex-col px-4 gap-[48px]  overflow-hidden transition-all  rounded-sm  ${
-              expanded ? "w-[328px]" : "w-[80px]"
-            }`}
-          >
-            {sideMenuitems.map(
-              (item: { icon: JSX.Element; name: string }, index: number) => (
-                <Sidebar
-                  key={index}
-                  i={index}
-                  name={item.name}
-                  icon={item.icon}
-                  expanded={expanded}
-                  countOfProduct={countOfProduct}
-                />
-              )
-            )}
-          </ul>
-        </nav>
-        <div>
-          {expanded ? (
-            <div className=" mr-4 h-2 cursor-pointer mb-14 items-center w-2">
-              <DarkMode />
-            </div>
-          ) : null}
-          {isLogin ? (
-            <div className="flex flex-row  justify-start items-center p-4">
-              <p>{user}</p>
-              <button>
-                <RiArrowDropDownLine />
-              </button>
-            </div>
-          ) : (
-            <div>
-              <div
-                className={`flex pr-6 active:text-[#DB2777] hover:bg-red flex-row overflow-hidden gap-[5px] cursor-pointer h-[42px] items-center ${
-                  expanded ? "w-[328px]" : "w-[80px]"
-                } `}
-                onClick={() => setExpanded(!expanded)}
-              >
-                <span>
-                  <IoEnterOutline />
-                </span>
-                <span
-                  className={`overflow-hidden ${
-                    expanded ? "w-[200px]" : "w-0"
-                  }`}
-                >
-                  Enter
-                </span>
-              </div>
-              <div
-                className={`flex px-6  pb-4 active:text-[#DB2777] flex-row overflow-hidden gap-[10px] cursor-pointer h-[42px] items-center ${
-                  expanded ? "w-[328px]" : "w-[80px]"
-                } `}
-                onClick={() => setExpanded(!expanded)}
-              >
-                <span>
-                  <MdOutlinePersonAddAlt />
-                </span>
-                <span
-                  className={`overflow-hidden ${
-                    expanded ? "w-[200px]" : "w-0"
-                  }`}
-                >
-                  register
-                </span>
-              </div>
-            </div>
+          {sideMenuitems.map(
+            (item: { icon: JSX.Element; name: string }, index: number) => (
+              <Sidebar
+                key={index}
+                i={index}
+                name={item.name}
+                icon={item.icon}
+                expanded={expanded}
+                countOfProduct={countOfProduct}
+              />
+            )
           )}
-        </div>
-      </aside>
-    
+        </ul>
+      </nav>
+      <div>
+        {isLogin ? (
+          <div className="flex flex-row  justify-start items-center px-6  pb-4">
+            <p className="text-[1rem] ">{user}</p>
+            <button>
+              <RiArrowDropDownLine />
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div
+              className={`flex px-6  pb-4 active:text-[#DB2777] hover:bg-red flex-row overflow-hidden gap-[.6rem] cursor-pointer h-11 items-center ${
+                expanded ? "w-[20.5rem]" : "w-[5rem]"
+              } `}
+              onClick={() => setExpanded(!expanded)}
+            >
+              <span>
+                <IoEnterOutline size={20} />
+              </span>
+              <span
+                className={`overflow-hidden text-[1rem]  transition-width duration-700 ease-in-out ${
+                  expanded ? "w-[20.5rem]" : "w-0"
+                }`}
+              >
+                ورود
+              </span>
+            </div>
+            <div
+              className={`flex px-6  pb-4 active:text-[#DB2777] flex-row transition-width duration-700 ease-in-out overflow-hidden gap-[.6rem] cursor-pointer h-11 items-center ${
+                expanded ? "w-[20.5rem]" : "w-[5rem]"
+              } `}
+              onClick={() => setExpanded(!expanded)}
+            >
+              <span>
+                <MdOutlinePersonAddAlt size={20} />
+              </span>
+              <span
+                className={`overflow-hidden text-[1rem]  transition-width duration-700 ease-in-out ${
+                  expanded ? "w-[20.5rem]" : "w-0"
+                }`}
+              >
+                ثبت نام
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+    </aside>
   );
 };
 export default SideMenu;

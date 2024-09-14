@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import Content from '../content/content'
+import Content from '../content/Content';
 import SideMenu from '../sidemenu/SideMenu'
 
 interface IMainLayout {

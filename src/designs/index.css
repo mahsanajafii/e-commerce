@@ -5,7 +5,11 @@
 @import "./font.css";
 
 @layer base {
-    body {
+    html {
         @apply text-base;
+    }
+
+    body {
+        @apply font-Iran-Yekan;
     }
 }

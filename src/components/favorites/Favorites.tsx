@@ -15,7 +15,7 @@ interface IFavoritesProps {
 
 const Favorites : React.FC<IFavoritesProps> = ({favoriteProducts}) => {
   return (
-    <section>
+    <section className="w-full grid grid-cols-4 gap-[3.2rem] py-[3.2rem] px-[2.1rem]">
         {favoriteProducts.map((favouriteProduct) => {
             return (
                 <ProductCard 

@@ -7,6 +7,7 @@ interface IProductCardProps {
   badgeTitle: string;
   padding: "px-2" | "px-2.5";
   fontSize: "text-[1.1rem]" | "text-xs";
+  id: number;
 }
 
 const ProductCard: React.FC<IProductCardProps> = ({

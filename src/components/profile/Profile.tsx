@@ -7,7 +7,7 @@ const Profile: React.FC = () => {
     fullname: string;
     email: string;
     password: string;
-    repassword: string;
+    repeatPassword: string;
   }
   const { register, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
@@ -17,7 +17,7 @@ const Profile: React.FC = () => {
   const labelStyle = `w-full h-[2.4rem]  text-text-primary text-[1.6rem]`;
 
   return (
-    <div className=" pt-[1.8rem] flex justify-center">
+    <div className=" w-full h-full items-center flex justify-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-[64rem] gap-[1.6rem] h-[44rem] flex flex-col"
@@ -65,8 +65,8 @@ const Profile: React.FC = () => {
             labelStyle={labelStyle}
             type="password"
             placeholder="تکرار رمز عبور خود را وارد نمایید"
-            {...register("repassword")}
-            id="password"
+            {...register("repeatPassword")}
+            id="repeatPassword"
             label="تکرار رمز عبور"
           />
         </div>

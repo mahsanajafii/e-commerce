@@ -1,45 +1,53 @@
-import {FC, ChangeEvent} from "react";
+import { forwardRef, ChangeEventHandler, FocusEventHandler } from "react";
 
 interface IInputProps {
   inputStyle: string;
   labelStyle: string;
   type?: string;
   placeholder?: string;
-  value?: string;
   label?: string;
   id: string;
-  ref?:React.LegacyRef<HTMLInputElement>
-  onChange?: (event:ChangeEvent<HTMLInputElement>) => void;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
+  name?: string;
 }
 
-const Input:FC<IInputProps> = ({
-  inputStyle,
-  labelStyle,
-  type = 'text',
-  placeholder,
-  value,
-  label,
-  id,
-  ref,
-  onChange,
-}) => {
-  return (
-    <div>
-      <label htmlFor={id}
-      className={labelStyle}>
-        {label}
-      </label>
-      <input
-        className={inputStyle}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        id={id}
-        onChange={onChange}
-        ref={ref}
-      />
-    </div>
-  );
-}
+const Input = forwardRef<HTMLInputElement, IInputProps>(
+  (
+    {
+      inputStyle,
+      labelStyle,
+      type = "text",
+      placeholder,
+      label,
+      id,
+      onChange,
+      onBlur,
+      onFocus,
+      name,
+    },
+    ref
+  ) => {
+    return (
+      <div>
+        <label htmlFor={id} className={labelStyle}>
+          {label}
+        </label>
+        <input
+          className={inputStyle}
+          type={type}
+          placeholder={placeholder}
+          id={id}
+          ref={ref}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          name={name}
+        />
+      </div>
+    );
+  }
+);
 
 export default Input;

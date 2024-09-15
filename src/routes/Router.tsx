@@ -4,6 +4,7 @@ import {
   HomePage,
   NotFoundPage,
   DashBoardPage,
+  ProfilePage,
 } from "../pages/index/pages";
 
 /*
@@ -33,7 +34,12 @@ const routes = createBrowserRouter([
         path: "/register",
         element: <AuthenticationPage />,
       },
-    ],
+      
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+      },
+    ]
   },
 ]);
 

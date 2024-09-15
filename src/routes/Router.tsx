@@ -6,6 +6,7 @@ import {
   DashBoardPage,
   CheckoutPage,
   ProfilePage,
+  FavoritesPage,
 } from "../pages/index/pages";
 
 /*
@@ -34,6 +35,10 @@ const routes = createBrowserRouter([
       {
         path: "/register",
         element: <AuthenticationPage />,
+      },
+      {
+        path: "/favorites",
+        element: <FavoritesPage />,
       },
       {
         path: "/checkout",

@@ -1,5 +1,4 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import Input from "../common/input/Input";
 import Button from "../common/button/Button";
 
@@ -10,7 +9,7 @@ const Profile: React.FC = () => {
     password: string;
     repassword: string;
   }
-  const { register, handleSubmit, control } = useForm<IFormInput>();
+  const { register, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
   const inputStyle =
@@ -84,7 +83,6 @@ const Profile: React.FC = () => {
           />
         </div>
       </form>
-      <DevTool control={control} />
     </div>
   );
 };

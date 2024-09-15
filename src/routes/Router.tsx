@@ -5,6 +5,7 @@ import {
   NotFoundPage,
   DashBoardPage,
   CheckoutPage,
+  ProfilePage,
 } from "../pages/index/pages";
 
 /*
@@ -37,6 +38,10 @@ const routes = createBrowserRouter([
       {
         path: "/checkout",
         element: <CheckoutPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
       },
     ],
   },

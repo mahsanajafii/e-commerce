@@ -4,7 +4,9 @@ import MainLayout from "../../layout/mainLayout/MainLayout";
 const HomePage = () => {
   return (
     <MainLayout>
-      <Outlet></Outlet>
+      
+        <Outlet></Outlet>
+    
     </MainLayout>
   );
 };

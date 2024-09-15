@@ -4,6 +4,7 @@ import {
   HomePage,
   NotFoundPage,
   DashBoardPage,
+  ProfilePage,
   FavoritesPage,
 } from "../pages/index/pages";
 
@@ -38,7 +39,11 @@ const routes = createBrowserRouter([
         path: "/favorites",
         element: <FavoritesPage />,
       },
-    ],
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+      },
+    ]
   },
 ]);
 

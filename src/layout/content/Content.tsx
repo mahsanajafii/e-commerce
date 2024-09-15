@@ -6,7 +6,7 @@ interface IContent {
 
 const content = ({children} : IContent) => {
   return (
-    <section>{children}</section>
+    <section className='w-full bg-base-backgrond'>{children}</section>
   )
 }
 

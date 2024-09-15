@@ -75,5 +75,11 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+      addBase({
+        html: { fontSize: '10px' },
+      });
+    },
+  ],
 };

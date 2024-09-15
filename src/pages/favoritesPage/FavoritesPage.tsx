@@ -1,10 +1,15 @@
-// import Favorites from "../../components/favorites/Favorites"
+import Favorites from "../../components/favorites/Favorites"
 
+const items = [
+  {
+    productTitle : "لباسشویی",
+    badgeTitle : "1000000000",
+  }
+]
 
 const FavoritesPage = () => {
   return (
-    <></>
-    // <Favorites  />
+    <Favorites favoriteProducts = {items} />
   )
 }
 

@@ -1,6 +1,8 @@
 import Table from "../common/table/Table";
 import Status from "./status/Status";
 
+const THs = ["تعداد", "قیمت", "قیمت نهایی"];
+
 const items = [
   {
     imageSource: "zsadfsdf",
@@ -13,8 +15,8 @@ const items = [
 
 const Checkout = () => {
   return (
-    <div className="flex justify-center items-start gap-5 w-full h-full pt-12">
-      <Table optionalWidth="w-[60%]" optionalHeight="h-[50%]" items={items} />
+    <div className="flex justify-center items-start gap-[5.6rem] w-full h-full p-[9.7rem]">
+      <Table optionalWidth="w-[50%]" items={items} headers={THs} />
       <Status />
     </div>
   );

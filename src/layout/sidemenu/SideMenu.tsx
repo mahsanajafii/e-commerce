@@ -22,25 +22,25 @@ const sideMenuitems: SlideListProps[] = [
 
 const SideMenu = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
-  const [isLogin] = useState<boolean>(true);
+  const [isLogin] = useState<boolean>(false);
   const [user] = useState<string>("ادمین");
   const [countOfProduct] = useState<number>(2);
 
   return (
     <aside
       className={`h-screen font-Iran-Yekan flex justify-between  bg-base-menu  text-text-primary  flex-col overflow-hidden  transition-width duration-700 ease-in-out ${
-        expanded ? "w-[22.5rem]" : "w-[5rem]"
+        expanded ? "w-[36rem]" : "w-[8rem]"
       }`}
       onClick={() => setExpanded(!expanded)}
     >
       <nav
-        className={`  overflow-hidden justify-between items-center   top-5   text-right  transition-width duration-700 ease-in-out flex  flex-col ${
-          expanded ? "w-[20.5rem]" : "w-[5rem]"
+        className={`  overflow-hidden justify-between items-center   top-8   text-right  transition-width duration-700 ease-in-out flex  flex-col ${
+          expanded ? "w-[36rem]" : "w-[8rem]"
         }`}
       >
         <ul
-          className={`flex flex-col  gap-12 pt-4  items-center justify-center overflow-hidden transition-width duration-700 ease-in-out  rounded-sm  ${
-            expanded ? "w-[20.5rem]" : "w-[5rem]"
+          className={`flex flex-col  gap-16 pt-6  items-center justify-center overflow-hidden transition-width duration-700 ease-in-out   ${
+            expanded ? "w-[32.8rem]" : "w-[8rem]"
           }`}
         >
           {sideMenuitems.map(
@@ -59,8 +59,8 @@ const SideMenu = () => {
       </nav>
       <div>
         {isLogin ? (
-          <div className="flex flex-row  justify-start items-center px-6  pb-4">
-            <p className="text-[1rem] ">{user}</p>
+          <div className="flex flex-row justify-center items-center w-32 h-10  pb-4">
+            <p className="text-[1.6rem] ">{user}</p>
             <button>
               <RiArrowDropDownLine />
             </button>
@@ -68,8 +68,8 @@ const SideMenu = () => {
         ) : (
           <div>
             <div
-              className={`flex px-6  pb-4 active:text-[#DB2777] hover:bg-red flex-row overflow-hidden gap-[.6rem] cursor-pointer h-11 items-center ${
-                expanded ? "w-[20.5rem]" : "w-[5rem]"
+              className={`flex  justify-center  pb-4 active:text-[#DB2777] flex-row transition-width duration-700 ease-in-out overflow-hidden gap-[.6rem] cursor-pointer h-11 items-center ${
+                expanded ? "w-[32.8rem] pr-14" : "w-[8rem]"
               } `}
               onClick={() => setExpanded(!expanded)}
             >
@@ -77,16 +77,16 @@ const SideMenu = () => {
                 <IoEnterOutline size={20} />
               </span>
               <span
-                className={`overflow-hidden text-[1rem]  transition-width duration-700 ease-in-out ${
-                  expanded ? "w-[20.5rem]" : "w-0"
+                className={`overflow-hidden text-[1.6rem]  transition-width duration-700 ease-in-out ${
+                  expanded ? "w-[32.8rem]" : "w-0"
                 }`}
               >
                 ورود
               </span>
             </div>
             <div
-              className={`flex px-6  pb-4 active:text-[#DB2777] flex-row transition-width duration-700 ease-in-out overflow-hidden gap-[.6rem] cursor-pointer h-11 items-center ${
-                expanded ? "w-[20.5rem]" : "w-[5rem]"
+              className={`flex  justify-center  pb-4 active:text-[#DB2777] flex-row transition-width duration-700 ease-in-out overflow-hidden gap-[.6rem] cursor-pointer h-11 items-center ${
+                expanded ? "w-[32.8rem] pr-14" : "w-[8rem]"
               } `}
               onClick={() => setExpanded(!expanded)}
             >
@@ -94,8 +94,8 @@ const SideMenu = () => {
                 <MdOutlinePersonAddAlt size={20} />
               </span>
               <span
-                className={`overflow-hidden text-[1rem]  transition-width duration-700 ease-in-out ${
-                  expanded ? "w-[20.5rem]" : "w-0"
+                className={`overflow-hidden text-[1.6rem]  transition-width duration-700 ease-in-out ${
+                  expanded ? "w-[32.8rem]" : "w-0"
                 }`}
               >
                 ثبت نام

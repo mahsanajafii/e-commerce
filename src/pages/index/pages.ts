@@ -6,9 +6,9 @@ import NotFoundPage from "../notFoundPage/NotFoundPage";
 import FavoritesPage from "../favoritesPage/FavoritesPage";
 import CheckoutPage from "../checkoutPage/CheckoutPage";
 import ProfilePage from "../profilePage/ProfilePage";
-import ShoppingProgressPage3 from "../shoppingProgress3/ShoppingProgressPage3"
+import ShoppingProgressThirdStepPage from "../shoppingProgressThirdStepPage/ShoppingProgressThirdStepPage"
 
 /* import the page here*/
 
 // EXPORT your page ==>
-export { AuthenticationPage, DashBoardPage, HomePage, NotFoundPage, FavoritesPage,ProfilePage ,CheckoutPage,ShoppingProgressPage3 };
+export { AuthenticationPage, DashBoardPage, HomePage, NotFoundPage, FavoritesPage,ProfilePage ,CheckoutPage,ShoppingProgressThirdStepPage };

@@ -7,7 +7,7 @@ import {
   CheckoutPage,
   ProfilePage,
   FavoritesPage,
-  ShoppingProgressPage3
+  ShoppingProgressThirdStepPage
 } from "../pages/index/pages";
 
 /*
@@ -50,8 +50,8 @@ const routes = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: "/shoppingprogress-3",
-        element: <ShoppingProgressPage3 />,
+        path: "/progress",
+        element: <ShoppingProgressThirdStepPage />,
       },
     ],
   },

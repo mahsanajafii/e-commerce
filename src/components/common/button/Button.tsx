@@ -1,6 +1,6 @@
 interface IButtonProps {
   onClick?: () => void;
-  children: string;
+  children?: string;
   className: string;
 }
 

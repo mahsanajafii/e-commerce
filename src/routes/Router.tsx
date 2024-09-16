@@ -7,6 +7,7 @@ import {
   CheckoutPage,
   ProfilePage,
   FavoritesPage,
+  ShoppingProgressPage3
 } from "../pages/index/pages";
 
 /*
@@ -48,8 +49,11 @@ const routes = createBrowserRouter([
         path: "/profile",
         element: <ProfilePage />,
       },
+      {
+        path: "/shoppingprogress-3",
+        element: <ShoppingProgressPage3 />,
+      },
     ],
   },
 ]);
-
 export default routes;

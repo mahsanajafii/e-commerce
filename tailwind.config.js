@@ -81,5 +81,6 @@ export default {
         html: { fontSize: '10px' },
       });
     },
+    
   ],
 };

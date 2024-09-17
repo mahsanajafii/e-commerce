@@ -1,4 +1,4 @@
-import Checkbox from '../common/checkbox/Checkbox';
+import Checkbox from '../checkbox/Checkbox';
 import { useState } from 'react';
 
  function FilterByGroup() {

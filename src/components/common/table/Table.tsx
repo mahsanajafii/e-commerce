@@ -52,11 +52,31 @@ const Table = ({
                     className="w-16 h-16"
                   ></img>
                 ) : head === "عملیات" ? (
-                  <Button>{item[head]}</Button>
-                ) : head === "وضعیت ارسال" ? (
-                  <Badge>{item[head]}</Badge>
-                ) : head === "وضعیت پرداخت" ? (
-                  <Badge>{item[head]}</Badge>
+                  <Button className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal">
+                    {item[head]}
+                  </Button>
+                ) : head === "ارسال" ? (
+                  <Badge 
+                    padding="px-2"
+                    fontSize="text-[1.4rem]"
+                    status={
+                      item[head] === "در حال ارسال" ? "pending-badge"
+                      : item[head] === "ارسال شده" ? "success-badge"
+                      : "error-badge" // if item[head] === "ارسال نشده"
+                    }
+                  >
+                    {item[head]}
+                  </Badge>
+                ) : head === "پرداخت" ? (
+                  <Badge
+                    padding="px-2"
+                    fontSize="text-[1.4rem]" 
+                    status={
+                      item[head] === "پرداخت شده" ? "success-badge" : "error-badge"
+                    }
+                  >
+                    {item[head]}
+                  </Badge>
                 ) : (
                   item[head]
                 )}

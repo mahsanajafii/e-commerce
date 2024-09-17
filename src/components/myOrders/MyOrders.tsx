@@ -1,7 +1,6 @@
 import Table from "../common/table/Table";
 
 interface IMyOrder {
-  imageSource: string,
   [index: string]: string | number,
 }
 

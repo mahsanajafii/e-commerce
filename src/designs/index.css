@@ -14,3 +14,17 @@
         @apply font-Iran-Yekan;
     }
 }
+
+@layer utilities {
+    .pending-badge{
+        @apply bg-info-main text-info-lighter
+    }
+
+    .success-badge{
+        @apply bg-success-main text-success-lighter
+    }
+
+    .error-badge{
+        @apply bg-error-main text-error-lighter
+    }
+}

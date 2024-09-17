@@ -1,9 +1,12 @@
+import Badge from "../badge/Badge";
+import Button from "../button/Button";
+
 interface ITableItem {
   [index: string]: string | number;
 }
 
 interface ITableProps {
-  items: ITableItem[];
+  items?: ITableItem[];
   headers: string[];
   optionalWidth?: string;
   optionalHeight?: string;
@@ -30,7 +33,7 @@ const Table = ({
         </tr>
       </thead>
       <tbody>
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <tr
             key={index}
             className="font-Iran-Yekan font-normal text-[1.6rem] text-text-primary"
@@ -42,7 +45,21 @@ const Table = ({
                 }`}
                 key={headIndex}
               >
-                {item[head]}
+                {head === "عکس" ? (
+                  <img
+                    src={String(item[head])}
+                    alt="picture"
+                    className="w-16 h-16"
+                  ></img>
+                ) : head === "عملیات" ? (
+                  <Button>{item[head]}</Button>
+                ) : head === "وضعیت ارسال" ? (
+                  <Badge>{item[head]}</Badge>
+                ) : head === "وضعیت پرداخت" ? (
+                  <Badge>{item[head]}</Badge>
+                ) : (
+                  item[head]
+                )}
               </td>
             ))}
           </tr>

@@ -1,22 +1,36 @@
 import Table from "../common/table/Table";
 import Status from "./status/Status";
 
-const THs = ["تعداد", "قیمت", "قیمت نهایی"];
+const headers = ["عکس", "نام محصول", "تعداد", "قیمت", "قیمت نهایی"];
 
 const items = [
   {
-    imageSource: "zsadfsdf",
-    productTitle: "iphone promax 15",
-    productCount: 2,
-    productPrice: "100000$",
-    totalProce: "100000$",
+    عکس: "asdfasdf",
+    "نام محصول": "iphone15 ultra pro max",
+    تعداد: 2,
+    قیمت: "100000$",
+    "قیمت نهایی": "1000000$",
+  },
+  {
+    عکس: "asdfasdf",
+    "نام محصول": "iphone15 ultra pro max",
+    تعداد: 2,
+    قیمت: "100000$",
+    "قیمت نهایی": "1000000$",
+  },
+  {
+    عکس: "asdfasdf",
+    "نام محصول": "iphone15 ultra pro max",
+    تعداد: 2,
+    قیمت: "100000$",
+    "قیمت نهایی": "1000000$",
   },
 ];
 
 const Checkout = () => {
   return (
     <div className="flex justify-center items-start gap-[5.6rem] w-full h-full p-[9.7rem]">
-      <Table optionalWidth="w-[50%]" items={items} headers={THs} />
+      <Table optionalWidth="w-[60%]" items={items} headers={headers} />
       <Status />
     </div>
   );

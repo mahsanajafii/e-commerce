@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 
 interface IBadgeProps {
-  children?: ReactNode;
-  padding: "px-[0.8rem]" | "px-[1rem]";
-  fontSize: "text-[1.1rem]" | "text-[1.2rem]" | "text-[1.4rem]";
+  children: ReactNode;
+  padding?: "px-2" | "px-2.5";
+  fontSize?: "text-[1.1rem]" | "text-[1.2rem]";
 }
 
 const Badge: React.FC<IBadgeProps> = ({ children, fontSize, padding }) => {

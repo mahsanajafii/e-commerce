@@ -9,7 +9,7 @@ interface IMyOrdersProps {
     items : IMyOrder[];
 }
 
-const THs = ["تاریخ", "قیمت نهایی", "پرداخت", "ارسال", "عملیات"];
+const THs = ["عکس" , "نام محصول", "تاریخ", "قیمت نهایی", "پرداخت", "ارسال", "عملیات"];
 
 
 const MyOrders : React.FC<IMyOrdersProps> = ({items}) => {

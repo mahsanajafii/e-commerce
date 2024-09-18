@@ -8,6 +8,8 @@ import {
   ProfilePage,
   FavoritesPage,
   CartPage,
+  MyOrdersPage,
+  DetailsPage,
 } from "../pages/index/pages";
 
 /*
@@ -52,6 +54,14 @@ const routes = createBrowserRouter([
       {
         path: "/cart",
         element: <CartPage />,
+      },
+      {
+        path: "/my-orders",
+        element: <MyOrdersPage />,
+      },
+      {
+        path: "/details",
+        element: <DetailsPage />,
       },
     ],
   },

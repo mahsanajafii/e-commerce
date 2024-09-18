@@ -1,10 +1,9 @@
 import { MdDeleteForever } from "react-icons/md";
-import pic from "../pic.jpg";
 const CardInfo = () => {
   return (
     <div className="flex justify-between items-center w-full h-[30%]">
       <div className="flex-2 h-full">
-        <img src={pic} alt="pictire" className="w-full h-full" />
+        <img src="random" alt="pictire" className="w-full h-full" />
       </div>
       <div className="flex-1  h-full font-Iran-Yekan flex flex-col justify-between pr-10">
         <p className="font-normal text[1.6rem] text-primary-main text-right">

@@ -7,7 +7,7 @@ import {
   CheckoutPage,
   ProfilePage,
   FavoritesPage,
-  ShoppingProgressThirdStepPage
+  ShoppingProgressThirdStepPage,
   CartPage,
   MyOrdersPage,
   DetailsPage,

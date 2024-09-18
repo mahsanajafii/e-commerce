@@ -15,7 +15,7 @@ const Sidebar: React.FC<SlideProps> = ({
   return (
     <li
       className={` flex transition-width duration-700   ease-in-out active:text-dark-menu-active-item   hover:bg-[#DB277714] items-center flex-row overflow-hidden rounded-md gap-4 cursor-pointer h-16  ${
-        expanded ? "w-[32.8rem] pr-6" : "w-[2.4rem]"
+        expanded ? "w-[16rem] pr-6" : "w-[2.4rem]"
       } `}
     >
       {countOfProduct !== 0 && i === 2 ? (

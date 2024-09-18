@@ -39,18 +39,6 @@ const routes = createBrowserRouter([
         path: "/register",
         element: <AuthenticationPage />,
       },
-      {
-        path: "/favorites",
-        element: <FavoritesPage />,
-      },
-      {
-        path: "/checkout",
-        element: <CheckoutPage />,
-      },
-      {
-        path: "/profile",
-        element: <ProfilePage />,
-      },
     ],
   },
 ]);

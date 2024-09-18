@@ -39,6 +39,10 @@ const routes = createBrowserRouter([
         path: "/register",
         element: <AuthenticationPage />,
       },
+      {
+        path: "/shop",
+        element: <ShopPage />,
+      },
     ],
   },
 ]);

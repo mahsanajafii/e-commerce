@@ -78,9 +78,20 @@ export default {
   plugins: [
     function ({ addBase }) {
       addBase({
-        html: { fontSize: '10px' },
+        html: { fontSize: "10px" },
       });
     },
-    
+
+    function ({ addUtilities }) {
+      addUtilities({
+        ".line-clamp-2": {
+          "text-overflow": "ellipsis",
+          overflow: "hidden",
+          display: "-webkit-box",
+          "-webkit-line-clamp": "2",
+          "-webkit-box-orient": "vertical",
+        },
+      });
+    },
   ],
 };

@@ -46,7 +46,7 @@ const ShopProductCard: React.FC<IProductCardProps> = ({
             {badgeTitle}
           </p>
         </div>
-        <p className=" w-[90%] h-20 max-w-[90%] max-h-[90%] overflow-hidden text-ellipsis line-clamp-2 font-normal text-2xl text-text-secondary">
+        <p className="px-4 line-clamp-2 font-normal text-2xl text-text-secondary">
           {description}
         </p>
         <div className=" h-20 w-[90%] pt-5  flex-row flex justify-between">

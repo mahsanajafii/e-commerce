@@ -7,10 +7,10 @@ import {
   CheckoutPage,
   ProfilePage,
   FavoritesPage,
-  ShoppingProgressThirdStepPage,
   CartPage,
   MyOrdersPage,
   DetailsPage,
+  ShoppingProgressThirdStepPage,
 } from "../pages/index/pages";
 
 /*
@@ -52,7 +52,24 @@ const routes = createBrowserRouter([
         path: "/profile",
         element: <ProfilePage />,
       },
+      {
+        path: "/cart",
+        element: <CartPage />,
+      },
+      {
+        path: "/my-orders",
+        element: <MyOrdersPage />,
+      },
+      {
+        path: "/details",
+        element: <DetailsPage />,
+      },
+      {
+        path: "/progress",
+        element: <ShoppingProgressThirdStepPage />,
+      },
     ],
   },
 ]);
+
 export default routes;

@@ -1,5 +1,10 @@
-import Button from "../../common/button/Button";
-const Status = () => {
+import Button from "../button/Button";
+
+interface IStatusProps {
+  isNeedButton: boolean;
+}
+
+const Status = ({ isNeedButton }: IStatusProps) => {
   const infoItems = [
     { label: "شماره سفارش", value: "۲۹۲۳۹۱۰" },
     { label: "نام", value: "علی موسوی" },
@@ -38,9 +43,11 @@ const Status = () => {
           <p className={textStyle}>{value}</p>
         </div>
       ))}
-      <Button className="bg-primary-main text-text-button text-center w-full rounded-full py-[0.8rem] px-[3.2rem] font-medium text-[2rem]">
-        پرداخت
-      </Button>
+      {isNeedButton ? (
+        <Button className="bg-primary-main text-text-button text-center w-full rounded-full py-[0.8rem] px-[3.2rem] font-medium text-[2rem]">
+          پرداخت
+        </Button>
+      ) : null}
     </div>
   );
 };

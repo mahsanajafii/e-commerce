@@ -1,5 +1,6 @@
 import Badge from "../badge/Badge";
 import Button from "../button/Button";
+import { Link } from "react-router-dom";
 
 interface ITableItem {
   [index: string]: string | number;
@@ -52,9 +53,11 @@ const Table = ({
                     className="w-16 h-16"
                   ></img>
                 ) : head === "عملیات" ? (
-                  <Button className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal">
-                    {item[head]}
-                  </Button>
+                  <Link to={"/details"}>
+                    <Button className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal">
+                      {item[head]}
+                    </Button>
+                  </Link>
                 ) : head === "ارسال" ? (
                   <Badge 
                     padding="px-2"

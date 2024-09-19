@@ -1,19 +1,19 @@
 import React, {FC, ChangeEvent, useState} from "react";
 
 interface ICheckboxProps {
-  className?: string;
+  label: string;
+  inputStyle?: string;
   labelStyle?: string;
-  label?: string;
-  id?: string;
+  containerStyle?: string;
   checked?: boolean;
   onChange?: (checked: boolean) => void;
 }
 
 const Checkbox:React.FC<ICheckboxProps> = ({
-  className,
+  inputStyle,
   labelStyle,
+  containerStyle,
   label,
-  id,
   checked = false,
   onChange,
 }) => {
@@ -26,15 +26,15 @@ const Checkbox:React.FC<ICheckboxProps> = ({
   };
 
   return (
-    <div>
-      <label htmlFor={id}
+    <div className={containerStyle}>
+      <label htmlFor={label}
       className={labelStyle}>
         {label}
       </label>
       <input
-        className={className}
+        className={inputStyle}
         type='checkbox'
-        id={id}
+        id={label}
         checked={isChecked}
         onChange={CheckboxHandler}
       />
@@ -43,4 +43,3 @@ const Checkbox:React.FC<ICheckboxProps> = ({
 }
 
 export default Checkbox;
-

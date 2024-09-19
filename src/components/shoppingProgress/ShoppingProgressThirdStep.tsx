@@ -26,6 +26,7 @@ const ShoppingProgressThirdStep = () => {
     },
   ];
   const headers = ["عکس", "نام محصول", "تعداد", "قیمت", "قیمت نهایی"];
+
   const summaryItems = [
     { label: "قمیت محصولات", value: "100000 تومان" },
     { label: "هزینه ارسال", value: "100000 تومان" },

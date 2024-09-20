@@ -11,7 +11,6 @@ import {
   CartPage,
   MyOrdersPage,
   DetailsPage,
-  ShoppingProgressThirdStepPage,
 } from "../pages/index/pages";
 
 /*

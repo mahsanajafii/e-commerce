@@ -11,7 +11,6 @@ import {
   CartPage,
   MyOrdersPage,
   DetailsPage,
-  ShoppingProgressThirdStepPage,
 } from "../pages/index/pages";
 
 /*
@@ -55,7 +54,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/progress",
-        element: <ShoppingProgressThirdStepPage />
+        element: <ShoppingProgressThirdStepPage />,
       },
       {
         path: "/cart",

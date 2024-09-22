@@ -12,13 +12,13 @@ const LikeIcon: React.FC<ILikceIcon> = ({ handleLikeIcon, isLiked }) => {
       {isLiked ? (
         <FaRegHeart
           onClick={handleLikeIcon}
-          className="absolute left-[7.6rem] top-[10.3rem] text-5xl cursor-pointer"
+          className="absolute left-[7.6rem] top-[10.3rem] text-4xl cursor-pointer"
         />
       ) : (
         <FaHeart
           fill={`#DB2777`}
           onClick={handleLikeIcon}
-          className="absolute left-[7.6rem] top-[10.3rem] text-5xl cursor-pointer"
+          className="absolute left-[7.6rem] top-[10.3rem] text-4xl cursor-pointer"
         />
       )}
     </>

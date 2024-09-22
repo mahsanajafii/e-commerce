@@ -9,7 +9,6 @@ import ProfilePage from "../profilePage/ProfilePage";
 import CartPage from "../cartPage/CartPage";
 import MyOrdersPage from "../myOrdersPage/MyOrdersPage";
 import DetailsPage from "../detailsPage/DetailsPage";
-import ShoppingProgressThirdStepPage from "../shoppingProgressThirdStepPage/ShoppingProgressThirdStepPage"
 
 /* import the page here*/
 

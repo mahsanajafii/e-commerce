@@ -5,12 +5,18 @@ import HomePage from "../homePage/HomePage";
 import NotFoundPage from "../notFoundPage/NotFoundPage";
 import FavoritesPage from "../favoritesPage/FavoritesPage";
 import CheckoutPage from "../checkoutPage/CheckoutPage";
-import ShoppingProgressThirdStepPage from "../shoppingProgressThirdStepPage/ShoppingProgressThirdStepPage"
-import  ShopPage  from "../shopPage/ShopPage";
-import MyOrdersPage from "../myOrdersPage/MyOrdersPage";
 import ProfilePage from "../profilePage/ProfilePage";
-
+import CartPage from "../cartPage/CartPage";
+import MyOrdersPage from "../myOrdersPage/MyOrdersPage";
+import DetailsPage from "../detailsPage/DetailsPage";
+import ShoppingProgressThirdStepPage from "../shoppingProgressThirdStepPage/ShoppingProgressThirdStepPage";
+import UsersListPage from "../usersListPage/UsersListPage";
+import ShopPage from "../shopPage/ShopPage";
 /* import the page here*/
 
+
 // EXPORT your page ==>
-export { ShopPage,AuthenticationPage,MyOrdersPage,ShoppingProgressThirdStepPage, DashBoardPage, HomePage, NotFoundPage, FavoritesPage, ProfilePage ,CheckoutPage };
+export {
+    AuthenticationPage, DashBoardPage, HomePage, NotFoundPage, FavoritesPage, ProfilePage, CheckoutPage, MyOrdersPage, DetailsPage
+    , CartPage,ShopPage, ShoppingProgressThirdStepPage,UsersListPage
+};

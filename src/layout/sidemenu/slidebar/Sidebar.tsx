@@ -20,7 +20,7 @@ const Sidebar: React.FC<SlideProps> = ({
     >
       {countOfProduct !== 0 && i === 2 ? (
         <div className=" relative inline-block">
-          <span className="top-[-.3rem] right-[-.1rem]  text-white border rounded-[50%] w-5 h-5  flex justify-center items-center text-xs absolute bg-primary-main">
+          <span className="top-[-.3rem] right-[-.1rem]  text-white border rounded-[50%] w-5 h-5  px-1 text-xs flex justify-center items-center absolute bg-primary-main">
             {countOfProduct}
           </span>
           <span>{icon}</span>

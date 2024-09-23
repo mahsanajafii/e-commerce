@@ -7,9 +7,12 @@ import {
   CheckoutPage,
   ProfilePage,
   FavoritesPage,
-  MyOrdersPage,
   ShoppingProgressThirdStepPage,
-  ShopPage
+  CartPage,
+  MyOrdersPage,
+  DetailsPage,
+  UsersListPage,
+  ShopPage,
 } from "../pages/index/pages";
 
 /*
@@ -42,6 +45,38 @@ const routes = createBrowserRouter([
       {
         path: "/shop",
         element: <ShopPage />,
+      },
+      {
+        path: "/favorites",
+        element: <FavoritesPage />,
+      },
+      {
+        path: "/checkout",
+        element: <CheckoutPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+      },
+      {
+        path: "/progress",
+        element: <ShoppingProgressThirdStepPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
+      },
+      {
+        path: "/my-orders",
+        element: <MyOrdersPage />,
+      },
+      {
+        path: "/details",
+        element: <DetailsPage />,
+      },
+      {
+        path: "/users",
+        element: <UsersListPage />,
       },
     ],
   },

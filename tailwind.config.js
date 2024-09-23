@@ -81,7 +81,6 @@ export default {
         html: { fontSize: "10px" },
       });
     },
-
     function ({ addUtilities }) {
       addUtilities({
         ".line-clamp-2": {
@@ -89,6 +88,14 @@ export default {
           overflow: "hidden",
           display: "-webkit-box",
           "-webkit-line-clamp": "2",
+          "-webkit-box-orient": "vertical",
+        },
+
+        ".line-clamp-4": {
+          "text-overflow": "ellipsis",
+          overflow: "hidden",
+          display: "-webkit-box",
+          "-webkit-line-clamp": "4",
           "-webkit-box-orient": "vertical",
         },
       });

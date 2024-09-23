@@ -5,14 +5,13 @@ interface IInputProps {
   labelStyle: string;
   type?: string;
   placeholder?: string;
-  label?: string;
+  label?: string |JSX.Element;
   id: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   onBlur?: FocusEventHandler<HTMLInputElement>;
   onFocus?: FocusEventHandler<HTMLInputElement>;
   name?: string;
 }
-
 const Input = forwardRef<HTMLInputElement, IInputProps>(
   (
     {
@@ -30,7 +29,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
     ref
   ) => {
     return (
-      <div>
+      <div> 
         <label htmlFor={id} className={labelStyle}>
           {label}
         </label>

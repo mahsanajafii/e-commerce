@@ -15,7 +15,7 @@ const Product: React.FC = () => {
     setIsLiked(!isLiked);
   };
   return (
-    <div className=" flex flex-col w-[90%] h-full gap-[6.3rem] justify-start items-center ">
+    <div className=" flex flex-col w-[90%] h-full gap-5 justify-start items-center ">
       <LikeIcon handleLikeIcon={handleLikeIcon} isLiked={isLiked} />
       <div className="bg-red-700 w-[90%] h-[80%] flex justify-between items-center mt-[9.5rem] mx-auto">
         <img src={pic} alt="picture" className="w-[45%] h-full" />
@@ -109,8 +109,13 @@ const Product: React.FC = () => {
           </Button>
         </div>
       </div>
-      <div className="bg-red-700 w-[90%] h-[80%] flex justify-between items-center mx-auto">
-        a
+      <div className="bg-black w-[90%] h-[80%] flex justify-between items-center mx-auto p-5 gap-4">
+        <div className="bg-white text-[1.6rem] text-text-primary flex flex-col gap-4 w-[10%]">
+          <Link to="/r1">نظرات</Link>
+          <Link to="/r2">ثبت نظر</Link>
+          <Link to="/r3">ممم</Link>
+        </div>
+        <div className="bg-white w-[90%] h-full ">a</div>
       </div>
     </div>
   );

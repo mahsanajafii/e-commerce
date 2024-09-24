@@ -12,6 +12,7 @@ import {
   MyOrdersPage,
   DetailsPage,
   UsersListPage,
+  AdminDashboardPage,
 } from "../pages/index/pages";
 
 /*
@@ -72,6 +73,10 @@ const routes = createBrowserRouter([
       {
         path: "/users",
         element: <UsersListPage />,
+      },
+      {
+        path: "/admin-dashboard",
+        element: <AdminDashboardPage />,
       },
     ],
   },

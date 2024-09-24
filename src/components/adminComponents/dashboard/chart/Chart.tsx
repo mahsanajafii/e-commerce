@@ -48,6 +48,11 @@ const Chart = () => {
                 maintainAspectRatio: true, 
                 scales: {
                     x: {
+                        // display: true,
+                        // title: {
+                        //     text: "تاریخ",
+                        //     color: "#58616C"
+                        // },
                         grid: {
                             display: false, // to hide vertical grid lines
                         },
@@ -55,6 +60,17 @@ const Chart = () => {
                     y: {
                         grid: {
                             display: true,
+                            color: "#9CA5AF",
+                            lineWidth: 1
+                        },
+                        min: 0,
+                        max: 5,
+                        ticks: {
+                            stepSize: 1,
+                            color: "#58616C",
+                            font : {
+                                size: 11,
+                            },
                         },
                     },
                 },

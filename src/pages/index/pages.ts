@@ -9,7 +9,8 @@ import ProfilePage from "../profilePage/ProfilePage";
 import CartPage from "../cartPage/CartPage";
 import MyOrdersPage from "../myOrdersPage/MyOrdersPage";
 import DetailsPage from "../detailsPage/DetailsPage";
-import ShoppingProgressThirdStepPage from "../shoppingProgressThirdStepPage/ShoppingProgressThirdStepPage";
+import ShoppingProgressThirdStepPage from "../shoppingProgressThirdStepPage/ShoppingProgressThirdStepPage"
+import ProductPage from "../productPage/ProductPage";
 import UsersListPage from "../usersListPage/UsersListPage";
 import ShopPage from "../shopPage/ShopPage";
 /* import the page here*/
@@ -18,5 +19,5 @@ import ShopPage from "../shopPage/ShopPage";
 // EXPORT your page ==>
 export {
     AuthenticationPage, DashBoardPage, HomePage, NotFoundPage, FavoritesPage, ProfilePage, CheckoutPage, MyOrdersPage, DetailsPage
-    , CartPage,ShopPage, ShoppingProgressThirdStepPage,UsersListPage
+    , CartPage,ShopPage, ShoppingProgressThirdStepPage,UsersListPage, ProductPage
 };

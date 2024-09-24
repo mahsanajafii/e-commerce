@@ -2,6 +2,7 @@ import React from "react";
 import Badge from "../../badge/Badge";
 import Button from "../../button/Button";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { GoArrowLeft } from "react-icons/go";
 
 interface IProductCardProps {
   productImg: string;
@@ -29,9 +30,11 @@ const ShopProductCard: React.FC<IProductCardProps> = ({
       <div className=" bg-white flex flex-col justify-center items-center w-full h-1/2 p-8">
         {productImg}
         {brandTitele ? (
-          <Badge padding="px-2.5" fontSize="text-[1.2rem]">
-            {brandTitele}
-          </Badge>
+          <div className="r-3">
+            <Badge padding="px-2.5" fontSize="text-[1.2rem]">
+              {brandTitele}
+            </Badge>
+          </div>
         ) : null}
       </div>
       <div className="bg-base-side flex flex-col justify-center items-center w-full h-1/2 ">
@@ -47,8 +50,11 @@ const ShopProductCard: React.FC<IProductCardProps> = ({
           {description}
         </p>
         <div className=" h-20 w-[90%] pt-5  flex-row flex justify-between">
-          <Button className="w-[30%] h-14 rounded-xl text-text-button px-5 py-3 bg-primary-main  font-normal text-sm text-center">
-            مشاهده بیشتر
+          <Button className="w-[40%] h-14 rounded-xl text-text-button px-5 py-3 bg-primary-main  font-normal text-lg text-center flex flex-row  justify-center items-center">
+            مشاهده بیشتر{" "}
+            <span>
+              <GoArrowLeft />
+            </span>{" "}
           </Button>
           <AiOutlineShoppingCart size={30} />
         </div>

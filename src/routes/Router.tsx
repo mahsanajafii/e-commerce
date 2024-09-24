@@ -13,6 +13,7 @@ import {
   DetailsPage,
   ProductPage,
   UsersListPage,
+  ShopPage,
 } from "../pages/index/pages";
 
 /*
@@ -41,6 +42,10 @@ const routes = createBrowserRouter([
       {
         path: "/register",
         element: <AuthenticationPage />,
+      },
+      {
+        path: "/shop",
+        element: <ShopPage />,
       },
       {
         path: "/favorites",

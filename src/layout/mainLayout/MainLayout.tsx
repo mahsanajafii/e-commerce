@@ -8,7 +8,7 @@ interface IMainLayout {
 
 const MainLayout = ({children} : IMainLayout) => {
   return (
-    <main className='flex w-screen'>
+    <main className='flex w-full'>
         <SideMenu/>
         <Content>{children}</Content>
     </main>

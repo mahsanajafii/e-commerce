@@ -13,7 +13,6 @@ interface IInputProps {
   name?: string;
   value?: string;
 }
-
 const Input = forwardRef<HTMLInputElement, IInputProps>(
   (
     {
@@ -32,6 +31,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
     ref
   ) => {
     return (
+
       <>
         <label htmlFor={id} className={labelStyle}>
           {label}

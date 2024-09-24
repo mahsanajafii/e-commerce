@@ -32,7 +32,7 @@ const items = [
 
 const TopBox = () => {
   return (
-    <div className="w-full flex gap-[10rem] px-24 py-[1.7rem]">
+    <div className="flex gap-[10rem] py-[1.7rem]">
       <div className="w-[45%] grid grid-cols-2 grid-rows-2 gap-[3.2rem]">
           {items.map((item, index) => {
               return (

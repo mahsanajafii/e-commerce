@@ -30,7 +30,7 @@ const UserAddress = () => {
               id="address"
               placeholder="آدرس را وارد نمایید"
               label="آدرس"
-              className={inputStyler}
+              inputStyle={inputStyler}
               labelStyle={labelStyler}
             />
           </div>
@@ -40,7 +40,7 @@ const UserAddress = () => {
               id="city"
               placeholder="شهر را وارد نمایید"
               label="شهر"
-              className={inputStyler}
+              inputStyle={inputStyler}
               labelStyle={labelStyler}
             />
           </div>
@@ -50,7 +50,7 @@ const UserAddress = () => {
               id="country"
               placeholder="کشور را وارد نمایید"
               label="کشور"
-              className={inputStyler}
+              inputStyle={inputStyler}
               labelStyle={labelStyler}
             />
           </div>
@@ -60,17 +60,13 @@ const UserAddress = () => {
               id="postalCode"
               placeholder="کد پستی را وارد نمایید"
               label="کد پستی"
-              className={inputStyler}
+              inputStyle={inputStyler}
               labelStyle={labelStyler}
             />
           </div>
           <div className=" m-2 flex flex-col gap-2">
             <p className="text-gray-800 text-2xl">روش پرداخت</p>
             <RadioButton
-              componentStyle="flex flex-col items-end"
-              containerStyle="m-5 flex gap-2"
-              radioStyle="accent-[#DB2777]"
-              labelStyle="text-black"
               name="bank"
               options={[
                 {

@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "../../common/button/Button";
 import ProductCard from "../../common/productCard/ProductCard";
 
@@ -41,3 +42,4 @@ const SpecialProducts: React.FC<ISpecialProducts> = ({ SpecialProducts }) => {
 };
 
 export default SpecialProducts
+

@@ -1,4 +1,5 @@
 import { MdMenu } from "react-icons/md";
+import Chart from "./chart/Chart";
 
 const items = [
     {
@@ -21,7 +22,7 @@ const Dashboard = () => {
         <span className="absolute py-[1.2rem] px-[0.8rem] cursor-pointer bg-base-side rounded-[0.8rem] top-[3.2rem] left-[3.2rem]">
             <MdMenu className="text-[2.4rem]" />
         </span>
-        <div className="flex flex-col items-center bg-purple-200 w-full">
+        <div className="flex flex-col items-center gap-[4.3rem] w-full">
             <div className="flex gap-20 w-[80%]">
                 {items.map((item, index) => {
                     return(
@@ -36,7 +37,7 @@ const Dashboard = () => {
                 })}
 
             </div>
-            <div></div>
+            <Chart />
         </div>
     </div>
   )

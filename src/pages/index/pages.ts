@@ -11,11 +11,12 @@ import MyOrdersPage from "../myOrdersPage/MyOrdersPage";
 import DetailsPage from "../detailsPage/DetailsPage";
 import ShoppingProgressThirdStepPage from "../shoppingProgressThirdStepPage/ShoppingProgressThirdStepPage"
 import ProductPage from "../productPage/ProductPage";
+import UsersListPage from "../usersListPage/UsersListPage";
 /* import the page here*/
 
 
 // EXPORT your page ==>
 export {
     AuthenticationPage, DashBoardPage, HomePage, NotFoundPage, FavoritesPage, ProfilePage, CheckoutPage, MyOrdersPage, DetailsPage
-    , CartPage, ShoppingProgressThirdStepPage, ProductPage
+    , CartPage, ShoppingProgressThirdStepPage, ProductPage ,UsersListPage
 };

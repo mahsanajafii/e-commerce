@@ -12,6 +12,7 @@ import {
   MyOrdersPage,
   DetailsPage,
   ProductPage,
+  UsersListPage,
 } from "../pages/index/pages";
 
 /*
@@ -70,8 +71,8 @@ const routes = createBrowserRouter([
         element: <DetailsPage />,
       },
       {
-        path: "/progress",
-        element: <ShoppingProgressThirdStepPage />,
+        path: "/users",
+        element: <UsersListPage />,
       },
       {
         path: "/product",

@@ -11,8 +11,10 @@ import {
   CartPage,
   MyOrdersPage,
   DetailsPage,
+  ProductPage,
   UsersListPage,
   AdminDashboardPage,
+  ShopPage,
 } from "../pages/index/pages";
 
 /*
@@ -41,6 +43,10 @@ const routes = createBrowserRouter([
       {
         path: "/register",
         element: <AuthenticationPage />,
+      },
+      {
+        path: "/shop",
+        element: <ShopPage />,
       },
       {
         path: "/favorites",
@@ -77,6 +83,10 @@ const routes = createBrowserRouter([
       {
         path: "/admin-dashboard",
         element: <AdminDashboardPage />,
+        },
+        {
+        path: "/product",
+        element: <ProductPage />,
       },
     ],
   },

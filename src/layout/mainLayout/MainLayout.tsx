@@ -8,9 +8,9 @@ interface IMainLayout {
 
 const MainLayout = ({ children }: IMainLayout) => {
   return (
-    <main className="flex">
-      <SideMenu />
-      <Content>{children}</Content>
+    <main className='flex w-full'>
+        <SideMenu/>
+        <Content>{children}</Content>
     </main>
   );
 };

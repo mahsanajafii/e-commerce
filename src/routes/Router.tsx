@@ -13,6 +13,7 @@ import {
   DetailsPage,
   ProductPage,
   UsersListPage,
+  AdminDashboardPage,
   ShopPage,
 } from "../pages/index/pages";
 
@@ -80,6 +81,10 @@ const routes = createBrowserRouter([
         element: <UsersListPage />,
       },
       {
+        path: "/admin-dashboard",
+        element: <AdminDashboardPage />,
+        },
+        {
         path: "/product",
         element: <ProductPage />,
       },

@@ -1,12 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
+import { RouteObject, useRoutes } from "react-router-dom";
 import {
-  AuthenticationPage,
-  HomePage,
-  NotFoundPage,
   DashBoardPage,
   CheckoutPage,
   ProfilePage,
-  FavoritesPage,
   ShoppingProgressThirdStepPage,
   CartPage,
   MyOrdersPage,
@@ -14,43 +10,19 @@ import {
   ProductPage,
   UsersListPage,
   AdminDashboardPage,
-  ShopPage,
+  HomePage,
+  NotFoundPage,
 } from "../pages/index/pages";
 
-/*
-All routes are nested within the HomePage component.
-Add your routes at the end of the children array !!!!!!!  
-*/
-
-const routes = createBrowserRouter([
+const routes: RouteObject[] = [
   {
     path: "/",
     element: <HomePage />,
     errorElement: <NotFoundPage />,
     children: [
       {
-        path: "",
-        element: <DashBoardPage />,
-      },
-      {
         path: "/dashboard",
         element: <DashBoardPage />,
-      },
-      {
-        path: "/login",
-        element: <AuthenticationPage />,
-      },
-      {
-        path: "/register",
-        element: <AuthenticationPage />,
-      },
-      {
-        path: "/shop",
-        element: <ShopPage />,
-      },
-      {
-        path: "/favorites",
-        element: <FavoritesPage />,
       },
       {
         path: "/checkout",
@@ -61,7 +33,7 @@ const routes = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: "/progress",
+        path: "/shop",
         element: <ShoppingProgressThirdStepPage />,
       },
       {
@@ -69,26 +41,32 @@ const routes = createBrowserRouter([
         element: <CartPage />,
       },
       {
-        path: "/my-orders",
+        path: "/orders",
         element: <MyOrdersPage />,
       },
       {
-        path: "/details",
+        path: "/detail",
         element: <DetailsPage />,
+      },
+      {
+        path: "/product",
+        element: <ProductPage />,
       },
       {
         path: "/users",
         element: <UsersListPage />,
       },
       {
-        path: "/admin-dashboard",
+        path: "/adminDashboard",
         element: <AdminDashboardPage />,
-        },
-        {
-        path: "/product",
-        element: <ProductPage />,
       },
     ],
   },
-]);
-export default routes;
+];
+
+const AppRoutes: React.FC = () => {
+  const element = useRoutes(routes);
+  return element;
+};
+
+export default AppRoutes;

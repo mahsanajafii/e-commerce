@@ -1,10 +1,11 @@
 import ShoppingSummary from "./shoppingSummary/ShoppingSummary";
 import UserAddress from "./userAddress/UserAddress";
-
+import Stepper from "./stepper/stepper";
 
 const ShoppingProgress = () => {
   return (
-    <div>
+    <div className="w-fit mx-auto">
+      <Stepper></Stepper>
       <UserAddress></UserAddress>
       <ShoppingSummary></ShoppingSummary>
     </div>

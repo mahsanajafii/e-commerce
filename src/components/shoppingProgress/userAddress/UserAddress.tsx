@@ -2,8 +2,11 @@ import { useForm, FieldValues } from "react-hook-form";
 import Input from "../../common/input/Input";
 import Button from "../../common/button/Button";
 import RadioButton from "../../common/radioButton/RadioButton";
+import { useStepperStore } from "../store";
 
 const UserAddress = () => {
+ const { setStep } = useStepperStore()
+
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data: FieldValues) => {
@@ -77,6 +80,7 @@ const UserAddress = () => {
             />
           </div>
           <Button
+            onClick={() => {setStep(3)}}
             className="w-full h-[4.8rem] rounded-full bg-[#DB2777] hover:bg-[#831747] text-center content-center py-[0.8rem] px-[3.2rem]"
             children="ادامه"
           />

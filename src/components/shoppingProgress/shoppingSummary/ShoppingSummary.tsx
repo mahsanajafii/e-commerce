@@ -41,7 +41,6 @@ const ShoppingSummary = () => {
   return (
     <div className="w-full h-full flex justify-center items-center">
       <div className="  w-full flex flex-col justify-center items-center gap-20">
-        <div className="bg-red-400 w-full h-24 gap-6 "> steper</div> 
         <div className="w-5/6  gap-16 flex flex-col ">
           <Table
             optionalWidth="w-full"

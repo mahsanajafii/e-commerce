@@ -1,7 +1,7 @@
 import { useForm, FieldValues } from "react-hook-form";
-import Input from "../common/input/Input";
-import Button from "../common/button/Button";
-import RadioButton from "../common/radioButton/RadioButton";
+import Input from "../../common/input/Input";
+import Button from "../../common/button/Button";
+import RadioButton from "../../common/radioButton/RadioButton";
 
 const UserAddress = () => {
   const { register, handleSubmit } = useForm();

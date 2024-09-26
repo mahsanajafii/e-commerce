@@ -3,7 +3,7 @@ import {
   DashBoardPage,
   CheckoutPage,
   ProfilePage,
-  ShoppingProgressThirdStepPage,
+  ShoppingProgressPage,
   CartPage,
   MyOrdersPage,
   DetailsPage,
@@ -33,8 +33,8 @@ const routes: RouteObject[] = [
         element: <ProfilePage />,
       },
       {
-        path: "/shop",
-        element: <ShoppingProgressThirdStepPage />,
+        path: "/shopping-progress",
+        element: <ShoppingProgressPage />,
       },
       {
         path: "/cart",

@@ -36,7 +36,7 @@ const UserAddress = () => {
               label="آدرس"
               inputStyle={inputStyler}
               labelStyle={labelStyler}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddress(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
               value={address}
             />
           </div>
@@ -48,7 +48,7 @@ const UserAddress = () => {
               label="شهر"
               inputStyle={inputStyler}
               labelStyle={labelStyler}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCity(e.target.value)}
+              onChange={(e) => setCity(e.target.value)}
               value={city}
             />
           </div>
@@ -72,7 +72,7 @@ const UserAddress = () => {
               label="کد پستی"
               inputStyle={inputStyler}
               labelStyle={labelStyler}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPostalCode(e.target.value)}
+              onChange={(e) => setPostalCode(e.target.value)}
               value={postalCode}
             />
           </div>

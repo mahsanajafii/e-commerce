@@ -1,6 +1,6 @@
 import Button from "../../common/button/Button"
 import { IoCheckbox } from "react-icons/io5";
-import { useStepperStore } from "../store";
+import { useStepperStore } from "../../../stores/shoppingProgressStore";
 
 const Stepper = () => {
     const {step, setStep} = useStepperStore();

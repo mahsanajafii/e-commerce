@@ -1,7 +1,7 @@
 import ShoppingSummary from "./shoppingSummary/ShoppingSummary";
 import UserAddress from "./userAddress/UserAddress";
 import Stepper from "./stepper/Stepper";
-import { useStepperStore } from "./store";
+import { useStepperStore } from "../../stores/shoppingProgressStore";
 
 const ShoppingProgress = () => {
   const {step} = useStepperStore()

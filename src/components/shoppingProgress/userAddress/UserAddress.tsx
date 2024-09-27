@@ -2,7 +2,7 @@ import { useForm, FieldValues } from "react-hook-form";
 import Input from "../../common/input/Input";
 import Button from "../../common/button/Button";
 import RadioButton from "../../common/radioButton/RadioButton";
-import { useStepperStore, useAddressInfoStore } from "../store";
+import { useStepperStore, useAddressInfoStore } from "../../../stores/shoppingProgressStore";
 
 const UserAddress = () => {
  const { setStep } = useStepperStore()

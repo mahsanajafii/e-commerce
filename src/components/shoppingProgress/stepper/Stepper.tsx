@@ -6,7 +6,7 @@ const Stepper = () => {
     const {step, setStep} = useStepperStore();
   return (
     <div className="mb-20 pt-20 px-5 w-[70rem] mx-auto flex flex-row-reverse justify-center items-center gap-[1.6rem]">
-        <Button onClick={() => {setStep(1)}} className="flex flex-col gap-4 items-center p-4">
+        <Button className="flex flex-col gap-4 items-center p-4">
             <p className={`text-[1.6rem]
                     ${step >= 1 ? "text-success-main" : "text-text-primar"}
             `}>ورود</p>

@@ -33,7 +33,7 @@ const routes: RouteObject[] = [
         element: <ProfilePage />,
       },
       {
-        path: "/shopping-progress",
+        path: "/shoppingProgress",
         element: <ShoppingProgressPage />,
       },
       {

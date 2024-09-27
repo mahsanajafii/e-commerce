@@ -1,19 +1,38 @@
 import { Link } from "react-router-dom";
+import { useForm, FieldValues } from "react-hook-form";
+import { useEffect } from "react";
 import Input from "../common/input/Input";
 import Button from "../common/button/Button";
-import { useForm, FieldValues } from "react-hook-form";
-
+import authService from "../../services/authService";
 const RegisterForm = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
     watch,
+    setFocus,
   } = useForm();
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data);
+  // const navigate = useNavigate();
+
+  const onSubmit = async (data: FieldValues) => {
+    try {
+      const {
+        name: username,
+        email,
+        password,
+        passwordCheck: confirm_Password,
+      } = data;
+      console.log(username, email, password, confirm_Password);
+      await authService.register(username, email, password, confirm_Password);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    setFocus("name");
+  }, [setFocus]);
 
   const password = watch("password");
 

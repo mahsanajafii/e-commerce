@@ -1,18 +1,32 @@
 import { Link } from "react-router-dom";
+import { useForm, FieldValues } from "react-hook-form";
+import { useEffect } from "react";
 import Input from "../common/input/Input";
 import Button from "../common/button/Button";
-import { useForm, FieldValues } from "react-hook-form";
+import authService from "../../services/authService";
 
 const LoginForm = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    setFocus,
   } = useForm();
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data);
+  // const navigate = useNavigate();
+
+  const onSubmit = async (data: FieldValues) => {
+    try {
+      const { email, password } = data;
+      await authService.login(email, password);
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  useEffect(() => {
+    setFocus("email");
+  }, [setFocus]);
 
   return (
     <div className="flex flex-col gap-8 w-[53.1rem] h-[35.6rem] font-Iran-Yekan">

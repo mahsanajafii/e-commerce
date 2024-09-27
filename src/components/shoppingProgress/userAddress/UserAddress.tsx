@@ -76,7 +76,7 @@ const UserAddress = () => {
               value={postalCode}
             />
           </div>
-          <div className=" m-2 flex flex-col items-start gap-2">
+          <div className=" m-2 flex flex-col gap-2">
             <p className="text-gray-800 text-2xl">روش پرداخت</p>
             <RadioButton
               name="bank"

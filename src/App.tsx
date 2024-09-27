@@ -1,25 +1,28 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClientProvider } from "react-query";
 import AppRoutes from "./routes/AppRoutes";
 import PubicRoutes from "./routes/PublicRoutes";
 import PrivateRoute from "./components/privateRoutes/PrivateRoutes";
+import queryClient from "./api/queryClient";
+import { useAuthStatus } from "./store/authStore";
 
-const isAuth = true;
+const App = () => {
+  const isAuth = useAuthStatus((state) => state.isAuth);
+  const router = createBrowserRouter([
+    ...PubicRoutes.routes,
+    {
+      path: "/*",
+      element: (
+        <PrivateRoute element={<AppRoutes />} isAuthentication={isAuth} />
+      ),
+    },
+  ]);
 
-const router = createBrowserRouter([
-  ...PubicRoutes.routes,
-  {
-    path: "/*",
-    element: (
-      <PrivateRoute
-        element={<AppRoutes />}
-        isAuthentication={isAuth}
-      ></PrivateRoute>
-    ),
-  },
-]);
-
-function App() {
-  return <RouterProvider router={router}></RouterProvider>;
-}
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
+};
 
 export default App;

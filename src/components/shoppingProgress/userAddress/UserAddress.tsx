@@ -17,16 +17,16 @@ const UserAddress = () => {
   const labelStyler = "text-black text-2xl block mb-5";
   const inputStyler =
     "w-full rounded-xl p-4 text-right bg-white text-black block";
-  const containerStyle = "m-2 h-[6.4rem] w-[64rem]";
+  const containerStyle = "flex flex-col gap-[0.8rem] w-full";
 
   return (
     <div className=" m-auto flex flex-col bg-[#CED2D7] text-right max-w-[70rem] p-5">
       <div></div>
-      <div className="flex flex-col justify-center gap-2">
+      <div className="flex flex-col justify-center w-full gap-2">
         <p className="text-black text-2xl font-medium mb-12">خرید</p>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-[640px] flex flex-col gap-6"
+          className="w-full flex flex-col gap-6"
         >
           <div className={containerStyle}>
             <Input
@@ -76,7 +76,7 @@ const UserAddress = () => {
               value={postalCode}
             />
           </div>
-          <div className=" m-2 flex flex-col gap-2">
+          <div className=" m-2 flex flex-col items-start gap-2">
             <p className="text-gray-800 text-2xl">روش پرداخت</p>
             <RadioButton
               name="bank"

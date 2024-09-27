@@ -34,20 +34,20 @@ const RadioButton: React.FC<IRadioButtonProps> = ({
   };
 
   return (
-    <div className="flex flex-col items-end">
+    <div className="flex w-full flex-col">
       {options.map((option) => (
-        <div className="m-5 flex gap-2" key = {option.value}>
-          <label className="text-black" htmlFor = {option.value}>{option.label}</label>
+        <div className="flex w-full gap-2 items-center" key = {option.value}>
           <input
-          className="accent-[#DB2777]"
-          type = 'radio'
-          id= {option.value}
-          name= {name}
-          value = {option.value}
-          checked = {selectedOption === option.value}
-          onChange = {() => handleChange(option.value)} />
-          
-          </div>
+            className="accent-[#DB2777]"
+            type = 'radio'
+            id= {option.value}
+            name= {name}
+            value = {option.value}
+            checked = {selectedOption === option.value}
+            onChange = {() => handleChange(option.value)} 
+          />
+          <label className="text-text-primary text-[1.6rem]" htmlFor = {option.value}>{option.label}</label>
+        </div>
       ))}
     </div>
   );

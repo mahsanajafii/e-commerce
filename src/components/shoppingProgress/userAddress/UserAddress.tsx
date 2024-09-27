@@ -2,10 +2,11 @@ import { useForm, FieldValues } from "react-hook-form";
 import Input from "../../common/input/Input";
 import Button from "../../common/button/Button";
 import RadioButton from "../../common/radioButton/RadioButton";
-import { useStepperStore } from "../store";
+import { useStepperStore, useAddressInfoStore } from "../store";
 
 const UserAddress = () => {
  const { setStep } = useStepperStore()
+ const { address, city, country, postalCode, setAddress, setCity, setCountry, setPostalCode } = useAddressInfoStore()
 
   const { register, handleSubmit } = useForm();
 
@@ -35,6 +36,8 @@ const UserAddress = () => {
               label="آدرس"
               inputStyle={inputStyler}
               labelStyle={labelStyler}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddress(e.target.value)}
+              value={address}
             />
           </div>
           <div className={containerStyle}>
@@ -45,6 +48,8 @@ const UserAddress = () => {
               label="شهر"
               inputStyle={inputStyler}
               labelStyle={labelStyler}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCity(e.target.value)}
+              value={city}
             />
           </div>
           <div className={containerStyle}>
@@ -55,6 +60,8 @@ const UserAddress = () => {
               label="کشور"
               inputStyle={inputStyler}
               labelStyle={labelStyler}
+              onChange={(e) => setCountry(e.target.value)}
+              value={country}
             />
           </div>
           <div className={containerStyle}>
@@ -65,6 +72,8 @@ const UserAddress = () => {
               label="کد پستی"
               inputStyle={inputStyler}
               labelStyle={labelStyler}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPostalCode(e.target.value)}
+              value={postalCode}
             />
           </div>
           <div className=" m-2 flex flex-col gap-2">

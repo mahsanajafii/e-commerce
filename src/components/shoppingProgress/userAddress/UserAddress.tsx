@@ -6,7 +6,7 @@ import { useStepperStore, useAddressInfoStore } from "../store";
 
 const UserAddress = () => {
  const { setStep } = useStepperStore()
- const { address, city, country, postalCode, setAddress, setCity, setCountry, setPostalCode } = useAddressInfoStore()
+ const { address, city, country, postalCode, paymentMethod, setAddress, setCity, setCountry, setPostalCode, setPaymentMethod } = useAddressInfoStore()
 
   const { register, handleSubmit } = useForm();
 
@@ -86,6 +86,8 @@ const UserAddress = () => {
                   label: "درگاه پرداخت بانک پاسارگاد",
                 },
               ]}
+              checked={paymentMethod}
+              onChange={setPaymentMethod}
             />
           </div>
           <Button

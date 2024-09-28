@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 
 interface PrivateRouteProps {
   element: JSX.Element;
-  isAuthentication: boolean;
+  isAuthentication: boolean | undefined;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({

@@ -9,7 +9,7 @@ const Content = ({children} : IContent) => {
   const { expanded } = useSidebarStore()
 
   return (
-    <section className={`w-full bg-base-backgrond ${!expanded ? "mr-32" : "mr-[22rem]"}`}>{children}</section>
+    <section className={`w-full bg-base-backgrond transition-width duration-700 ease-in-out ${!expanded ? "mr-32" : "mr-[22rem]"}`}>{children}</section>
   )
 }
 

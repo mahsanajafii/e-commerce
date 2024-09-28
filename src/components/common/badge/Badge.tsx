@@ -10,7 +10,7 @@ interface IBadgeProps {
 const Badge: React.FC<IBadgeProps> = ({ children, fontSize, padding, status }) => {
   return (
     <div
-      className={`${fontSize} ${padding} ${status} $textColor font-normal text-primary-lighter bg-primary-dark rounded-full inline-flex justify-center items-center py-1`}
+      className={`${fontSize} ${padding} ${status} $textColor font-normal text-primary-lighter text-center bg-primary-dark rounded-full inline-flex justify-center items-center py-1`}
     >
       {children}
     </div>

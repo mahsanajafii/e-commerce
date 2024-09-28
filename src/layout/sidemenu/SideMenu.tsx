@@ -13,6 +13,8 @@ interface SlideListProps {
   icon: JSX.Element;
   name: string;
 }
+import { useSidebarStore } from "../../stores/sidebarStore";
+
 const sideMenuitems: SlideListProps[] = [
   { icon: <AiOutlineHome size={20} />, name: "داشبورد" },
   { icon: <AiOutlineShopping size={20} />, name: "فروشگاه" },
@@ -21,17 +23,17 @@ const sideMenuitems: SlideListProps[] = [
 ];
 
 const SideMenu = () => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const { expanded, setExpanded } = useSidebarStore()
   const [isLogin] = useState<boolean>(false);
   const [user] = useState<string>("ادمین");
   const [countOfProduct] = useState<number>(2);
 
   return (
     <aside
-      className={`h-screen font-Iran-Yekan flex justify-between  bg-base-menu  text-text-primary  flex-col overflow-hidden  transition-width duration-700 ease-in-out ${
+      className={`h-screen font-Iran-Yekan fixed flex justify-between bg-base-menu text-text-primary flex-col overflow-hidden transition-width duration-700 ease-in-out ${
         expanded ? "w-[22rem]" : "w-[8rem]"
       }`}
-      onClick={() => setExpanded(!expanded)}
+      onClick={() => setExpanded()}
     >
       <nav
         className={`  overflow-hidden justify-between items-center   top-8   text-right  transition-width duration-700 ease-in-out flex  flex-col ${
@@ -71,7 +73,7 @@ const SideMenu = () => {
               className={`flex  justify-center  pb-4 active:text-[#DB2777] flex-row transition-width duration-700 ease-in-out overflow-hidden gap-4 cursor-pointer h-11 items-center ${
                 expanded ? "w-[16rem] pr-14" : "w-[8rem]"
               } `}
-              onClick={() => setExpanded(!expanded)}
+              onClick={() => setExpanded()}
             >
               <span>
                 <IoEnterOutline size={20} />
@@ -88,7 +90,7 @@ const SideMenu = () => {
               className={`flex  justify-center  pb-4 active:text-[#DB2777] flex-row transition-width duration-700 ease-in-out overflow-hidden gap-4 cursor-pointer h-11 items-center ${
                 expanded ? "w-[16rem] pr-14" : "w-[8rem]"
               } `}
-              onClick={() => setExpanded(!expanded)}
+              onClick={() => setExpanded()}
             >
               <span>
                 <MdOutlinePersonAddAlt size={20} />

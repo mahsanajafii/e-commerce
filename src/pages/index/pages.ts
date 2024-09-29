@@ -7,7 +7,7 @@ import FavoritesPage from "../favoritesPage/FavoritesPage";
 import CheckoutPage from "../checkoutPage/CheckoutPage";
 import ProfilePage from "../profilePage/ProfilePage";
 import CartPage from "../cartPage/CartPage";
-import MyOrdersPage from "../myOrdersPage/MyOrdersPage";
+import MyOrdersPage from "../ordersPage/OrdersPage";
 import DetailsPage from "../detailsPage/DetailsPage";
 import ShoppingProgressPage from "../shoppingProgressPage/ShoppingProgressPage"
 import ProductPage from "../productPage/ProductPage";

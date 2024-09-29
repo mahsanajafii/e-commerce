@@ -20,6 +20,12 @@ const authService = {
         });
         return response.data;
     },
+
+
+    logout: async () => {
+        const response = await axiosClient.post('users/logout')
+        return response.data
+    }
 };
 
 export default authService;

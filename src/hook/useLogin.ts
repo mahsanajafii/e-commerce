@@ -15,7 +15,7 @@ export const useLogin = () => {
         },
         onError: (error) => {
             setIsAuth(false)
-            console.error('Login failed', error);
+            console.error('Login failed :', error);
         },
     });
 };

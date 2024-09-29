@@ -1,4 +1,4 @@
-import Favorites from "../../components/favorites/Favorites"
+import Favorites from "../../components/generalComponents/favorites/Favorites"
 
 const items = [
   {

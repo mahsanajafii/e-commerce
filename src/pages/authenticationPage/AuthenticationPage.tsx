@@ -1,6 +1,6 @@
-import AuthenticationCard from "../../components/authenticationCard/AuthenticationCard";
-import RegisterForm from "../../components/registerForm/RegisterForm";
-import LoginForm from "../../components/loginForm/LoginForm";
+import AuthenticationCard from "../../components/generalComponents/authenticationComponents/Authentication";
+import RegisterForm from "../../components/generalComponents/authenticationComponents/registerForm/RegisterForm";
+import LoginForm from "../../components/generalComponents/authenticationComponents/loginForm/LoginForm";
 import auth_login_pic from "../../assets/images/auth-light-mode.jpg";
 import { useLocation } from "react-router-dom";
 

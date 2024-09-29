@@ -1,4 +1,4 @@
-import ShoppingProgress from "../../components/shoppingProgress/ShoppingProgress"
+import ShoppingProgress from "../../components/userComponents/shoppingProgress/ShoppingProgress"
 function ShoppingProgressPage() {
   return (
     <ShoppingProgress/>

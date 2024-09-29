@@ -4,7 +4,7 @@ import AppRoutes from "./routes/AppRoutes";
 import PubicRoutes from "./routes/PublicRoutes";
 import PrivateRoute from "./components/privateRoutes/PrivateRoutes";
 import queryClient from "./api/queryClient";
-import { useAuthStatus } from "./store/authStore";
+import { useAuthStatus } from "./stores/authStore";
 
 const App = () => {
   const isAuth = useAuthStatus((state) => state.isAuth);

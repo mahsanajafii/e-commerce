@@ -1,7 +1,7 @@
 import { useMutation } from 'react-query';
 import authService from '../services/authService';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStatus } from '../store/authStore';
+import { useAuthStatus } from '../stores/authStore';
 
 export const useLogin = () => {
     const navigate = useNavigate()

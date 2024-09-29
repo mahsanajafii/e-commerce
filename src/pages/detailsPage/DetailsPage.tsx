@@ -1,4 +1,4 @@
-import Details from "../../components/details/Details";
+import Details from "../../components/generalComponents/details/Details";
 const DetailsPage = () => {
   return <Details />;
 };

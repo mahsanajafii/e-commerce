@@ -1,4 +1,3 @@
-import pic from "./pic.jpg";
 import { FaStar } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { MdInventory } from "react-icons/md";
@@ -6,39 +5,65 @@ import { TbBrandAppgallery } from "react-icons/tb";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import LikeIcon from "./likeIcon/LikeIcon";
 import Button from "../../common/button/Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useQuery } from "react-query";
+import axiosClient from "../../../api/axiosClient";
 
 const Product: React.FC = () => {
+  const fetchProduct = async (id: string) => {
+    const res = await axiosClient.get(`/products/${id}`);
+    return res.data;
+  };
   const [isLiked, setIsLiked] = useState(true);
+  const location = useLocation();
+  const id = location.state?.id;
+  const {
+    isLoading,
+    isError,
+    error,
+    data: selectProduct,
+  } = useQuery({
+    queryKey: ["selectProduct"],
+    queryFn: () => fetchProduct(id),
+  });
+
   const handleLikeIcon = () => {
     setIsLiked(!isLiked);
   };
+  if (isLoading) {
+    return (
+      <div className="text-green-600 w-full h-full flex justify-center items-center text-5xl">
+        <h1>...Loading</h1>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="text-red-600 w-full h-full flex justify-center items-center text-5xl">
+        <h1>Error: {error.message}</h1>
+      </div>
+    );
+  }
   return (
     <div className=" flex flex-col w-[90%] h-full gap-5 justify-start items-center ">
       <LikeIcon handleLikeIcon={handleLikeIcon} isLiked={isLiked} />
-      <div className="bg-red-700 w-[90%] h-[80%] flex justify-between items-center mt-[9.5rem] mx-auto">
-        <img src={pic} alt="picture" className="w-[45%] h-full" />
+      <div className=" w-[90%] h-[80%] flex justify-between items-center mt-[9.5rem] mx-auto">
+        <img
+          src={selectProduct.image}
+          alt={selectProduct.name}
+          className="w-[45%] h-full"
+        />
         <div className=" w-[55%] h-full flex flex-col px-28 justify-between ">
           <p className="font-Iran-Yekan font-medium text-[2.4rem] text-text-primary text-right">
-            Apple MacBook Air M2
+            {selectProduct.name}
           </p>
           <p className="text-text-primary font-normal text-[1.6rem] text-right">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-            saepe hic illo iste asperiores consequatur harum, autem obcaecati
-            voluptas, ullam perspiciatis. Deleniti repudiandae, maiores labore
-            illo, nemo quam tenetur, deserunt recusandae ipsa consequatur cumque
-            culpa. Sequi quibusdam nam eligendi fugit perferendis iure harum
-            error quasi quod ut nihil consequuntur asperiores eaque sunt
-            voluptatem quam, magnam culpa at atque labore porro fugiat veniam
-            sit deleniti. Nemo fugit temporibus impedit earum rerum doloremque
-            culpa eos sapiente repudiandae ipsa. Aliquid harum et quidem,
-            excepturi provident quam distinctio expedita, vel optio
-            reprehenderit dicta? Odio provident iusto accusamus eligendi
-            incidunt iste eum ipsam quasi iure.
+            {selectProduct.description}
           </p>
           <p className="text-text-primary text-right text-[4.8rem] font-medium font-Iran-Yekan">
-            10000تومان
+            {selectProduct.price}
           </p>
           <div className="flex justify-between items-center font-normal text-[1.6rem]">
             <div className="flex flex-col justify-center items-start gap-6">
@@ -47,21 +72,21 @@ const Product: React.FC = () => {
                 <p>
                   <span className="text-text-secondary">امتیاز</span> :
                 </p>
-                <span>5</span>
+                <span>{selectProduct.rating}</span>
               </p>
               <p className="flex justify-center items-center gap-1">
                 <FaCartShopping className="inline" />
                 <p>
                   <span className="text-text-secondary">تعداد</span> :
                 </p>
-                <span>52</span>
+                <span>{selectProduct.quantity}</span>
               </p>
               <p className="flex justify-center items-center gap-1">
                 <MdInventory className="inline" />
                 <p>
                   <span className="text-text-secondary">موجودی</span> :
                 </p>
-                <span>10</span>
+                <span>{selectProduct.countInStock}</span>
               </p>
             </div>
             <div className="flex flex-col justify-center items-start gap-6">
@@ -70,21 +95,21 @@ const Product: React.FC = () => {
                 <p>
                   <span className="text-text-secondary">برند</span> :
                 </p>
-                <span>اپل</span>
+                <span>{selectProduct.category?.name}</span>
               </p>
               <p className="flex justify-center items-center gap-1">
                 <MdOutlineAccessTimeFilled className="inline" />
                 <p>
                   <span className="text-text-secondary">زمان بروزرسانی</span> :{" "}
                 </p>
-                <span>چند لحظه قبل</span>
+                <span>{selectProduct.updatedAt}</span>
               </p>
               <p className="flex justify-center items-center gap-1">
                 <FaStar className="inline" />
                 <p>
                   <span className="text-text-secondary">نظرات</span> :
                 </p>
-                <span>4202</span>
+                <span>{selectProduct.numReviews}</span>
               </p>
             </div>
           </div>

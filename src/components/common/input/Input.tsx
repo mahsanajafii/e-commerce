@@ -5,13 +5,13 @@ interface IInputProps {
   labelStyle: string;
   type?: string;
   placeholder?: string;
-  label?: string | JSX.Element ;
+  label?: string | JSX.Element;
   id: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   onBlur?: FocusEventHandler<HTMLInputElement>;
   onFocus?: FocusEventHandler<HTMLInputElement>;
   name?: string;
-  value?: string;
+  value?: string | number;
 }
 const Input = forwardRef<HTMLInputElement, IInputProps>(
   (
@@ -31,7 +31,6 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
     ref
   ) => {
     return (
-
       <>
         <label htmlFor={id} className={labelStyle}>
           {label}

@@ -7,10 +7,10 @@ const AdminMenu = () => {
     setIsChecked(!isChecked);
   };
   return (
-    <div className="absolute left-12 top-12 rounded-xl flex ">
+    <div className={`absolute left-2 top-2 rounded-xl flex z-10`}>
       <LogoAdminMenu handelClick={handelClick} />
       <div
-        className={` absolute top-[2rem] w-[17rem] transition-opacity duration-500 ease-in-out bg-base-side border  h-[22.8rem] border-base-text-field-stroke py-6 px-3 gap-6 left-[2rem] rounded-xl ${
+        className={`absolute top-[2rem] w-[17rem] transition-opacity duration-500 ease-in-out bg-base-side border  h-[22.8rem] border-base-text-field-stroke py-6 px-3 gap-6 left-[2rem] rounded-xl ${
           isChecked ? "opacity-100 " : "opacity-0"
         } `}
       >

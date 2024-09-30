@@ -1,6 +1,10 @@
 export interface IUserType {
     _id: string,
     username: string,
-    emial: string,
-    isAdmin: boolean
+    email: string,
+    isAdmin: boolean,
+    setId: (_id: string) => void,
+    setUserName: (username: string) => void,
+    setEmail: (email: string) => void,
+    setIsAdmin: (isAdmin: boolean) => void,
 }

@@ -12,6 +12,7 @@ const applyInterceptors = (axiosClient: AxiosInstance) => {
 
     axiosClient.interceptors.response.use(
         (response: AxiosResponse) => {
+            localStorage.setItem('isAdmin', response.data.isAdmin)
             return response;
         },
         (error) => {

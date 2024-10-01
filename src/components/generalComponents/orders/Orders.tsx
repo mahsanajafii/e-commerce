@@ -1,20 +1,22 @@
 import Table from "../../common/table/Table";
 
-interface IMyOrder {
+interface IOrder {
   [index: string]: string | number,
 }
 
-interface IMyOrdersProps {
-    items : IMyOrder[];
+interface IOrdersProps {
+    items : IOrder[];
 }
 
 const THs = ["عکس" , "نام محصول", "تاریخ", "قیمت نهایی", "پرداخت", "ارسال", "عملیات"];
 
 
-const MyOrders : React.FC<IMyOrdersProps> = ({items}) => {
+const Orders : React.FC<IOrdersProps> = ({items}) => {
   return (
-    <Table optionalWidth="w-full" items={items} headers={THs} />
+    <div className="min-h-screen pt-24 px-8">
+      <Table optionalWidth="w-full" items={items} headers={THs} />
+    </div>
   )
 }
 
-export default MyOrders
+export default Orders

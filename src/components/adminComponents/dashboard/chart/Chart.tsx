@@ -7,14 +7,32 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import chartData from './data/data.json';
+import axiosClient from '../../../../api/axiosClient';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+interface IChartData {
+    "_id": string,
+    "totalSales": number,
+}
+
 const Chart = () => {
-    const labels = chartData.map((item) => item.label)
-    const values = chartData.map((item) => item.value)
+    const [chartData, setChartData] = useState<IChartData[]>([])
+
+    useEffect(() => {
+        fetchChartData()
+    },[])
+
+    async function fetchChartData() {
+        await axiosClient.get("/orders/total-sales-by-date").then((res) => {
+            setChartData(res.data)
+        })
+    }
+    chartData.sort((a, b) => a._id.localeCompare(b._id))
+    const labels = chartData.map((item) => item._id)
+    const values = chartData.map((item) => item.totalSales)
 
   return (
     <div className='w-full h-[550px]'>
@@ -54,7 +72,7 @@ const Chart = () => {
                 scales: {
                     x: {
                         reverse: true, // to make the chart rtl
-                        offset: false, // to make x-axis end right at last thick
+                        // offset: false, // to make x-axis end right at last thick
                         grid: {
                             display: false, // to hide vertical grid lines
                             // drawTicks: true,   => does not work
@@ -65,6 +83,8 @@ const Chart = () => {
                             font : {
                                 size: 11,
                             },
+                            align: "center",
+                            crossAlign: "center",
                         },
                         title : {
                             display: true,
@@ -78,8 +98,7 @@ const Chart = () => {
                         }
                     },
                     y: {
-                        min: 0,
-                        max: 5,
+                        beginAtZero: true,
                         position: "right", // to positon the y-axis an y-ticks at the right side of chart
                         grid: {
                             display: true,
@@ -88,7 +107,7 @@ const Chart = () => {
                             
                         },
                         ticks: {
-                            stepSize: 1,
+                            stepSize: 10000000,
                             color: "#58616C",
                             font : {
                                 size: 11,
@@ -111,7 +130,7 @@ const Chart = () => {
                 },
                 layout: {
                     padding: {
-                        left: 10, // it makes the last thick to be visible completely
+                        // left: 10, // it makes the last thick to be visible completely
                     },
                 }
             }}

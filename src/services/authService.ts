@@ -1,6 +1,6 @@
 import axiosClient from "../api/axiosClient";
 import { ILoginType, IRegisterType } from '../types/authTypes'
-
+import { setIsAdmin } from "../stores/adminStore";
 
 const authService = {
     login: async ({ email, password }: ILoginType) => {
@@ -8,6 +8,7 @@ const authService = {
             email,
             password,
         });
+        setIsAdmin(response.data.isAdmin)
         return response.data;
     },
 

@@ -34,6 +34,7 @@ const LoginForm = () => {
   useEffect(() => {
     setFocus("email");
   }, [setFocus]);
+
   return (
     <>
       <Toaster />

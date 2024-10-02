@@ -1,4 +1,3 @@
-
 export interface ILoginType {
     email: string,
     password: string
@@ -10,4 +9,11 @@ export interface IRegisterType {
     email: string,
     password: string,
     confirm_Password: string
+}
+
+
+export interface IUpdateUser {
+    username: string,
+    email: string,
+    password: string
 }

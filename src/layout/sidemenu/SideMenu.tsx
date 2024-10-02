@@ -29,7 +29,7 @@ const SideMenu = () => {
   const {isAdmin} = adminStore();
   const [countOfProduct] = useState<number>(2);
   const sideMenuitems: SlideListProps[] = [
-    { icon: <AiOutlineHome size={20} />, name: "داشبورد" ,linkTo:"/dashboard"},
+    { icon: <AiOutlineHome size={20} />, name: "خانه" ,linkTo:"/dashboard"},
     { icon: <AiOutlineShopping size={20} />, name: "فروشگاه" ,linkTo:"/shop"},
     { icon: <AiOutlineShoppingCart size={20} />, name: "سبد خرید",linkTo:"/cart" },
     { icon: <MdFavorite size={20} />, name: "علاقه مندی ها",linkTo:"/favorites" },

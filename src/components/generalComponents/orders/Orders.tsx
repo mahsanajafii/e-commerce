@@ -20,16 +20,18 @@ const Orders : React.FC = () => {
   async function fetchOrders() {
     const response = await orderService.getAllOrdersMine()
 
-    const newOrder : IOrders[] = await response.map((order : IOrderResponse) => ({
-      "عکس": "string",
-      "نام محصول": order.orderItems[0].name,
-      "تاریخ" : order.createdAt,
-      "قیمت نهایی": order.totalPrice,
-      "پرداخت" : order.isPaid ? "پرداخت شده" : "پرداخت نشده",
-      "ارسال" : order.isDelivered ? "ارسال شده" : "ارسال نشده",
-      "عملیات" : "جزئیات",
-    }))
-
+    const newOrder: IOrders[] = response.map((order: IOrderResponse) => 
+      order.orderItems.map((item) => ({
+        "عکس": "item.image", /// it's just a placeholder should be fix after the API changes. remember to fix the types too (IOrderItemsResponse).
+        "نام محصول": item.name,
+        "تاریخ": new Date(order.createdAt).toLocaleDateString(),
+        "قیمت نهایی": order.totalPrice,
+        "پرداخت": order.isPaid ? "پرداخت شده" : "پرداخت نشده",
+        "ارسال": order.isDelivered ? "ارسال شده" : "ارسال نشده",
+        "عملیات": "جزئیات",
+      }))
+    ).flat(); 
+    
     setOrders(newOrder)
   }
 

@@ -3,7 +3,7 @@ import { IOrderItems, IPaymentMethod, IShippingAddress } from '../types/orderTyp
 
 const orderService = {
 
-    login: async (orderItems: IOrderItems, paymentMethod: IPaymentMethod, shippingAddress: IShippingAddress) => {
+    createOrder: async (orderItems: IOrderItems[], paymentMethod: IPaymentMethod, shippingAddress: IShippingAddress) => {
         const response = await axiosClient.post("/orders", {
             orderItems, paymentMethod, shippingAddress
         });

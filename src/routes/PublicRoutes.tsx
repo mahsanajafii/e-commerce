@@ -35,8 +35,24 @@ const routes = createBrowserRouter([
         path: "/favorites",
         element: <FavoritesPage />,
       },
+
       {
         path: "/product",
+        element: <ProductPage />,
+      },
+
+      {
+        path: "/comments",
+        element: <ProductPage />,
+      },
+
+      {
+        path: "/createComment",
+        element: <ProductPage />,
+      },
+
+      {
+        path: "/related-products",
         element: <ProductPage />,
       },
     ],

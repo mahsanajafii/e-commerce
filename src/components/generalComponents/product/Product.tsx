@@ -6,12 +6,16 @@ import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import LikeIcon from "./likeIcon/LikeIcon";
 import Button from "../../common/button/Button";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import axiosClient from "../../../api/axiosClient";
 import categoryService from "../../../services/categoryService";
 
-const Product: React.FC = () => {
+interface IProductProps {
+  children: ReactNode;
+}
+
+const Product: React.FC<IProductProps> = ({ children }) => {
   const [brand, setBrand] = useState("");
   const fetchProduct = async (id: string) => {
     const res = await axiosClient.get(`/products/${id}`);
@@ -140,11 +144,11 @@ const Product: React.FC = () => {
       </div>
       <div className="bg-black w-[90%] h-[80%] flex justify-between items-center mx-auto p-5 gap-4">
         <div className="bg-white text-[1.6rem] text-text-primary flex flex-col gap-4 w-[10%]">
-          <Link to="/r1">نظرات</Link>
-          <Link to="/r2">ثبت نظر</Link>
-          <Link to="/r3">ممم</Link>
+          <Link to="/createComment">ثبت نظر</Link>
+          <Link to="/comments">مشاهده نظرات</Link>
+          <Link to="/related-products">محصولات مرتبط</Link>
         </div>
-        <div className="bg-white w-[90%] h-full ">a</div>
+        <div className="bg-white w-[90%] h-full ">{children}</div>
       </div>
     </div>
   );

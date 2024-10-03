@@ -1,8 +1,15 @@
 import { useState } from "react";
 import LogoAdminMenu from "./logoAdminMenu/LogoAdminMenu";
+import { NavLink } from "react-router-dom";
 
 const AdminMenu = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const AdminMenuList = [
+    { label: "داشبورد", linkTo: "/adminDashboard" },
+    { label: "محصول جدید", linkTo: "" },
+    { label: "مدیریت کاربران", linkTo: "/users" },
+    { label: "سفارشات", linkTo: "/orders" },
+  ];
   const handelClick = () => {
     setIsChecked(!isChecked);
   };
@@ -14,36 +21,20 @@ const AdminMenu = () => {
           isChecked ? "opacity-100 " : "opacity-0"
         } `}
       >
-        <ul className="flex  flex-col gap-6 transition-width duration-700 ease-in-out justify-around items-center h-full text-text-primary text-2xl leading-8 font-normal">
-          <li
-            className={`transition-width duration-700 ease-in-out h-[3.7rem] gap-4 rounded-lg p-3 cursor-pointer hover:bg-[#DB277714] ${
-              isChecked ? " w-full" : " w-0"
-            }`}
-          >
-            داشبورد
-          </li>
-          <li
-            className={`transition-width duration-700 ease-in-out h-[3.7rem] gap-4 rounded-lg p-3 cursor-pointer hover:bg-[#DB277714] ${
-              isChecked ? " w-full" : " w-0"
-            }`}
-          >
-            محصول جدید
-          </li>
-          <li
-            className={`transition-width duration-700 ease-in-out h-[3.7rem] gap-4 rounded-lg p-3 cursor-pointer hover:bg-[#DB277714] ${
-              isChecked ? " w-full" : " w-0"
-            }`}
-          >
-            مدیریت کاربران
-          </li>
-          <li
-            className={`transition-width duration-700 ease-in-out h-[3.7rem] gap-4 rounded-lg p-3 cursor-pointer hover:bg-[#DB277714] ${
-              isChecked ? " w-full" : " w-0"
-            }`}
-          >
-            سفارشات
-          </li>
-        </ul>
+        <div className="flex  flex-col gap-6 transition-width duration-700 ease-in-out justify-around items-center h-full text-text-primary text-2xl leading-8 font-normal">
+          {AdminMenuList.map((item, index) => (
+            <NavLink
+              key={index}
+              to={item.linkTo}
+              onClick={() => handelClick()}
+              className={`transition-width duration-700 ease-in-out h-[3.7rem] gap-4 rounded-lg p-3 cursor-pointer hover:bg-[#DB277714] ${
+                isChecked ? " w-full" : " w-0"
+              }`}
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </div>
       </div>
     </div>
   );

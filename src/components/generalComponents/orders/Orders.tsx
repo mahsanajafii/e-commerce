@@ -36,9 +36,9 @@ const Orders : React.FC = () => {
             order.orderItems.map((item) => ({
               "عکس": "item.image", /// it's just a placeholder should be fix after the API changes. remember to fix the types too (IOrderItemsResponse).
               "نام محصول": item.name,
-              "تاریخ": new Date(order.createdAt).toLocaleDateString(),
+              "تاریخ": new Date(order.createdAt).toLocaleDateString('fa-IR'),
               "کاربر": order.user.username,
-              "قیمت نهایی": order.totalPrice,
+              "قیمت نهایی": order.totalPrice.toLocaleString('fa-IR'),
               "پرداخت": order.isPaid ? "پرداخت شده" : "پرداخت نشده",
               "ارسال": order.isDelivered ? "ارسال شده" : "ارسال نشده",
               "عملیات": "جزئیات",
@@ -50,8 +50,8 @@ const Orders : React.FC = () => {
             order.orderItems.map((item) => ({
               "عکس": "item.image", /// it's just a placeholder should be fix after the API changes. remember to fix the types too (IOrderItemsResponse).
               "نام محصول": item.name,
-              "تاریخ": new Date(order.createdAt).toLocaleDateString(),
-              "قیمت نهایی": order.totalPrice,
+              "تاریخ": new Date(order.createdAt).toLocaleDateString('fa-IR'),
+              "قیمت نهایی": order.totalPrice.toLocaleString('fa-IR'),
               "پرداخت": order.isPaid ? "پرداخت شده" : "پرداخت نشده",
               "ارسال": order.isDelivered ? "ارسال شده" : "ارسال نشده",
               "عملیات": "جزئیات",

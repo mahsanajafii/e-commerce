@@ -9,9 +9,7 @@ export const useRegister = () => {
     return useMutation(authService.register, {
         onSuccess: () => {
             setIsAuth(true)
-            setTimeout(() => {
-                navigate('/')
-            }, 2 * 1000)
+            navigate('/login')
         },
         onError: (error) => {
             setIsAuth(false)

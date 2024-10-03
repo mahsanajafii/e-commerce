@@ -9,7 +9,7 @@ import {
 } from 'chart.js';
 import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import axiosClient from '../../../../api/axiosClient';
+import orderService from '../../../../services/orderService';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -19,20 +19,23 @@ interface IChartData {
 }
 
 const Chart = () => {
-    const [chartData, setChartData] = useState<IChartData[]>([])
+    const [labels, setLabels] = useState<string[]>([]);
+    const [values, setValues] = useState<number[]>([]);
 
     useEffect(() => {
-        fetchChartData()
-    },[])
+        fetchChartData();
+    }, []);
 
     async function fetchChartData() {
-        await axiosClient.get("/orders/total-sales-by-date").then((res) => {
-            setChartData(res.data)
-        })
+        const response = await orderService.getTotalSalesByDate();
+        response.sort((a: IChartData, b: IChartData) => a._id.localeCompare(b._id));
+
+        const newLabels = response.map((item: IChartData) => new Date(item._id).toLocaleDateString('fa-IR'));
+        const newValues = response.map((item: IChartData) => item.totalSales);
+        
+        setLabels(newLabels);
+        setValues(newValues);
     }
-    chartData.sort((a, b) => a._id.localeCompare(b._id))
-    const labels = chartData.map((item) => new Date(item._id).toLocaleDateString('fa-IR'))
-    const values = chartData.map((item) => item.totalSales)
 
   return (
     <div className='w-full h-[550px]'>

@@ -6,11 +6,13 @@ import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import LikeIcon from "./likeIcon/LikeIcon";
 import Button from "../../common/button/Button";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import axiosClient from "../../../api/axiosClient";
+import categoryService from "../../../services/categoryService";
 
 const Product: React.FC = () => {
+  const [brand, setBrand] = useState("");
   const fetchProduct = async (id: string) => {
     const res = await axiosClient.get(`/products/${id}`);
     return res.data;
@@ -18,12 +20,7 @@ const Product: React.FC = () => {
   const [isLiked, setIsLiked] = useState(true);
   const location = useLocation();
   const id = location.state?.id;
-  const {
-    isLoading,
-    isError,
-    error,
-    data: selectProduct,
-  } = useQuery({
+  const { isLoading, data: selectProduct } = useQuery({
     queryKey: ["selectProduct"],
     queryFn: () => fetchProduct(id),
   });
@@ -31,6 +28,20 @@ const Product: React.FC = () => {
   const handleLikeIcon = () => {
     setIsLiked(!isLiked);
   };
+
+  const fetchCategory = async () => {
+    if (selectProduct?.category) {
+      const res = await categoryService.getCategory(selectProduct.category);
+      setBrand(res.name);
+    }
+  };
+
+  useEffect(() => {
+    if (selectProduct) {
+      fetchCategory();
+    }
+  }, [selectProduct]);
+
   if (isLoading) {
     return (
       <div className="text-green-600 w-full h-full flex justify-center items-center text-5xl">
@@ -39,13 +50,6 @@ const Product: React.FC = () => {
     );
   }
 
-  if (isError) {
-    return (
-      <div className="text-red-600 w-full h-full flex justify-center items-center text-5xl">
-        <h1>Error: {error.message}</h1>
-      </div>
-    );
-  }
   return (
     <div className=" flex flex-col w-[90%] h-full gap-5 justify-start items-center ">
       <LikeIcon handleLikeIcon={handleLikeIcon} isLiked={isLiked} />
@@ -95,7 +99,7 @@ const Product: React.FC = () => {
                 <p>
                   <span className="text-text-secondary">برند</span> :
                 </p>
-                <span>{selectProduct.category?.name}</span>
+                <span>{brand}</span>
               </p>
               <p className="flex justify-center items-center gap-1">
                 <MdOutlineAccessTimeFilled className="inline" />

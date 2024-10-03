@@ -15,5 +15,5 @@ export interface IRegisterType {
 export interface IUpdateUser {
     username: string,
     email: string,
-    password: string
+    password?: string
 }

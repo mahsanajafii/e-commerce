@@ -13,6 +13,8 @@ const ProductPage = () => {
         <CommentForm />
       ) : location.pathname === "/related-products" ? (
         <RelatedProducts />
+      ) : location.pathname === "/product" ? (
+        <CommentForm />
       ) : (
         <CommentForm />
       )}

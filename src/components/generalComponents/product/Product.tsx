@@ -142,13 +142,13 @@ const Product: React.FC<IProductProps> = ({ children }) => {
           </Button>
         </div>
       </div>
-      <div className="bg-black w-[90%] h-[80%] flex justify-between items-center mx-auto p-5 gap-4">
-        <div className="bg-white text-[1.6rem] text-text-primary flex flex-col gap-4 w-[10%]">
+      <div className=" w-[90%] h-[80%] flex justify-center items-start mx-auto p-5 gap-20">
+        <div className=" h-full text-[1.6rem] text-text-primary flex flex-col gap-4 w-[10%]">
           <Link to="/createComment">ثبت نظر</Link>
           <Link to="/comments">مشاهده نظرات</Link>
           <Link to="/related-products">محصولات مرتبط</Link>
         </div>
-        <div className="bg-white w-[90%] h-full ">{children}</div>
+        <div className="w-[90%] h-full ">{children}</div>
       </div>
     </div>
   );

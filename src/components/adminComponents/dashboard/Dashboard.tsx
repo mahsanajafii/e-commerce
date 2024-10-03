@@ -1,22 +1,36 @@
+import { useEffect, useState } from "react";
 import Chart from "./chart/Chart";
-
-const items = [
-    {
-        title: "فروش کل",
-        value: "0 تومان",
-    },
-    {
-        title: "مشتری ها",
-        value: "10",
-    },
-    {
-        title: "سفارشات",
-        value: "100",
-    },
-]
+import orderService from "../../../services/orderService";
 
 const Dashboard = () => {
-  return (
+    const [totalSales, setTotalSales] = useState<number>(0)
+
+    useEffect(() => {
+        fetchTotalSales()
+    }, [])
+
+    async function fetchTotalSales() {
+        const response = await orderService.getTotalSales()
+        const updatedTotalSales = response.totalSales
+        setTotalSales(updatedTotalSales)
+    }
+
+    const items = [
+        {
+            title: "فروش کل",
+            value: `${totalSales} تومان`,
+        },
+        {
+            title: "مشتری ها",
+            value: "10",
+        },
+        {
+            title: "سفارشات",
+            value: "100",
+        },
+    ]
+
+    return (
     <div className="relative w-full pt-[11rem] px-[12.4rem]">
         <div className="flex flex-col items-center gap-[4.3rem] w-full">
             <div className="flex gap-20 w-[80%]">

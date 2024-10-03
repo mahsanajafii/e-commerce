@@ -1,32 +1,48 @@
 import { useEffect, useState } from "react";
 import Chart from "./chart/Chart";
 import orderService from "../../../services/orderService";
+import { IAdminOrderResponse } from "../../../types/orderTypes";
 
 const Dashboard = () => {
     const [totalSales, setTotalSales] = useState<number>(0)
+    const [orderCount, setOrderCount] = useState<number>(0)
+    const [customerCount, setCustomerCount] = useState<number>(0)
 
     useEffect(() => {
-        fetchTotalSales()
+        fetchData()
     }, [])
 
-    async function fetchTotalSales() {
-        const response = await orderService.getTotalSales()
-        const updatedTotalSales = response.totalSales
-        setTotalSales(updatedTotalSales)
+    async function fetchData() {
+        const [salesResponse, ordersResponse] = await Promise.all([
+            orderService.getTotalSales(),
+            orderService.getAllOrdersAdmin(),
+        ]);
+
+        setTotalSales(salesResponse.totalSales);
+        setOrderCount(ordersResponse.length);
+
+        const uniqueCustomer : string[] = [];
+        ordersResponse.forEach((order : IAdminOrderResponse) => {
+            if (!uniqueCustomer.includes(order.user._id)) {
+                uniqueCustomer.push(order.user._id);
+            }
+        });
+        const uniqueCustomerCount = uniqueCustomer.length;
+        setCustomerCount(uniqueCustomerCount);
     }
 
     const items = [
         {
             title: "فروش کل",
-            value: `${totalSales} تومان`,
+            value: `${totalSales.toLocaleString('fa-IR')} تومان`,
         },
         {
             title: "مشتری ها",
-            value: "10",
+            value: `${customerCount.toLocaleString('fa-IR')}`,
         },
         {
             title: "سفارشات",
-            value: "100",
+            value: `${orderCount.toLocaleString('fa-IR')}`,
         },
     ]
 

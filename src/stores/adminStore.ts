@@ -18,3 +18,7 @@ export const adminStore = create<IIsAdmin>((set) => ({
 export const setIsAdmin = (value: boolean) => {
     adminStore.getState().setIsAdmin(value);
 };
+
+export const isAdmin = () => { 
+    return adminStore.getState().isAdmin 
+}

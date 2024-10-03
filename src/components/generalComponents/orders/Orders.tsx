@@ -2,16 +2,25 @@ import { useEffect, useState } from "react";
 import Table from "../../common/table/Table";
 import orderService from "../../../services/orderService";
 import { IOrderResponse } from "../../../types/orderTypes";
+import { isAdmin } from "../../../stores/adminStore";
 
 interface IOrders {
   [index: string]: string | number | boolean | JSX.Element;
 }
 
-const THs = ["عکس" , "نام محصول", "تاریخ", "قیمت نهایی", "پرداخت", "ارسال", "عملیات"];
-
+const headers = [
+  "عکس", 
+  "نام محصول", 
+  "تاریخ", 
+  ...(isAdmin() ? ["کاربر"] : []), 
+  "قیمت نهایی", 
+  "پرداخت", 
+  "ارسال", 
+  "عملیات"
+];
 
 const Orders : React.FC = () => {
-  const [orders, setOrders] = useState<IOrders[]>([])
+  const [orders, setOrders] = useState<IOrders[]>([]);
 
   useEffect(() => {
     fetchOrders()
@@ -25,6 +34,7 @@ const Orders : React.FC = () => {
         "عکس": "item.image", /// it's just a placeholder should be fix after the API changes. remember to fix the types too (IOrderItemsResponse).
         "نام محصول": item.name,
         "تاریخ": new Date(order.createdAt).toLocaleDateString(),
+        "کاربر": isAdmin() && order.user,
         "قیمت نهایی": order.totalPrice,
         "پرداخت": order.isPaid ? "پرداخت شده" : "پرداخت نشده",
         "ارسال": order.isDelivered ? "ارسال شده" : "ارسال نشده",
@@ -37,7 +47,7 @@ const Orders : React.FC = () => {
 
   return (
     <div className="min-h-screen pt-24 px-8">
-      <Table optionalWidth="w-full" items={orders} headers={THs} />
+      <Table optionalWidth="w-full" items={orders} headers={headers} />
     </div>
   )
 }

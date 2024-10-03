@@ -177,7 +177,6 @@ const Profile: React.FC = () => {
               className="w-[10rem] h-full rounded-lg p-2 text-center bg-primary-main text-text-button text-[1.4rem]"
             />
             <Button
-              type="submit"
               children="بروزرسانی"
               className="w-[8.1rem] h-full rounded-lg p-2 text-center bg-primary-main text-text-button text-[1.4rem]"
             />

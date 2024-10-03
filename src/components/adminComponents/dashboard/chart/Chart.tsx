@@ -31,7 +31,7 @@ const Chart = () => {
         })
     }
     chartData.sort((a, b) => a._id.localeCompare(b._id))
-    const labels = chartData.map((item) => item._id)
+    const labels = chartData.map((item) => new Date(item._id).toLocaleDateString('fa-IR'))
     const values = chartData.map((item) => item.totalSales)
 
   return (

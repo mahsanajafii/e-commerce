@@ -81,10 +81,11 @@ const Chart = () => {
                             stepSize: 1,
                             color: "#58616C",
                             font : {
-                                size: 11,
+                                size: 16,
                             },
                             align: "center",
                             crossAlign: "center",
+                            padding: 10,
                         },
                         title : {
                             display: true,
@@ -110,8 +111,11 @@ const Chart = () => {
                             stepSize: 10000000,
                             color: "#58616C",
                             font : {
-                                size: 11,
+                                size: 16,
                             },
+                            callback: function(value) {
+                                return value.toLocaleString('fa-IR'); // Format the tick labels
+                            }
                         },
                         border: {
                             display: false, // to  hide y-axis line

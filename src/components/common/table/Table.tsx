@@ -55,7 +55,7 @@ const Table = ({
                     className="w-16 h-16"
                   ></img>
                 ) : head === "عملیات" ? (
-                  <Link to={"/details"}>
+                  <Link to={"/detail"}>
                     <Button className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal">
                       {item[head]}
                     </Button>

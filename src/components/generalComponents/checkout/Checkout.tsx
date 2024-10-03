@@ -1,6 +1,5 @@
 import Table from "../../common/table/Table";
 import Status from "../../common/status/Status";
-
 const headers = ["عکس", "نام محصول", "تعداد", "قیمت", "قیمت نهایی"];
 
 const Checkout = () => {

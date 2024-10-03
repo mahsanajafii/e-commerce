@@ -1,20 +1,72 @@
+import { useEffect, useState } from "react";
 import Table from "../../common/table/Table";
+import orderService from "../../../services/orderService";
+import { IUserOrderResponse } from "../../../types/orderTypes";
+import { IAdminOrderResponse } from "../../../types/orderTypes";
+import { isAdmin } from "../../../stores/adminStore";
 
-interface IMyOrder {
-  [index: string]: string | number,
+interface IOrders {
+  [index: string]: string | number | boolean | JSX.Element;
 }
 
-interface IMyOrdersProps {
-    items : IMyOrder[];
-}
+const headers = [
+  "عکس", 
+  "نام محصول", 
+  "تاریخ", 
+  ...(isAdmin() ? ["کاربر"] : []), 
+  "قیمت نهایی", 
+  "پرداخت", 
+  "ارسال", 
+  "عملیات"
+];
 
-const THs = ["عکس" , "نام محصول", "تاریخ", "قیمت نهایی", "پرداخت", "ارسال", "عملیات"];
+const Orders : React.FC = () => {
+  const [orders, setOrders] = useState<IOrders[]>([]);
 
+  useEffect(() => {
+    fetchOrders()
+  },[])
 
-const MyOrders : React.FC<IMyOrdersProps> = ({items}) => {
+  async function fetchOrders () {
+    let newOrder: IOrders[];
+
+    if (isAdmin()) {
+      const response = await orderService.getAllOrdersAdmin();
+          newOrder = response.map((order: IAdminOrderResponse) => 
+            order.orderItems.map((item) => ({
+              "عکس": "item.image", /// it's just a placeholder should be fix after the API changes. remember to fix the types too (IOrderItemsResponse).
+              "نام محصول": item.name,
+              "تاریخ": new Date(order.createdAt).toLocaleDateString(),
+              "کاربر": order.user.username,
+              "قیمت نهایی": order.totalPrice,
+              "پرداخت": order.isPaid ? "پرداخت شده" : "پرداخت نشده",
+              "ارسال": order.isDelivered ? "ارسال شده" : "ارسال نشده",
+              "عملیات": "جزئیات",
+            }))
+          ).flat(); 
+    } else {
+      const response = await orderService.getAllOrdersMine();
+          newOrder= response.map((order: IUserOrderResponse) => 
+            order.orderItems.map((item) => ({
+              "عکس": "item.image", /// it's just a placeholder should be fix after the API changes. remember to fix the types too (IOrderItemsResponse).
+              "نام محصول": item.name,
+              "تاریخ": new Date(order.createdAt).toLocaleDateString(),
+              "قیمت نهایی": order.totalPrice,
+              "پرداخت": order.isPaid ? "پرداخت شده" : "پرداخت نشده",
+              "ارسال": order.isDelivered ? "ارسال شده" : "ارسال نشده",
+              "عملیات": "جزئیات",
+            }))
+          ).flat();
+    }        
+
+        setOrders(newOrder)
+  }
+
   return (
-    <Table optionalWidth="w-full" items={items} headers={THs} />
+    <div className="min-h-screen pt-24 px-8">
+      <Table optionalWidth="w-full" items={orders} headers={headers} />
+    </div>
   )
 }
 
-export default MyOrders
+export default Orders

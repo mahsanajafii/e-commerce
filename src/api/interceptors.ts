@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
-
+import { setIsAdmin } from '../stores/adminStore'
 const applyInterceptors = (axiosClient: AxiosInstance) => {
     axiosClient.interceptors.request.use(
         (config: InternalAxiosRequestConfig) => {
@@ -21,7 +21,7 @@ const applyInterceptors = (axiosClient: AxiosInstance) => {
                 console.log('مجاز نیستید');
             } else if (status === 403) {
                 axiosClient.post('/users/logout')
-                console.log('loggedOut')
+                setIsAdmin(false)
             }
 
             return Promise.reject(error);

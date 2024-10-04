@@ -11,6 +11,7 @@ import { useQuery } from "react-query";
 import axiosClient from "../../../api/axiosClient";
 import categoryService from "../../../services/categoryService";
 import { useParams } from "react-router-dom";
+import Score from "./score/Score";
 interface IProductProps {
   children: ReactNode;
 }
@@ -130,11 +131,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
               <p className="font-normal text-[1.6rem] text-text-primary">
                 5000 نظر
               </p>
-              <FaStar></FaStar>
-              <FaStar></FaStar>
-              <FaStar></FaStar>
-              <FaStar></FaStar>
-              <FaStar></FaStar>
+              <Score count={selectProduct.rating} />
             </div>
             <select className="w-[9.6rem] h-[4rem] rounded-[0.8rem] p-[0.8rem] text-[1.6rem]">
               <option value="1">1</option>

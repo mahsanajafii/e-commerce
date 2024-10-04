@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import productService from "../../../../services/productService";
 import { useEffect, useState } from "react";
-
+import Score from "../score/Score";
 interface Review {
   comment: string;
   createdAt: string;
@@ -30,17 +30,17 @@ const Comment = () => {
     <>
       {reviews.map((review) => (
         <div
-          className="bg-base-side w-full rounded-[0.8rem] p-6 flex flex-col gap-5"
+          className="bg-base-side w-full rounded-[0.8rem] p-6 flex flex-col gap-5 justify-center items-start"
           key={review._id}
         >
-          <div className="flex justify-between items-center text-text-secondary text-[1.4rem] font-normal">
+          <div className="flex justify-between items-center text-text-secondary text-[1.4rem] font-normal w-full">
             <p>{review.name}</p>
             <p>{review.createdAt}</p>
           </div>
           <div className="text-text-primary font-normal text-[1.4rem]">
             {review.comment}
           </div>
-          <div>{review.rating}</div>
+          <Score count={review.rating} />
         </div>
       ))}
     </>

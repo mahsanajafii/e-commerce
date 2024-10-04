@@ -43,6 +43,7 @@ const Orders : React.FC = () => {
               "پرداخت": order.isPaid ? "پرداخت شده" : "پرداخت نشده",
               "ارسال": order.isDelivered ? "ارسال شده" : "ارسال نشده",
               "عملیات": "جزئیات",
+              "orderId": order._id,
             }))
           ).flat(); 
     } else {
@@ -56,6 +57,7 @@ const Orders : React.FC = () => {
               "پرداخت": order.isPaid ? "پرداخت شده" : "پرداخت نشده",
               "ارسال": order.isDelivered ? "ارسال شده" : "ارسال نشده",
               "عملیات": "جزئیات",
+              "orderId": order._id,
             }))
           ).flat();
     }        

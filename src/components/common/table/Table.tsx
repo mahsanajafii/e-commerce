@@ -52,10 +52,10 @@ const Table = ({
                   <img
                     src={String(item[head])}
                     alt="picture"
-                    className="w-16 h-16"
+                    className="w-full h-16 object-contain"
                   ></img>
                 ) : head === "عملیات" ? (
-                  <Link to={"/detail"}>
+                  <Link to={`/detail/${item?.orderId}`}>
                     <Button className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal">
                       {item[head]}
                     </Button>

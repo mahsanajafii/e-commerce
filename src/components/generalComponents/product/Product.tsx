@@ -143,7 +143,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
           </Button>
         </div>
       </div>
-      <div className=" bg-purple-400 w-[90%] h-[80%] flex justify-center items-start mx-auto p-5 gap-20">
+      <div className="w-[90%] h-[80%] flex justify-center items-start mx-auto p-5 gap-20">
         <div className=" h-full text-[1.6rem] text-text-primary flex flex-col gap-4 w-[10%]">
           <Link to={`/product/${selectProduct._id}/reviews`}>ثبت نظر</Link>
           <Link to={`/product/${selectProduct._id}/comments`}>

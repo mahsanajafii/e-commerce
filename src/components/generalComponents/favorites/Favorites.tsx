@@ -4,12 +4,36 @@ interface IFavoriteProduct {
     productTitle : string;
     badgeTitle : string;
 }
-  
-interface IFavoritesProps {
-    favoriteProducts: IFavoriteProduct[];
-}
 
-const Favorites : React.FC<IFavoritesProps> = ({favoriteProducts}) => {
+
+const favoriteProducts: IFavoriteProduct[]  = [
+    {
+      productTitle : "لباسشویی",
+      badgeTitle : "1000000000",
+    },
+    {
+      productTitle : "لباسشویی",
+      badgeTitle : "1000000000",
+    },
+    {
+      productTitle : "لباسشویی",
+      badgeTitle : "1000000000",
+    },
+    {
+      productTitle : "لباسشویی",
+      badgeTitle : "1000000000",
+    },
+    {
+      productTitle : "لباسشویی",
+      badgeTitle : "1000000000",
+    },
+    {
+      productTitle : "لباسشویی",
+      badgeTitle : "1000000000",
+    },
+  ]
+
+const Favorites : React.FC = () => {
   return (
     <section className="w-full h-screen grid grid-cols-4 gap-[3.2rem] py-[3.2rem] px-[2.1rem] overflow-y-auto">
         {favoriteProducts.map((favouriteProduct, index) => {

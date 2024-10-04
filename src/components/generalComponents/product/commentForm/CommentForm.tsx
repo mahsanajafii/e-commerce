@@ -1,3 +1,6 @@
+import Button from "../../../common/button/Button";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 const CommentForm = () => {
   return (
     <form className="flex flex-col gap-5">
@@ -35,6 +38,9 @@ const CommentForm = () => {
           placeholder="نظر خود را وارد نمایید"
         ></textarea>
       </div>
+      <Button className="bg-primary-main text-text-button flex justify-center items-center px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] font-normal w-[7.3rem] h-[4rem]">
+        ثبت نظر
+      </Button>
     </form>
   );
 };

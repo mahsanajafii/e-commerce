@@ -5,28 +5,29 @@ import { TbBrandAppgallery } from "react-icons/tb";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import LikeIcon from "./likeIcon/LikeIcon";
 import Button from "../../common/button/Button";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ReactNode, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import axiosClient from "../../../api/axiosClient";
 import categoryService from "../../../services/categoryService";
-
+import { useParams } from "react-router-dom";
 interface IProductProps {
   children: ReactNode;
 }
 
 const Product: React.FC<IProductProps> = ({ children }) => {
+  const { id } = useParams();
   const [brand, setBrand] = useState("");
-  const fetchProduct = async (id: string) => {
+  const fetchProduct = async () => {
     const res = await axiosClient.get(`/products/${id}`);
     return res.data;
   };
   const [isLiked, setIsLiked] = useState(true);
-  const location = useLocation();
-  const id = location.state?.id;
+  // const location = useLocation();
+  // const id = location.state?.id;
   const { isLoading, data: selectProduct } = useQuery({
     queryKey: ["selectProduct"],
-    queryFn: () => fetchProduct(id),
+    queryFn: () => fetchProduct(),
   });
 
   const handleLikeIcon = () => {
@@ -144,7 +145,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
       </div>
       <div className=" bg-purple-400 w-[90%] h-[80%] flex justify-center items-start mx-auto p-5 gap-20">
         <div className=" h-full text-[1.6rem] text-text-primary flex flex-col gap-4 w-[10%]">
-          <Link to="/createComment">ثبت نظر</Link>
+          <Link to={`/product/${selectProduct._id}/reviews`}>ثبت نظر</Link>
           <Link to="/comments">مشاهده نظرات</Link>
           <Link to="/related-products">محصولات مرتبط</Link>
         </div>

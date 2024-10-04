@@ -37,17 +37,15 @@ const routes = createBrowserRouter([
       },
 
       {
-        path: "/product",
+        path: "/product/:id",
         element: <ProductPage />,
       },
-
+      {
+        path: "/product/:productId/reviews",
+        element: <ProductPage />,
+      },
       {
         path: "/comments",
-        element: <ProductPage />,
-      },
-
-      {
-        path: "/createComment",
         element: <ProductPage />,
       },
 

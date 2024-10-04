@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Badge from "../badge/Badge";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
+import { useFavoritesStore } from "../../../stores/favoritesStore";
 
 interface IProductCardProps {
+  id: string;
   src?: string;
   alt?: string;
   loading?: 'lazy' | 'eager';
@@ -14,6 +16,7 @@ interface IProductCardProps {
 }
 
 const ProductCard: React.FC<IProductCardProps> = ({
+  id,
   src,
   alt,
   loading,
@@ -23,11 +26,19 @@ const ProductCard: React.FC<IProductCardProps> = ({
   padding,
   fontSize,
 }) => {
-  
+  const { addToFavorites, removeFromFavorites } = useFavoritesStore()
   const [favorite, setFavorite] = useState(false);
+
   const handleFavoriteClick = () =>{
     setFavorite(!favorite);
+    
+    if (favorite) {
+      addToFavorites(id)
+    } else {
+      removeFromFavorites(id)
+    }
   };
+
 
   return (
     <div className="relative flex flex-col max-w-[40.4rem] max-h-[38.6rem] gap-4 justify-between items-center">

@@ -1,7 +1,11 @@
 import Button from "../../../common/button/Button";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 const CommentForm = () => {
+  const { id } = useParams();
+  useEffect(() => {
+    console.log("from review : " + id);
+  }, []);
   return (
     <form className="flex flex-col gap-5">
       <div className="flex flex-col justify-center items-start gap-5">

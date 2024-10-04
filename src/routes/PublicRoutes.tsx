@@ -41,16 +41,16 @@ const routes = createBrowserRouter([
         element: <ProductPage />,
       },
       {
-        path: "/product/:productId/reviews",
+        path: "/product/:id/reviews",
         element: <ProductPage />,
       },
       {
-        path: "/comments",
+        path: "/product/:id/related-products",
         element: <ProductPage />,
       },
 
       {
-        path: "/related-products",
+        path: "/product/:id/comments",
         element: <ProductPage />,
       },
     ],

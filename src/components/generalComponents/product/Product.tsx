@@ -17,14 +17,16 @@ interface IProductProps {
 
 const Product: React.FC<IProductProps> = ({ children }) => {
   const { id } = useParams();
+
   const [brand, setBrand] = useState("");
+
   const fetchProduct = async () => {
     const res = await axiosClient.get(`/products/${id}`);
     return res.data;
   };
+
   const [isLiked, setIsLiked] = useState(true);
-  // const location = useLocation();
-  // const id = location.state?.id;
+
   const { isLoading, data: selectProduct } = useQuery({
     queryKey: ["selectProduct"],
     queryFn: () => fetchProduct(),
@@ -58,6 +60,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
   return (
     <div className=" flex flex-col w-[90%] h-full gap-5 justify-start items-center ">
       <LikeIcon handleLikeIcon={handleLikeIcon} isLiked={isLiked} />
+
       <div className=" w-[90%] h-[80%] flex justify-between items-center mt-[9.5rem] mx-auto">
         <img
           src={selectProduct.image}
@@ -76,50 +79,50 @@ const Product: React.FC<IProductProps> = ({ children }) => {
           </p>
           <div className="flex justify-between items-center font-normal text-[1.6rem]">
             <div className="flex flex-col justify-center items-start gap-6">
-              <p className="flex justify-center items-center gap-1">
+              <div className="flex justify-center items-center gap-1">
                 <FaStar className="inline" />
                 <p>
                   <span className="text-text-secondary">امتیاز</span> :
                 </p>
                 <span>{selectProduct.rating}</span>
-              </p>
-              <p className="flex justify-center items-center gap-1">
+              </div>
+              <div className="flex justify-center items-center gap-1">
                 <FaCartShopping className="inline" />
                 <p>
                   <span className="text-text-secondary">تعداد</span> :
                 </p>
                 <span>{selectProduct.quantity}</span>
-              </p>
-              <p className="flex justify-center items-center gap-1">
+              </div>
+              <div className="flex justify-center items-center gap-1">
                 <MdInventory className="inline" />
                 <p>
                   <span className="text-text-secondary">موجودی</span> :
                 </p>
                 <span>{selectProduct.countInStock}</span>
-              </p>
+              </div>
             </div>
             <div className="flex flex-col justify-center items-start gap-6">
-              <p className="flex justify-center items-center gap-1">
+              <div className="flex justify-center items-center gap-1">
                 <TbBrandAppgallery className="inline" />
                 <p>
                   <span className="text-text-secondary">برند</span> :
                 </p>
                 <span>{brand}</span>
-              </p>
-              <p className="flex justify-center items-center gap-1">
+              </div>
+              <div className="flex justify-center items-center gap-1">
                 <MdOutlineAccessTimeFilled className="inline" />
                 <p>
                   <span className="text-text-secondary">زمان بروزرسانی</span> :{" "}
                 </p>
                 <span>{selectProduct.updatedAt}</span>
-              </p>
-              <p className="flex justify-center items-center gap-1">
+              </div>
+              <div className="flex justify-center items-center gap-1">
                 <FaStar className="inline" />
                 <p>
                   <span className="text-text-secondary">نظرات</span> :
                 </p>
                 <span>{selectProduct.numReviews}</span>
-              </p>
+              </div>
             </div>
           </div>
           <div className="flex justify-between w-full">
@@ -146,8 +149,12 @@ const Product: React.FC<IProductProps> = ({ children }) => {
       <div className=" bg-purple-400 w-[90%] h-[80%] flex justify-center items-start mx-auto p-5 gap-20">
         <div className=" h-full text-[1.6rem] text-text-primary flex flex-col gap-4 w-[10%]">
           <Link to={`/product/${selectProduct._id}/reviews`}>ثبت نظر</Link>
-          <Link to="/comments">مشاهده نظرات</Link>
-          <Link to="/related-products">محصولات مرتبط</Link>
+          <Link to={`/product/${selectProduct._id}/comments`}>
+            مشاهده نظرات
+          </Link>
+          <Link to={`/product/${selectProduct._id}/related-products`}>
+            محصولات مرتبط
+          </Link>
         </div>
         <div className="w-[90%] h-full ">{children}</div>
       </div>

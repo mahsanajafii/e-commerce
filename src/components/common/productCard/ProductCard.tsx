@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Badge from "../badge/Badge";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useFavoritesStore } from "../../../stores/favoritesStore";
+import { Link } from "react-router-dom";
 
 interface IProductCardProps {
   id: string;
@@ -41,7 +42,7 @@ const ProductCard: React.FC<IProductCardProps> = ({
 
 
   return (
-    <div className="relative flex flex-col max-w-[40.4rem] max-h-[38.6rem] gap-4 justify-between items-center">
+    <Link to={`/product/${id}`} className="relative flex flex-col max-w-[40.4rem] max-h-[38.6rem] gap-4 justify-between items-center">
       <img className="relative w-full object-contain max-h-[34.6rem] rounded-md" src={src} alt={alt}
       loading={loading}/>
       <div className="absolute top-6 right-6" onClick={handleFavoriteClick}>{favorite ? <IoMdHeart className="text-[#DB2777]"/> : <IoMdHeartEmpty /> }</div>
@@ -51,7 +52,7 @@ const ProductCard: React.FC<IProductCardProps> = ({
           {badgeTitle}
         </Badge>
       </div>
-    </div>
+    </Link>
   );
 };
 

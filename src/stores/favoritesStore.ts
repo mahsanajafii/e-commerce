@@ -2,18 +2,18 @@ import { create } from 'zustand';
 
 interface IFavoritestore {
     favoriteProductsId: string[],
-    addToFavorites: (product: string) => void,
-    removeFromFavorites: (product: string) => void,
+    addToFavorites: (id: string) => void,
+    removeFromFavorites: (id: string) => void,
 }
 
 export const useFavoritesStore = create<IFavoritestore>((set) => ({
-    favoriteProductsId: [],
-    addToFavorites: (product: string) => set((state) => ({
-        favoriteProductsId: [...state.favoriteProductsId, product] 
+    favoriteProductsId: ["divane shodm"],
+    addToFavorites: (id: string) => set((state) => ({
+        favoriteProductsId: [...state.favoriteProductsId, id] 
     })),
-    removeFromFavorites: (product: string) => set((state) => ({
+    removeFromFavorites: (id: string) => set((state) => ({
         favoriteProductsId: state.favoriteProductsId.filter(
-            (favorite) => (favorite !== product)
+            (favorite) => (favorite !== id)
         )
     }))
 }))

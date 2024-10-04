@@ -35,17 +35,17 @@ const ShopProductCard: React.FC<IProductCard> = ({
   const shiftToSelected = () => {
     navigate("/product", { state: { id } });
   };
-
+  
   const handleLikeIcon = () => {
-    setIsLiked(!isLiked);
-
     if (!isLiked) {
       addToFavorites(id)
     } else {
       removeFromFavorites(id)
     }
+
+    setIsLiked(!isLiked);
   };
-  
+
   return (
     <div
       className={`rounded-3xl flex ${flexOptional} w-full ${heightOptional} justify-between items-center`}

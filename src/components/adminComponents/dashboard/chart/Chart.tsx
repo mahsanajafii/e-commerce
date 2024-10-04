@@ -7,14 +7,35 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import chartData from './data/data.json';
+import orderService from '../../../../services/orderService';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+interface IChartData {
+    "_id": string,
+    "totalSales": number,
+}
+
 const Chart = () => {
-    const labels = chartData.map((item) => item.label)
-    const values = chartData.map((item) => item.value)
+    const [labels, setLabels] = useState<string[]>([]);
+    const [values, setValues] = useState<number[]>([]);
+
+    useEffect(() => {
+        fetchChartData();
+    }, []);
+
+    async function fetchChartData() {
+        const response = await orderService.getTotalSalesByDate();
+        response.sort((a: IChartData, b: IChartData) => a._id.localeCompare(b._id));
+
+        const newLabels = response.map((item: IChartData) => new Date(item._id).toLocaleDateString('fa-IR'));
+        const newValues = response.map((item: IChartData) => item.totalSales);
+        
+        setLabels(newLabels);
+        setValues(newValues);
+    }
 
   return (
     <div className='w-full h-[550px]'>
@@ -54,7 +75,7 @@ const Chart = () => {
                 scales: {
                     x: {
                         reverse: true, // to make the chart rtl
-                        offset: false, // to make x-axis end right at last thick
+                        // offset: false, // to make x-axis end right at last thick
                         grid: {
                             display: false, // to hide vertical grid lines
                             // drawTicks: true,   => does not work
@@ -63,8 +84,11 @@ const Chart = () => {
                             stepSize: 1,
                             color: "#58616C",
                             font : {
-                                size: 11,
+                                size: 16,
                             },
+                            align: "center",
+                            crossAlign: "center",
+                            padding: 10,
                         },
                         title : {
                             display: true,
@@ -78,8 +102,7 @@ const Chart = () => {
                         }
                     },
                     y: {
-                        min: 0,
-                        max: 5,
+                        beginAtZero: true,
                         position: "right", // to positon the y-axis an y-ticks at the right side of chart
                         grid: {
                             display: true,
@@ -88,11 +111,14 @@ const Chart = () => {
                             
                         },
                         ticks: {
-                            stepSize: 1,
+                            stepSize: 10000000,
                             color: "#58616C",
                             font : {
-                                size: 11,
+                                size: 16,
                             },
+                            callback: function(value) {
+                                return value.toLocaleString('fa-IR'); // Format the tick labels
+                            }
                         },
                         border: {
                             display: false, // to  hide y-axis line
@@ -111,7 +137,7 @@ const Chart = () => {
                 },
                 layout: {
                     padding: {
-                        left: 10, // it makes the last thick to be visible completely
+                        // left: 10, // it makes the last thick to be visible completely
                     },
                 }
             }}

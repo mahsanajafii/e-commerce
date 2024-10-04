@@ -7,6 +7,38 @@ interface IFavoriteProduct {
     title: string;
     price: number;
     image: string;
+    _id: string;
+}
+
+interface Review {
+    name: string;
+    rating: number;
+    comment: string;
+    user: string;
+    _id: string;
+    createdAt: string;
+    updatedAt: string;
+  }
+
+interface IProduct {
+    _id: string;
+    name: string;
+    image: string;
+    quantity: number;
+    category: {
+      _id: string;
+      name: string;
+      __v: number;
+    };
+    description: string;
+    rating: number;
+    numReviews: number;
+    price: number;
+    countInStock: number;
+    reviews: Review[];
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
 }
 
 const Favorites : React.FC = () => {
@@ -20,14 +52,15 @@ const Favorites : React.FC = () => {
     async function fetchProducts() {
         const response = await Promise.all(
             favoriteProductsId.map((favorite) => {
-                productService.getProduct(favorite)
+                return productService.getProduct(favorite)
             })
         )
 
-        const updatedFavoriteProducts = response.map((product) => ({
+        const updatedFavoriteProducts = response.map((product: IProduct) => ({
             title: product.name,
             price: product.price,
             image: product.image,
+            _id: product._id
         }))
 
         setFavoriteProducts(updatedFavoriteProducts)
@@ -38,6 +71,7 @@ const Favorites : React.FC = () => {
             {favoriteProducts.map((favouriteProduct, index) => {
                 return (
                     <ProductCard 
+                    id={favoriteProducts[index]._id}
                     key={index}
                     productTitle={favouriteProduct.title} 
                     productTitleStyle="text-text-primary text-[1.8rem] text-normal"

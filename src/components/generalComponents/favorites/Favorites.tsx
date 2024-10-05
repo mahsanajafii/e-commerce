@@ -68,14 +68,14 @@ const Favorites : React.FC = () => {
 
     return (
         <section className="w-full h-screen grid grid-cols-4 gap-[3.2rem] py-[3.2rem] px-[2.1rem] overflow-y-auto">
-            {favoriteProducts.map((favouriteProduct, index) => {
+            {favoriteProducts.map((favoriteProduct) => {
                 return (
                     <ProductCard 
-                        id={favoriteProducts[index]._id}
-                        key={index}
-                        productTitle={favouriteProduct.title} 
+                        id={favoriteProduct._id}
+                        key={favoriteProduct._id}
+                        productTitle={favoriteProduct.title} 
                         productTitleStyle="text-text-primary text-[1.8rem] text-normal"
-                        badgeTitle={favouriteProduct.price.toString()}
+                        badgeTitle={favoriteProduct.price.toString()}
                         padding="px-2.5"
                         fontSize="text-[1.2rem]"
                     />

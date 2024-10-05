@@ -40,7 +40,6 @@ const SideMenu = () => {
    if(!expanded && dropDown) setDropDown()
 },[expanded,dropDown,setDropDown]);
 
-console.log("isAdmin-isAuth in slide mennu",isAdmin,isAuth);
   return (
     <aside
       className={`h-screen  font-Iran-Yekan fixed flex justify-between bg-base-menu text-text-primary flex-col overflow-hidden transition-width duration-700 ease-in-out ${

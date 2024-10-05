@@ -33,7 +33,7 @@ const ShopProductCard: React.FC<IProductCard> = ({
   const navigate = useNavigate();
 
   const shiftToSelected = () => {
-    navigate("/product", { state: { id } });
+    navigate(`/product/${id}`);
   };
   
   const handleLikeIcon = () => {

@@ -33,6 +33,7 @@ const Shop: React.FC = () => {
     const res = await axiosClient.get(`/products/allproducts`);
     return res.data;
   };
+
   const fetchCategories = async () => {
     const res = await axiosClient.get(`/category/categories`);
     return res.data;
@@ -42,6 +43,7 @@ const Shop: React.FC = () => {
     queryKey: ["categories"],
     queryFn: fetchCategories,
   });
+
   const {
     isLoading,
     isError,
@@ -51,6 +53,7 @@ const Shop: React.FC = () => {
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
+
   const [filteredProducts, setFilteredProducts] = useState<IProductCard[]>([]);
   const [price, setPrice] = useState<number>(0);
   const [clear, setClear] = useState(false);

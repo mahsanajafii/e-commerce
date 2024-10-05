@@ -3,17 +3,17 @@ import Badge from "../badge/Badge";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useFavoritesStore } from "../../../stores/favoritesStore";
 import { Link } from "react-router-dom";
-
 interface IProductCardProps {
   id: string;
   src?: string;
   alt?: string;
-  loading?: 'lazy' | 'eager';
+  loading?: "lazy" | "eager";
   productTitleStyle?: string;
   productTitle: string;
   badgeTitle: string;
   padding: "px-2" | "px-2.5";
   fontSize: "text-[1.1rem]" | "text-[1.2rem]";
+  id?: string;
 }
 
 const ProductCard: React.FC<IProductCardProps> = ({
@@ -26,10 +26,11 @@ const ProductCard: React.FC<IProductCardProps> = ({
   badgeTitle,
   padding,
   fontSize,
+  id,
 }) => {
+
   const { favoriteProductsId, addToFavorites, removeFromFavorites } = useFavoritesStore()
   const [favorite, setFavorite] = useState(favoriteProductsId.includes(id));
-
   const handleFavoriteClick = () =>{
     setFavorite(!favorite);
     

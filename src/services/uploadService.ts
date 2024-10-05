@@ -1,11 +1,15 @@
 import axiosClient from "../api/axiosClient";
 
 const uploadService = {
-    uploadImage: async (name: string | File | undefined) => {
+    uploadImage: async (image: FormData) => {
+        console.log(image)
         const response = await axiosClient.post('/upload', {
-            name
+            image
+        }, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
         })
-
         return response.data
     }
 }

@@ -8,9 +8,8 @@ import uploadService from "../../../services/uploadService";
 
 const CreateProduct = () => {
   const { register, handleSubmit } = useForm();
-  const [selectedImage, setSelectedImage] = useState<
-    File | string | undefined
-  >();
+  const [selectedImage, setSelectedImage] = useState<Blob | MediaSource>();
+
   // const [form, setForm] = useState<IProductType>({
   //   name: "",
   //   description: "",
@@ -25,8 +24,13 @@ const CreateProduct = () => {
   // };
 
   const onSubmit = async (data: FieldValues) => {
-    const uploadedImageUrl = await uploadService.uploadImage(selectedImage);
-    console.log(uploadedImageUrl);
+    if (selectedImage) {
+      const formData = new FormData();
+      formData.append("image", selectedImage as string | Blob);
+      const uploadedImageUrl = await uploadService.uploadImage(formData);
+      console.log(uploadedImageUrl);
+    }
+
     // setForm({
     //   ...form,
     //   image: uploadedImageUrl,
@@ -36,6 +40,8 @@ const CreateProduct = () => {
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     setSelectedImage(file);
+    const formData = new FormData();
+    formData.append("image", file as string | Blob);
   };
 
   return (

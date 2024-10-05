@@ -1,3 +1,4 @@
+import { adminStore } from "../../../stores/adminStore";
 import Badge from "../badge/Badge";
 import Button from "../button/Button";
 import { Link } from "react-router-dom";
@@ -21,6 +22,8 @@ const Table = ({
   headers,
   tdOptionalStyle: optionalStyle,
 }: ITableProps) => {
+  const { isAdmin } = adminStore();
+
   return (
     <table className={`${optionalWidth} ${optionalHeight} w-full`}>
       <thead className="border-b-2 font-normal text-[1.6rem] text-text-primary font-Iran-Yekan">
@@ -55,7 +58,13 @@ const Table = ({
                     className="w-full h-16 object-contain"
                   ></img>
                 ) : head === "عملیات" ? (
-                  <Link to={`/detail/${item?.orderId}`}>
+                  <Link
+                    to={
+                      isAdmin
+                        ? `/detail/deliverd/${item?.orderId}`
+                        : `/detail/${item?.orderId}`
+                    }
+                  >
                     <Button className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal">
                       {item[head]}
                     </Button>

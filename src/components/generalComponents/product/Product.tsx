@@ -20,6 +20,7 @@ interface IProductProps {
 
 const Product: React.FC<IProductProps> = ({ children }) => {
   const addItem = CartStore((state) => state.addItem);
+  const items = CartStore((state) => state.cartItems);
   const { id } = useParams();
   const [brand, setBrand] = useState("");
   const [isLiked, setIsLiked] = useState(true);
@@ -51,6 +52,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
 
   const handleClick = () => {
     addItem(selectProduct._id);
+    console.log(items);
   };
 
   if (isLoading) {

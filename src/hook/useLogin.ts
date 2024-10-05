@@ -10,8 +10,8 @@ export const useLogin = () => {
         onSuccess: () => {
             setIsAuth(true)
             setTimeout(() => {
-                navigate('/')
             }, 2 * 1000)
+            navigate('/')
         },
         onError: (error) => {
             setIsAuth(false)

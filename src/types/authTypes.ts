@@ -15,5 +15,10 @@ export interface IRegisterType {
 export interface IUpdateUser {
     username: string,
     email: string,
-    password: string
+    password?: string
+}
+export interface IUser {
+    username?: string,
+    email?: string,
+    isadmin?: boolean,
 }

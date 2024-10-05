@@ -5,6 +5,7 @@ import Input from "../../common/input/Input";
 import ShopProductCard from "../../common/productCard/shopProductCard/ShopProductCard";
 import { ChangeEvent, useEffect, useState } from "react";
 import axiosClient from "../../../api/axiosClient";
+
 interface IBrand {
   name: string;
   _id: string;

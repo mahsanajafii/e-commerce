@@ -27,7 +27,6 @@ const UserDropDown = ({isAdmin} ) => {
     { label: "پروفایل", linkTo: "/profile",onClick:()=>setDropDown() },
     { label: "خروج از حساب", linkTo: "",onClick:()=>logout() },
   ]);
-console.log(isAdmin);
   return (
     
       <div className=" absolute transition  duration-700 ease-in-out rounded-xl  bottom-[4rem] px-3 py-6 h-fit w-[17rem] text-nowrap gap-6 bg-base-side text-2xl leading-8 font-normal text-text-primary border-base-text-field-stroke flex flex-col justify-center">

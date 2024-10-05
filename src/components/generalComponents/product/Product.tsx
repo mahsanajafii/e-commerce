@@ -12,27 +12,26 @@ import axiosClient from "../../../api/axiosClient";
 import categoryService from "../../../services/categoryService";
 import { useParams } from "react-router-dom";
 import Score from "./score/Score";
+import CartStore from "../../../stores/cartStore";
+
 interface IProductProps {
   children: ReactNode;
 }
 
 const Product: React.FC<IProductProps> = ({ children }) => {
+  const addItem = CartStore((state) => state.addItem);
   const { id } = useParams();
-
   const [brand, setBrand] = useState("");
-
-  const fetchProduct = async () => {
-    const res = await axiosClient.get(`/products/${id}`);
-    return res.data;
-  };
-
   const [isLiked, setIsLiked] = useState(true);
-
   const { isLoading, data: selectProduct } = useQuery({
     queryKey: ["selectProduct"],
     queryFn: () => fetchProduct(),
   });
 
+  const fetchProduct = async () => {
+    const res = await axiosClient.get(`/products/${id}`);
+    return res.data;
+  };
   const handleLikeIcon = () => {
     setIsLiked(!isLiked);
   };
@@ -49,6 +48,10 @@ const Product: React.FC<IProductProps> = ({ children }) => {
       fetchCategory();
     }
   }, [selectProduct]);
+
+  const handleClick = () => {
+    addItem(selectProduct._id);
+  };
 
   if (isLoading) {
     return (
@@ -85,7 +88,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
                 <p>
                   <span className="text-text-secondary">امتیاز</span> :
                 </p>
-                <span>{selectProduct.rating}</span>
+                <span>{Math.floor(selectProduct.rating).toFixed(1)}</span>
               </div>
               <div className="flex justify-center items-center gap-1">
                 <FaCartShopping className="inline" />
@@ -115,30 +118,41 @@ const Product: React.FC<IProductProps> = ({ children }) => {
                 <p>
                   <span className="text-text-secondary">زمان بروزرسانی</span> :{" "}
                 </p>
-                <span>{selectProduct.updatedAt}</span>
+                <span>
+                  {new Date(selectProduct.updatedAt).toLocaleDateString(
+                    "fa-IR"
+                  )}
+                </span>
               </div>
               <div className="flex justify-center items-center gap-1">
                 <FaStar className="inline" />
                 <p>
                   <span className="text-text-secondary">نظرات</span> :
                 </p>
-                <span>{selectProduct.numReviews}</span>
+                <span>{selectProduct?.numReviews}</span>
               </div>
             </div>
           </div>
           <div className="flex justify-between w-full">
             <div className="flex justify-center items-center gap-2">
               <p className="font-normal text-[1.6rem] text-text-primary">
-                5000 نظر
+                {selectProduct?.numReviews}
               </p>
               <Score count={selectProduct.rating} />
             </div>
             <select className="w-[9.6rem] h-[4rem] rounded-[0.8rem] p-[0.8rem] text-[1.6rem]">
-              <option value="1">1</option>
+              {[...Array(selectProduct.countInStock).keys()].map((x) => (
+                <option key={x + 1} value={x + 1}>
+                  {x + 1}
+                </option>
+              ))}
             </select>
           </div>
 
-          <Button className=" bg-primary-main text-text-button w-[14.3rem] h-[4rem] rounded-[0.8rem] text-center py-[0.8rem] px-[1.2rem]">
+          <Button
+            onClick={handleClick}
+            className=" bg-primary-main text-text-button w-[14.3rem] h-[4rem] rounded-[0.8rem] text-center py-[0.8rem] px-[1.2rem]"
+          >
             افزودن به سبد خرید
           </Button>
         </div>
@@ -153,7 +167,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
             محصولات مرتبط
           </Link>
         </div>
-        <div className="w-[90%] h-full ">{children}</div>
+        <div className="w-[90%] h-[90%]">{children}</div>
       </div>
     </div>
   );

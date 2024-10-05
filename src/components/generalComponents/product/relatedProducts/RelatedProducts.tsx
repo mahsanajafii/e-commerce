@@ -57,18 +57,17 @@ const RelatedProducts = () => {
 
   useEffect(() => {
     fetchRealateProducts();
-    console.log(relatedProducts[0]);
-  }, [id]);
+  }, []);
   return (
     <div className="w-[45%] grid grid-cols-2 grid-rows-2 gap-[3.2rem]">
       {relatedProducts.map((item: IProductType, index) => (
         <ProductCard
           key={index}
-          src={item.image}
-          alt={item.name}
-          productTitle={item.name}
+          src={item?.image}
+          alt={item?.name}
+          productTitle={item?.name}
           productTitleStyle="text-text-primary text-[1.1rem] text-normal"
-          badgeTitle={item.price}
+          badgeTitle={item?.price}
           padding="px-2"
           fontSize="text-[1.1rem]"
         />

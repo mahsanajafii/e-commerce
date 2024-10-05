@@ -27,8 +27,8 @@ const ProductCard: React.FC<IProductCardProps> = ({
   padding,
   fontSize,
 }) => {
-  const { addToFavorites, removeFromFavorites } = useFavoritesStore()
-  const [favorite, setFavorite] = useState(false);
+  const { favoriteProductsId, addToFavorites, removeFromFavorites } = useFavoritesStore()
+  const [favorite, setFavorite] = useState(favoriteProductsId.includes(id));
 
   const handleFavoriteClick = () =>{
     setFavorite(!favorite);

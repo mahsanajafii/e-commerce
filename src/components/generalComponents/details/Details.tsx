@@ -3,7 +3,9 @@ import Status from "../../common/status/Status";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import orderService from "../../../services/orderService";
-//import photo from "./iphone-14-pro-model-unselect-gallery-1-202209.png";
+import { adminStore } from "../../../stores/adminStore";
+import { useLocation } from "react-router-dom";
+
 interface IInformation {
   _id: string;
   name: string;
@@ -21,6 +23,7 @@ interface ITableItem {
 }
 
 const Checkout = () => {
+  const location = useLocation();
   const [information, setInformation] = useState<IInformation>({
     _id: "",
     name: "",
@@ -31,8 +34,9 @@ const Checkout = () => {
     totalPrice: 0,
   });
   const [items, setItems] = useState<ITableItem[]>([]);
-
+  const [status, setStatus] = useState<string>("");
   const { id } = useParams();
+  const isAdmin = adminStore((state) => state.isAdmin);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -57,23 +61,39 @@ const Checkout = () => {
         };
       });
       setItems(filter);
+      setStatus(isAdmin ? res.isPaid : res.isDelivered);
     };
 
     if (id) {
       fetchDetails();
-      console.log(information);
-      console.log(items);
     }
+    console.log(location.pathname);
   }, [id]);
+
+  const condition = () => {
+    if (isAdmin) {
+      return (
+        <Status
+          isNeedButton={false}
+          status={status ? "پرداخت شده" : "پرداخت نشده"}
+          information={information}
+        />
+      );
+    } else {
+      return (
+        <Status
+          isNeedButton={false}
+          status={status ? "ارسال شده" : "ارسال نشده"}
+          information={information}
+        />
+      );
+    }
+  };
 
   return (
     <div className="flex justify-center items-start gap-[5.6rem] w-full h-full p-[9.7rem]">
       <Table optionalWidth="w-[45%]" headers={headers} items={items} />
-      <Status
-        isNeedButton={false}
-        status="در حال ارسال"
-        information={information}
-      />
+      {condition()}
     </div>
   );
 };

@@ -15,7 +15,7 @@ const Product: React.FC = () => {
     const res = await axiosClient.get(`/products/${id}`);
     return res.data;
   };
-  const [isLiked, setIsLiked] = useState(true);
+  const [isLiked, setIsLiked] = useState(false);
   const location = useLocation();
   const id = location.state?.id;
   const {
@@ -29,7 +29,7 @@ const Product: React.FC = () => {
   });
 
   const handleLikeIcon = () => {
-    setIsLiked(!isLiked);
+    setIsLiked(isLiked);
   };
   if (isLoading) {
     return (

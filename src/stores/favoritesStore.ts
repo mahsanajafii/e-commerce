@@ -9,7 +9,9 @@ interface IFavoritestore {
 export const useFavoritesStore = create<IFavoritestore>((set) => ({
     favoriteProductsId: [],
     addToFavorites: (id: string) => set((state) => ({
-        favoriteProductsId: [...state.favoriteProductsId, id] 
+        favoriteProductsId: state.favoriteProductsId.includes(id) 
+                  ? state.favoriteProductsId 
+                  : [...state.favoriteProductsId, id]
     })),
     removeFromFavorites: (id: string) => set((state) => ({
         favoriteProductsId: state.favoriteProductsId.filter(

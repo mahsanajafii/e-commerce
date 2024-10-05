@@ -35,7 +35,7 @@ const Orders : React.FC = () => {
       const response = await orderService.getAllOrdersAdmin();
           newOrder = response.map((order: IAdminOrderResponse) => 
             order.orderItems.map((item) => ({
-              "عکس": item.image ? item.image : photo, /// it's just a placeholder should be fix after the API changes. remember to fix the types too (IOrderItemsResponse).
+              "عکس": item.image ? item.image : photo, 
               "نام محصول": item.name,
               "تاریخ": new Date(order.createdAt).toLocaleDateString('fa-IR'),
               "کاربر": order.user ? order.user.username : "Marzi",
@@ -50,7 +50,7 @@ const Orders : React.FC = () => {
       const response = await orderService.getAllOrdersMine();
           newOrder= response.map((order: IUserOrderResponse) => 
             order.orderItems.map((item) => ({
-              "عکس": item.image ? item.image : photo, /// it's just a placeholder should be fix after the API changes. remember to fix the types too (IOrderItemsResponse).
+              "عکس": item.image ? item.image : photo,
               "نام محصول": item.name,
               "تاریخ": new Date(order.createdAt).toLocaleDateString('fa-IR'),
               "قیمت نهایی": order.totalPrice.toLocaleString('fa-IR'),

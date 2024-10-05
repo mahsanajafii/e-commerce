@@ -14,21 +14,17 @@ import { useParams } from "react-router-dom";
 import Score from "./score/Score";
 import CartStore from "../../../stores/cartStore";
 
+interface IProductProps {
+  children: ReactNode;
+}
 
-const Product: React.FC = () => {
-  const fetchProduct = async (id: string) => {
-    const res = await axiosClient.get(`/products/${id}`);
-    return res.data;
-  };
-  const [isLiked, setIsLiked] = useState(false);
-  const location = useLocation();
-  const id = location.state?.id;
-  const {
-    isLoading,
-    isError,
-    error,
-    data: selectProduct,
-  } = useQuery({
+const Product: React.FC<IProductProps> = ({ children }) => {
+  const addItem = CartStore((state) => state.addItem);
+  const items = CartStore((state) => state.cartItems);
+  const { id } = useParams();
+  const [brand, setBrand] = useState("");
+  const [isLiked, setIsLiked] = useState(true);
+  const { isLoading, data: selectProduct } = useQuery({
     queryKey: ["selectProduct"],
     queryFn: () => fetchProduct(),
   });
@@ -38,7 +34,7 @@ const Product: React.FC = () => {
     return res.data;
   };
   const handleLikeIcon = () => {
-    setIsLiked(isLiked);
+    setIsLiked(!isLiked);
   };
 
   const fetchCategory = async () => {

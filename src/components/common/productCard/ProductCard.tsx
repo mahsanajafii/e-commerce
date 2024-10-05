@@ -40,23 +40,24 @@ const ProductCard: React.FC<IProductCardProps> = ({
   };
 
   return (
+    <div className="relative max-w-[40.4rem] max-h-[38.6rem]">
+      <div className="absolute z-10 top-6 right-6" onClick={handleFavoriteClick}>
+        {favorite ? (
+          <IoMdHeart className="text-primary-main text-3xl cursor-pointer" />
+        ) : (
+          <IoMdHeartEmpty className="text-3xl cursor-pointer"/>
+        )}
+      </div>
     <Link
       to={`/product/${id}`}
-      className="relative flex flex-col max-w-[40.4rem] max-h-[38.6rem] gap-4 justify-between items-center"
+      className="flex flex-col w-full h-full gap-4 justify-between items-center"
     >
       <img
-        className="relative w-full object-contain max-h-[34.6rem] rounded-md"
+        className="w-full object-contain max-h-[34.6rem] rounded-md"
         src={src}
         alt={alt}
         loading={loading}
       />
-      <div className="absolute top-6 right-6" onClick={handleFavoriteClick}>
-        {favorite ? (
-          <IoMdHeart className="text-[#DB2777]" />
-        ) : (
-          <IoMdHeartEmpty />
-        )}
-      </div>
       <div className="flex flex-row justify-between items-center w-full h-[2.4rem]">
         <p className={productTitleStyle}>{productTitle}</p>
         <Badge padding={padding} fontSize={fontSize}>
@@ -64,6 +65,8 @@ const ProductCard: React.FC<IProductCardProps> = ({
         </Badge>
       </div>
     </Link>
+    </div>
+
   );
 };
 

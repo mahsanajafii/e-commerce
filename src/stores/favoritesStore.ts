@@ -7,7 +7,7 @@ interface IFavoritestore {
 }
 
 export const useFavoritesStore = create<IFavoritestore>((set) => ({
-    favoriteProductsId: ["divane shodm"],
+    favoriteProductsId: [],
     addToFavorites: (id: string) => set((state) => ({
         favoriteProductsId: [...state.favoriteProductsId, id] 
     })),

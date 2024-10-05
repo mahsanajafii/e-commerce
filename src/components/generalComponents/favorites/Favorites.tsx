@@ -71,13 +71,13 @@ const Favorites : React.FC = () => {
             {favoriteProducts.map((favouriteProduct, index) => {
                 return (
                     <ProductCard 
-                    id={favoriteProducts[index]._id}
-                    key={index}
-                    productTitle={favouriteProduct.title} 
-                    productTitleStyle="text-text-primary text-[1.8rem] text-normal"
-                    badgeTitle={favouriteProduct.price.toString()}
-                    padding="px-2.5"
-                    fontSize="text-[1.2rem]"
+                        id={favoriteProducts[index]._id}
+                        key={index}
+                        productTitle={favouriteProduct.title} 
+                        productTitleStyle="text-text-primary text-[1.8rem] text-normal"
+                        badgeTitle={favouriteProduct.price.toString()}
+                        padding="px-2.5"
+                        fontSize="text-[1.2rem]"
                     />
                 )
             })}

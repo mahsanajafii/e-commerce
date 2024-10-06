@@ -47,7 +47,7 @@ const Favorites : React.FC = () => {
 
     useEffect(() => {
         fetchProducts()
-    },[])
+    },[favoriteProductsId])
 
     async function fetchProducts() {
         const response = await Promise.all(

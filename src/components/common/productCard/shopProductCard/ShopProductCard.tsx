@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import Badge from "../../badge/Badge";
 import Button from "../../button/Button";
 import { AiOutlineShoppingCart } from "react-icons/ai";

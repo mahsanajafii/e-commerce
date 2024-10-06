@@ -144,7 +144,6 @@ const Shop: React.FC = () => {
               brandTitle={product.category?.name}
               description={product.description}
               id={product._id}
-              favoriteDisplay={"block"}
             />
           ))}
         </section>

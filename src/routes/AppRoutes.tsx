@@ -26,7 +26,7 @@ const routes: RouteObject[] = [
         element: <DashBoardPage />,
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
         element: <CheckoutPage />,
       },
       {

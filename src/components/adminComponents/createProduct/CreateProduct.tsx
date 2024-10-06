@@ -1,52 +1,42 @@
 import { useForm, FieldValues } from "react-hook-form";
 import Input from "../../common/input/Input";
 import Button from "../../common/button/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import productService from "../../../services/productService";
 import uploadService from "../../../services/uploadService";
-
-export interface IProductType {
-  name: string;
-  description: string;
-  price: number;
-  category: string;
-  quantity: number;
-  image: FormData;
-}
+import { IProductType } from "../../../types/productTypes";
+import categoryService from "../../../services/categoryService";
 
 const CreateProduct = () => {
   const { register, handleSubmit } = useForm();
   const [selectedImage, setSelectedImage] = useState<Blob | MediaSource>();
-  const [form, setForm] = useState<IProductType>({
-    name: "",
-    description: "",
-    price: 0,
-    category: "",
-    quantity: 0,
-    image: new FormData(),
-  });
 
-  // const createProduct = async () => {
-  //   return await productService.createProduct(form);
-  // };
+  const createProduct = async (form: IProductType) => {
+    return await productService.createProduct(form);
+  };
+
+  const createCategory = async (cat: string) => {
+    return await categoryService.createCategory(cat);
+  };
 
   const onSubmit = async (data: FieldValues) => {
     if (selectedImage) {
       const formData = new FormData();
       formData.append("image", selectedImage as string | Blob);
-      setForm({
+      const uploadedImageUrl = await uploadService.uploadImage(formData);
+      const category = await createCategory(data.category);
+
+      const form = {
         name: data.name,
         description: data.description,
         price: data.price,
-        category: data.category,
-        quantity: data.quantity,
-        image: formData,
-      });
-      // const uploadedImageUrl = await uploadService.uploadImage(formData);
-      // console.log(uploadedImageUrl);
-    }
+        category: category._id,
+        quantity: data.purchasableCount,
+        image: uploadedImageUrl.image,
+      };
 
-    console.log(form);
+      await createProduct(form);
+    }
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {

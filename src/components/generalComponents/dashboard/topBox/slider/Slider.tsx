@@ -62,7 +62,7 @@ const Slider : React.FC<ISliderProps> = ( {items} ) => {
                             </span>
                             <p className="line-clamp-4 pt-[2.4rem]">{item.productDescription}</p>
                         </div>
-                        <div className="w-[55%] grid grid-flow-col grid-cols-auto grid-rows-3     items-start">
+                        <div className="w-[55%] grid grid-flow-col grid-cols-auto grid-rows-3 gap-y-16 items-start">
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaStar className="text-[1.2rem]" />
                                 <p className="text-[1.2rem] text-text-secondary font-normal" >

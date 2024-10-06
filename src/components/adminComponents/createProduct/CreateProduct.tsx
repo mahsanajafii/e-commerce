@@ -2,22 +2,29 @@ import { useForm, FieldValues } from "react-hook-form";
 import Input from "../../common/input/Input";
 import Button from "../../common/button/Button";
 import { useEffect, useState } from "react";
-// import productService from "../../../services/productService";
-// import { IProductType } from "../../../types/productTypes";
+import productService from "../../../services/productService";
 import uploadService from "../../../services/uploadService";
+
+export interface IProductType {
+  name: string;
+  description: string;
+  price: number;
+  category: string;
+  quantity: number;
+  image: FormData;
+}
 
 const CreateProduct = () => {
   const { register, handleSubmit } = useForm();
   const [selectedImage, setSelectedImage] = useState<Blob | MediaSource>();
-
-  // const [form, setForm] = useState<IProductType>({
-  //   name: "",
-  //   description: "",
-  //   price: 0,
-  //   category: "",
-  //   quantity: 0,
-  //   image: "",
-  // });
+  const [form, setForm] = useState<IProductType>({
+    name: "",
+    description: "",
+    price: 0,
+    category: "",
+    quantity: 0,
+    image: new FormData(),
+  });
 
   // const createProduct = async () => {
   //   return await productService.createProduct(form);
@@ -27,14 +34,19 @@ const CreateProduct = () => {
     if (selectedImage) {
       const formData = new FormData();
       formData.append("image", selectedImage as string | Blob);
-      const uploadedImageUrl = await uploadService.uploadImage(formData);
-      console.log(uploadedImageUrl);
+      setForm({
+        name: data.name,
+        description: data.description,
+        price: data.price,
+        category: data.category,
+        quantity: data.quantity,
+        image: formData,
+      });
+      // const uploadedImageUrl = await uploadService.uploadImage(formData);
+      // console.log(uploadedImageUrl);
     }
 
-    // setForm({
-    //   ...form,
-    //   image: uploadedImageUrl,
-    // });
+    console.log(form);
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {

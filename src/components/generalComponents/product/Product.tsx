@@ -43,12 +43,13 @@ const Product: React.FC<IProductProps> = ({ children }) => {
   };
 
   const handleLikeIcon = () => {
-    setIsLiked(!isLiked);
     if (isLiked) {
-      addToFavorites(String(id));
-    } else {
       removeFromFavorites(String(id));
+    } else {
+      addToFavorites(String(id));
     }
+
+    setIsLiked(!isLiked);
   };
 
   const fetchCategory = async () => {

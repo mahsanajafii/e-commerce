@@ -9,6 +9,11 @@ interface INewProduct {
   productTitle: string,
   productPrice: number,
   productDescription: string,
+  // category: string,
+  rating: number,
+  numReviews: number,
+  countInStock: number,
+  quantity: number,
 }
 
 interface Review {
@@ -58,6 +63,11 @@ const TopBox : React.FC = () => {
       productTitle: product.name,
       productPrice: product.price,
       productDescription: product.description,
+      // category: product.category,
+      rating: product.rating,
+      numReviews: product.numReviews,
+      countInStock: product.countInStock,
+      quantity: product.quantity,
     }))
     setNewProducts(UpdatedNewProducts)
   }

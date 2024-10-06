@@ -9,6 +9,11 @@ interface IItem {
     productTitle: string,
     productPrice: number,
     productDescription: string,
+    // category: string,
+    rating: number,
+    numReviews: number,
+    countInStock: number,
+    quantity: number,
 }
 
 interface ISliderProps {
@@ -34,7 +39,7 @@ const Slider : React.FC<ISliderProps> = ( {items} ) => {
         {items.map((item, index) => {
             return (
                 <div 
-                    key={index}    
+                    key={item.id}    
                     className={`
                         ${currentIndex === index ? "flex" : "hidden"} 
                         flex-col gap-[1.6rem]`}

@@ -4,7 +4,7 @@ import orderService from "../../../services/orderService";
 import { IUserOrderResponse } from "../../../types/orderTypes";
 import { IAdminOrderResponse } from "../../../types/orderTypes";
 import { isAdmin } from "../../../stores/adminStore";
-import photo from "./iphone-14-pro-model-unselect-gallery-1-202209.png"
+import mockPhoto from "../../../assets/images/mockImage.png"
 
 interface IOrders {
   [index: string]: string | number | boolean | JSX.Element;
@@ -35,7 +35,7 @@ const Orders : React.FC = () => {
       const response = await orderService.getAllOrdersAdmin();
           newOrder = response.map((order: IAdminOrderResponse) => 
             order.orderItems.map((item) => ({
-              "عکس": item.image ? item.image : photo, 
+              "عکس": mockPhoto, // item.image
               "نام محصول": item.name,
               "تاریخ": new Date(order.createdAt).toLocaleDateString('fa-IR'),
               "کاربر": order.user ? order.user.username : "Marzi",
@@ -50,7 +50,7 @@ const Orders : React.FC = () => {
       const response = await orderService.getAllOrdersMine();
           newOrder= response.map((order: IUserOrderResponse) => 
             order.orderItems.map((item) => ({
-              "عکس": item.image ? item.image : photo,
+              "عکس": mockPhoto, //item.image
               "نام محصول": item.name,
               "تاریخ": new Date(order.createdAt).toLocaleDateString('fa-IR'),
               "قیمت نهایی": order.totalPrice.toLocaleString('fa-IR'),

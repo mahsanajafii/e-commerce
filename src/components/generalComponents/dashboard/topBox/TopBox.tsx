@@ -3,12 +3,24 @@ import Slider from "./slider/Slider"
 import productService from "../../../../services/productService"
 import { useEffect, useState } from "react"
 
+interface category {
+  _id: string;
+  name: string;
+  __v: number;
+};
+
 interface INewProduct {
   id: string,
   src: string,
   productTitle: string,
   productPrice: number,
   productDescription: string,
+  category: category,
+  rating: number,
+  numReviews: number,
+  countInStock: number,
+  quantity: number,
+  updatedAt: string;
 }
 
 interface Review {
@@ -21,16 +33,13 @@ interface Review {
   updatedAt: string;
 }
 
+
 interface IProduct {
   _id: string;
   name: string;
   image: string;
   quantity: number;
-  category: {
-    _id: string;
-    name: string;
-    __v: number;
-  };
+  category: category;
   description: string;
   rating: number;
   numReviews: number;
@@ -58,6 +67,12 @@ const TopBox : React.FC = () => {
       productTitle: product.name,
       productPrice: product.price,
       productDescription: product.description,
+      category: product.category,
+      rating: product.rating,
+      numReviews: product.numReviews,
+      countInStock: product.countInStock,
+      quantity: product.quantity,
+      updatedAt: product.updatedAt,
     }))
     setNewProducts(UpdatedNewProducts)
   }

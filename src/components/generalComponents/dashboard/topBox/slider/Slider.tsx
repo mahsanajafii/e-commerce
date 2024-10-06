@@ -3,17 +3,24 @@ import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons
 import { FaStar, FaShoppingCart, FaClock, FaBox } from "react-icons/fa";
 import { AiFillShop } from "react-icons/ai";
 
+interface category {
+    _id: string;
+    name: string;
+    __v: number;
+  };
+
 interface IItem {
     id: string,
     src: string,
     productTitle: string,
     productPrice: number,
     productDescription: string,
-    // category: string,
+    category: category,
     rating: number,
     numReviews: number,
     countInStock: number,
     quantity: number,
+    updatedAt: string;
 }
 
 interface ISliderProps {
@@ -58,42 +65,42 @@ const Slider : React.FC<ISliderProps> = ( {items} ) => {
                                 <FaStar className="text-[1.2rem]" />
                                 <p className="text-[1.2rem] text-text-secondary font-normal" >
                                     امتیاز : 
-                                    <span className="text-text-primary"> 5</span>
+                                    <span className="text-text-primary">{item.rating}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaShoppingCart className="text-[1.2rem]" />
                                 <p className="text-[1.2rem] text-text-secondary font-normal" >
                                     تعداد : 
-                                    <span className="text-text-primary" > 52</span>
+                                    <span className="text-text-primary" >{item.quantity}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaBox className="text-[1.2rem]" />
                                 <p className="text-[1.2rem] text-text-secondary font-normal" >
                                     موجودی : 
-                                    <span className="text-text-primary"> 10</span>
+                                    <span className="text-text-primary">{item.countInStock}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <AiFillShop className="text-[1.2rem]" />
                                 <p className="text-[1.2rem] text-text-secondary font-normal" >
                                     برند : 
-                                    <span className="text-text-primary" > اپل</span>
+                                    <span className="text-text-primary" >{item.category.name}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaClock className="text-[1.2rem]" />
                                 <p className="text-[1.2rem] text-text-secondary font-normal" >
                                     زمان بروزرسانی : 
-                                    <span className="text-text-primary" > چند لحظه قبل</span>
+                                    <span className="text-text-primary" >{new Date(item.updatedAt).toLocaleDateString('fa-IR')}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaStar className="text-[1.2rem]" />
                                 <p className="text-[1.2rem] text-text-secondary font-normal" >
                                     نظرات :  
-                                    <span className="text-text-primary"> ۴۲۰۲</span>
+                                    <span className="text-text-primary">{item.numReviews}</span>
                                 </p>
                             </div>
                         </div>

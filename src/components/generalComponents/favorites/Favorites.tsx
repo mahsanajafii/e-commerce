@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useFavoritesStore } from "../../../stores/favoritesStore";
 import ProductCard from "../../common/productCard/ProductCard"
 import productService from "../../../services/productService";
+import mockPhoto from "../../../assets/images/mockImage.png"
 
 interface IFavoriteProduct {
     title: string;
@@ -59,7 +60,7 @@ const Favorites : React.FC = () => {
         const updatedFavoriteProducts = response.map((product: IProduct) => ({
             title: product.name,
             price: product.price,
-            image: product.image,
+            image: mockPhoto, // image: product.image,
             _id: product._id
         }))
 
@@ -73,6 +74,7 @@ const Favorites : React.FC = () => {
                     <ProductCard 
                         id={favoriteProduct._id}
                         key={favoriteProduct._id}
+                        src={favoriteProduct.image}
                         productTitle={favoriteProduct.title} 
                         productTitleStyle="text-text-primary text-[1.8rem] text-normal"
                         badgeTitle={favoriteProduct.price.toString()}
@@ -86,41 +88,3 @@ const Favorites : React.FC = () => {
 }
 
 export default Favorites
-
-////////////////////////// getProduct response //////////////////////////
-
-// {
-//     "_id": "66fe893150ad249af2a3a93a",
-//     "name": "Iphone 13",
-//     "image": "http://185.8.174.74:8090/uploads/image-1727957204311.jpeg",
-//     "quantity": 6,
-//     "category": "66f945636e4773b72e1d612f",
-//     "description": "This is a good phone",
-//     "rating": 4,
-//     "numReviews": 2,
-//     "price": 2000,
-//     "countInStock": 6,
-//     "reviews": [
-//         {
-//             "name": "gp3",
-//             "rating": 5,
-//             "comment": "به شما ناهارم دادن ؟",
-//             "user": "66eff925f00721236cdfab80",
-//             "_id": "66ffbd510ce8ee84905c1348",
-//             "createdAt": "2024-10-04T10:02:57.689Z",
-//             "updatedAt": "2024-10-04T10:02:57.689Z"
-//         },
-//         {
-//             "name": "gp1",
-//             "rating": 3,
-//             "comment": "مفتش گرونه",
-//             "user": "66eff90df00721236cdfab7a",
-//             "_id": "66ffed9ff3f62decd0daf706",
-//             "createdAt": "2024-10-04T13:29:03.550Z",
-//             "updatedAt": "2024-10-04T13:29:03.550Z"
-//         }
-//     ],
-//     "createdAt": "2024-10-03T12:08:17.066Z",
-//     "updatedAt": "2024-10-04T13:29:03.553Z",
-//     "__v": 2
-// }

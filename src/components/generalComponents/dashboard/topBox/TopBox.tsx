@@ -2,6 +2,7 @@ import ProductCard from "../../../common/productCard/ProductCard"
 import Slider from "./slider/Slider"
 import productService from "../../../../services/productService"
 import { useEffect, useState } from "react"
+import mockPhoto from "../../../../assets/images//mockImage.png"
 
 interface category {
   _id: string;
@@ -63,7 +64,7 @@ const TopBox : React.FC = () => {
     const lastFourNewProducts = response.splice(-4)
     const UpdatedNewProducts = lastFourNewProducts.map((product : IProduct) : INewProduct => ({
       id: product._id,
-      src: product.image,
+      src: mockPhoto, //src: product.image,
       productTitle: product.name,
       productPrice: product.price,
       productDescription: product.description,

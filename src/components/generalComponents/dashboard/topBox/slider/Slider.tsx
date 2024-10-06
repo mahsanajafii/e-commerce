@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
 import { FaStar, FaShoppingCart, FaClock, FaBox } from "react-icons/fa";
 import { AiFillShop } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 interface category {
     _id: string;
@@ -45,7 +46,8 @@ const Slider : React.FC<ISliderProps> = ( {items} ) => {
         <IoIosArrowDroprightCircle onClick={prevSlide} className="absolute text-3xl top-[50%] transform -translate-y-1/2 -right-10 cursor-pointer" />
         {items.map((item, index) => {
             return (
-                <div 
+                <Link
+                    to={`/product/${item.id}`} 
                     key={item.id}    
                     className={`
                         ${currentIndex === index ? "flex" : "hidden"} 
@@ -105,7 +107,7 @@ const Slider : React.FC<ISliderProps> = ( {items} ) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             )
         })}
         <IoIosArrowDropleftCircle onClick={nextSlide} className="absolute text-3xl top-[50%] transform -translate-y-1/2 -left-10 cursor-pointer" />

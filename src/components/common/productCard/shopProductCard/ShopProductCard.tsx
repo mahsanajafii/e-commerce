@@ -16,6 +16,7 @@ interface IProductCard {
   description: string;
   flexOptional: string;
   heightOptional: string;
+  favoriteDisplay: string;
 }
 
 const ShopProductCard: React.FC<IProductCard> = ({
@@ -27,6 +28,7 @@ const ShopProductCard: React.FC<IProductCard> = ({
   description,
   flexOptional,
   heightOptional,
+  favoriteDisplay,
 }) => {
   const { favoriteProductsId, addToFavorites, removeFromFavorites } = useFavoritesStore()
   const [isLiked, setIsLiked] = useState(favoriteProductsId.includes(id));
@@ -56,7 +58,7 @@ const ShopProductCard: React.FC<IProductCard> = ({
           src={productImg}
           alt={productTitle}
         />
-        <div className="absolute top-[-9rem] left-[17rem]">
+        <div className={`${favoriteDisplay} absolute top-[-9rem] left-[17rem]`}>
           <LikeIcon handleLikeIcon={handleLikeIcon} isLiked={isLiked} />
         </div>
         {brandTitle && (

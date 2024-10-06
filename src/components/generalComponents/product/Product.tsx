@@ -13,17 +13,25 @@ import categoryService from "../../../services/categoryService";
 import { useParams } from "react-router-dom";
 import Score from "./score/Score";
 import CartStore from "../../../stores/cartStore";
+import { useFavoritesStore } from "../../../stores/favoritesStore";
 
 interface IProductProps {
   children: ReactNode;
 }
 
 const Product: React.FC<IProductProps> = ({ children }) => {
+  const { favoriteProductsId, addToFavorites, removeFromFavorites } =
+    useFavoritesStore();
+
   const addItem = CartStore((state) => state.addItem);
   const items = CartStore((state) => state.cartItems);
   const { id } = useParams();
   const [brand, setBrand] = useState("");
-  const [isLiked, setIsLiked] = useState(true);
+
+  const [isLiked, setIsLiked] = useState(
+    favoriteProductsId.includes(String(id))
+  );
+
   const { isLoading, data: selectProduct } = useQuery({
     queryKey: ["selectProduct"],
     queryFn: () => fetchProduct(),
@@ -33,8 +41,14 @@ const Product: React.FC<IProductProps> = ({ children }) => {
     const res = await axiosClient.get(`/products/${id}`);
     return res.data;
   };
+
   const handleLikeIcon = () => {
     setIsLiked(!isLiked);
+    if (isLiked) {
+      addToFavorites(String(id));
+    } else {
+      removeFromFavorites(String(id));
+    }
   };
 
   const fetchCategory = async () => {

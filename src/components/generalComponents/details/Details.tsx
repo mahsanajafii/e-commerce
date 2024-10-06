@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import orderService from "../../../services/orderService";
 import { adminStore } from "../../../stores/adminStore";
-import { useLocation } from "react-router-dom";
 
 interface IInformation {
   _id: string;
@@ -23,7 +22,6 @@ interface ITableItem {
 }
 
 const Checkout = () => {
-  const location = useLocation();
   const [information, setInformation] = useState<IInformation>({
     _id: "",
     name: "",

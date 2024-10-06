@@ -13,6 +13,7 @@ import {
   HomePage,
   NotFoundPage,
 } from "../pages/index/pages";
+import CreateProductPage from "../pages/createProductPage/CreateProductPage";
 
 const routes: RouteObject[] = [
   {
@@ -63,6 +64,10 @@ const routes: RouteObject[] = [
       {
         path: "/adminDashboard",
         element: <AdminDashboardPage />,
+      },
+      {
+        path: "/create-product",
+        element: <CreateProductPage />,
       },
     ],
   },

@@ -1,4 +1,3 @@
-import { adminStore } from "../../../stores/adminStore";
 import Badge from "../badge/Badge";
 import Button from "../button/Button";
 import { Link } from "react-router-dom";
@@ -22,7 +21,6 @@ const Table = ({
   headers,
   tdOptionalStyle: optionalStyle,
 }: ITableProps) => {
-  const { isAdmin } = adminStore();
 
   return (
     <table className={`${optionalWidth} ${optionalHeight} w-full`}>
@@ -59,11 +57,7 @@ const Table = ({
                   ></img>
                 ) : head === "عملیات" ? (
                   <Link
-                    to={
-                      isAdmin
-                        ? `/detail/deliverd/${item?.orderId}`
-                        : `/detail/${item?.orderId}`
-                    }
+                    to={String(item.navigate)}
                   >
                     <Button className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal">
                       {item[head]}

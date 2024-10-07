@@ -5,28 +5,8 @@ import Input from "../../common/input/Input";
 import ShopProductCard from "../../common/productCard/shopProductCard/ShopProductCard";
 import { ChangeEvent, useEffect, useState } from "react";
 import axiosClient from "../../../api/axiosClient";
+import { IProductCard } from "../../../types/productTypes";
 
-interface IBrand {
-  name: string;
-  _id: string;
-  __v: number;
-}
-interface IProductCard {
-  _id: string;
-  image: string;
-  name: string;
-  price: number;
-  category?: IBrand[];
-  description: string;
-  quantity: number;
-  rating: number;
-  numReviews: number;
-  countInStock: number;
-  reviews: [];
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-}
 
 const Shop: React.FC = () => {
   const fetchProducts = async () => {
@@ -99,7 +79,7 @@ const Shop: React.FC = () => {
     <main className="w-full h-full justify-center  flex ">
       <section className="w-[122rem] h-[60rem]  flex flex-row justify-start items-center mt-14 gap-24">
         <section className="flex flex-col justify-start items-center h-full bg-base-side w-[27rem]">
-          <div className="w-[25rem]  text-[1.6rem] leading-10  font-normal gap-16 flex flex-col pt-5 justify-center items-center">
+          <div className="w-[25rem] gap-12 text-[1.6rem] leading-10  font-normal  flex flex-col pt-5 justify-center items-center">
             <FilterByGroup
               categories={categories}
               setFilteredProducts={setFilteredProducts}

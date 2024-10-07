@@ -1,5 +1,6 @@
 import { adminStore } from "../../../stores/adminStore";
 import Button from "../button/Button";
+import { IInformation } from "../../../types/orderTypes";
 interface IStatusProps {
   isNeedButton: boolean;
   information: IInformation;
@@ -11,17 +12,7 @@ interface IStatusProps {
   handleNavigate?: () => void;
 }
 
-interface IInformation {
-  _id: string;
-  name: string;
-  email: string;
-  address: string;
-  shippingPrice: number;
-  taxPrice: number;
-  totalPrice: number;
-}
-
-const Status = ({
+const Status: React.FC<IStatusProps> = ({
   isNeedButton,
   information,
   status,
@@ -30,7 +21,7 @@ const Status = ({
   makePay,
   makeDeliver,
   handleNavigate,
-}: IStatusProps) => {
+}) => {
   const isAdmin = adminStore((state) => state.isAdmin);
 
   const infoItems = [

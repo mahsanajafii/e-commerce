@@ -5,26 +5,11 @@ import { useEffect, useState } from "react";
 import orderService from "../../../services/orderService";
 import { adminStore } from "../../../stores/adminStore";
 import CartStore from "../../../stores/cartStore";
-
-interface IInformation {
-  _id: string;
-  name: string;
-  email: string;
-  address: string;
-  shippingPrice: number;
-  taxPrice: number;
-  totalPrice: number;
-}
-
+import { IInformation } from "../../../types/orderTypes";
+import { IItem } from "../../../types/orderTypes";
 const headers = ["عکس", "نام محصول", "تعداد", "قیمت", "قیمت نهایی"];
 
-interface ITableItem {
-  [index: string]: string | number | boolean | JSX.Element;
-}
-
 const Checkout = () => {
-  const { clearCart } = CartStore();
-  const navigate = useNavigate();
   const [information, setInformation] = useState<IInformation>({
     _id: "",
     name: "",
@@ -34,12 +19,14 @@ const Checkout = () => {
     taxPrice: 0,
     totalPrice: 0,
   });
-  const [items, setItems] = useState<ITableItem[]>([]);
+  const [items, setItems] = useState<IItem[]>([]);
   const [status, setStatus] = useState<string>("");
   const [isPaid, setIsPaid] = useState<boolean>(false);
   const [isDelivered, setIsDelivered] = useState<boolean>(false);
   const { id } = useParams();
   const isAdmin = adminStore((state) => state.isAdmin);
+  const { clearCart } = CartStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -54,7 +41,7 @@ const Checkout = () => {
         totalPrice: res.totalPrice,
       });
 
-      const filter = res.orderItems.map((item: ITableItem) => {
+      const filter = res.orderItems.map((item: IItem) => {
         return {
           عکس: "sdfsdf",
           "نام محصول": item.name,
@@ -72,12 +59,12 @@ const Checkout = () => {
     if (id) {
       fetchDetails();
     }
-    console.log(location.pathname);
   }, [id]);
 
   const makePay = () => {
     orderService.makeOrderPaid(String(id));
   };
+
   const makeDelivere = () => {
     orderService.makeOrderDeliverd(String(id));
   };

@@ -1,6 +1,5 @@
 import { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import { setIsAdmin } from '../stores/adminStore'
-import { useNavigate } from "react-router-dom";
 const applyInterceptors = (axiosClient: AxiosInstance) => {
     axiosClient.interceptors.request.use(
         (config: InternalAxiosRequestConfig) => {
@@ -17,20 +16,11 @@ const applyInterceptors = (axiosClient: AxiosInstance) => {
         },
         (error) => {
             const status = error.response?.status;
-            const navigate = useNavigate()
-            if (status === 401) {
-                console.log('مجاز نیستید');
+            if (status === 401 || status === 403 || status === 500) {
                 axiosClient.post('/users/logout')
-                navigate('/login')
+                window.location.href = '/login'
                 setIsAdmin(false)
-            } else if (status === 403) {
-                axiosClient.post('/users/logout')
-                navigate('/login')
-                setIsAdmin(false)
-            } else if (status === 500) {
-                axiosClient.post('/users/logout')
-                navigate('/login')
-                setIsAdmin(false)
+                localStorage.clear()
             }
 
             return Promise.reject(error);

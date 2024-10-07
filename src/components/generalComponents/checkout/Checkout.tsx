@@ -63,10 +63,12 @@ const Checkout = () => {
 
   const makePay = () => {
     orderService.makeOrderPaid(String(id));
+    navigate("/orders");
   };
 
   const makeDelivere = () => {
     orderService.makeOrderDeliverd(String(id));
+    navigate("/orders");
   };
 
   const handleNavigate = () => {

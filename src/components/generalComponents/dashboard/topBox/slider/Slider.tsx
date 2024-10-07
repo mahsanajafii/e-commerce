@@ -58,7 +58,7 @@ const Slider : React.FC<ISliderProps> = ( {items} ) => {
                         <div className="flex flex-col w-[45%] text-[1.2rem] text-text-primary">
                             <h4>{item.productTitle}</h4>
                             <span className="self-end">
-                                {item.productPrice}
+                                {`${item.productPrice.toLocaleString('fa-IR')} تومان`}
                             </span>
                             <p className="line-clamp-4 pt-[2.4rem]">{item.productDescription}</p>
                         </div>

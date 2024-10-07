@@ -1,9 +1,14 @@
+import { adminStore } from "../../../stores/adminStore";
 import Button from "../button/Button";
-
 interface IStatusProps {
   isNeedButton: boolean;
   information: IInformation;
   status: string;
+  isPaid?: boolean;
+  isDelivered?: boolean;
+  makePay?: () => void;
+  makeDeliver?: () => void;
+  handleNavigate?: () => void;
 }
 
 interface IInformation {
@@ -16,7 +21,18 @@ interface IInformation {
   totalPrice: number;
 }
 
-const Status = ({ isNeedButton, information, status }: IStatusProps) => {
+const Status = ({
+  isNeedButton,
+  information,
+  status,
+  isPaid,
+  isDelivered,
+  makePay,
+  makeDeliver,
+  handleNavigate,
+}: IStatusProps) => {
+  const isAdmin = adminStore((state) => state.isAdmin);
+
   const infoItems = [
     { label: "شماره سفارش", value: information._id },
     { label: "نام", value: information.name },
@@ -45,6 +61,48 @@ const Status = ({ isNeedButton, information, status }: IStatusProps) => {
   const textStyle = "text-[1.6rem] font-normal text-text-primary py-2";
   const boldTextStyle = "text-[1.6rem] font-bold text-text-secondary py-2";
 
+  const buttonCondition = () => {
+    if (isAdmin) {
+      if (!isPaid) {
+        return (
+          <Button
+            onClick={makePay}
+            className="bg-primary-main text-text-button text-center w-full rounded-full py-[0.8rem] px-[3.2rem] font-medium text-[2rem]"
+          >
+            پرداخت
+          </Button>
+        );
+      } else if (isPaid && !isDelivered) {
+        return (
+          <Button
+            onClick={makeDeliver}
+            className="bg-primary-main text-text-button text-center w-full rounded-full py-[0.8rem] px-[3.2rem] font-medium text-[2rem]"
+          >
+            ارسال
+          </Button>
+        );
+      } else if (isPaid && isDelivered) {
+        return (
+          <Button
+            dis={true}
+            className="bg-primary-main text-text-button text-center w-full rounded-full py-[0.8rem] px-[3.2rem] font-medium text-[2rem]"
+          >
+            ارسال شده
+          </Button>
+        );
+      }
+    } else {
+      return (
+        <Button
+          onClick={handleNavigate}
+          className="bg-primary-main text-text-button text-center w-full rounded-full py-[0.8rem] px-[3.2rem] font-medium text-[2rem]"
+        >
+          پرداخت
+        </Button>
+      );
+    }
+  };
+
   return (
     <div className="w-[35%] h-[90%] font-Iran-Yekan">
       <p className="font-medium text-[2rem]">آدرس دریافت</p>
@@ -65,11 +123,7 @@ const Status = ({ isNeedButton, information, status }: IStatusProps) => {
           <p className={textStyle}>{value}</p>
         </div>
       ))}
-      {isNeedButton ? (
-        <Button className="bg-primary-main text-text-button text-center w-full rounded-full py-[0.8rem] px-[3.2rem] font-medium text-[2rem]">
-          پرداخت
-        </Button>
-      ) : null}
+      {isNeedButton ? buttonCondition() : null}
     </div>
   );
 };

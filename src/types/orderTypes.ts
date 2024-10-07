@@ -11,6 +11,25 @@ export interface IShippingAddress {
     city: string,
     postalCode: string
 }
+export interface IAddressInfoStore {
+    address: string,
+    city: string,
+    country: string,
+    postalCode: string,
+    paymentMethod: string,
+    setAddress: (newAddress:string) => void,
+    setCity: (newCity:string) => void,
+    setCountry: (newCountry:string) => void,
+    setPostalCode: (newPostalCode:string) => void,
+    setPaymentMethod: (newPaymentMethod:string) => void,
+}
+export interface IItems {  
+    "عکس": string ,
+    "نام محصول": string,
+    "تعداد":number,  
+    "قیمت":number,  
+    "قیمت نهایی" : number, 
+}
 
 interface IOrderItemsResponse {
     image: string,

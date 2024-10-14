@@ -13,14 +13,9 @@ const Content = ({ children }: IContent) => {
   return (
     <section
       className={`rel w-full  bg-base-backgrond mr-32 min-h-screen ${
-        expanded && "blur-[2px]" 
+        expanded && "blur-[2px]"
       } `}
     >
-    {/* <section
-      className={`rel w-full bg-base-backgrond min-h-screen transition-width duration-700 ease-in-out ${
-        !expanded ? "mr-32" : "mr-[22rem]"
-      }`}
-    > */}
       {isAdmin ? <AdminMenu /> : null}
       {children}
     </section>

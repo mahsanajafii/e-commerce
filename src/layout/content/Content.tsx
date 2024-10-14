@@ -12,7 +12,9 @@ const Content = ({ children }: IContent) => {
 
   return (
     <section
-      className={`rel w-full bg-base-backgrond mr-32 min-h-screen  `}
+      className={`rel w-full  bg-base-backgrond mr-32 min-h-screen ${
+        expanded && "blur-[2px]" 
+      } `}
     >
     {/* <section
       className={`rel w-full bg-base-backgrond min-h-screen transition-width duration-700 ease-in-out ${

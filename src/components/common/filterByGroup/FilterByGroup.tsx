@@ -1,7 +1,33 @@
 import { useEffect, useState } from "react";
 import Checkbox from "../checkbox/Checkbox";
-import { IFilterByGroup, IProductCard } from "../../../types/productTypes";
-
+interface IBrand {
+  name: string;
+  _id: string;
+  __v: number;
+}
+interface IProductCard {
+  _id: string;
+  image: string;
+  name: string;
+  price: number;
+  category?: IBrand[];
+  description: string;
+  quantity: number;
+  rating: number;
+  numReviews: number;
+  countInStock: number;
+  reviews: [];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+interface IFilterByGroup {
+  categories: IBrand[];
+  setFilteredProducts: React.Dispatch<React.SetStateAction<IProductCard[]>>;
+  products: IProductCard[];
+  isClear?: boolean;
+  setClear?: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const FilterByGroup: React.FC<IFilterByGroup> = ({
   categories,
@@ -13,18 +39,12 @@ const FilterByGroup: React.FC<IFilterByGroup> = ({
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   function toggleCategorySelection(categoryId: string): void {
     setClear?.(false);
-    if (isClear) {  
-      setSelectedCategories([]);  
-    } else {  
-      setSelectedCategories((prev) =>   
-        prev.includes(categoryId)  
-          ? prev.filter((cat) => cat !== categoryId)  
-          : [...prev, categoryId]  
-      );  
-    }  
-  }  
-
- 
+    setSelectedCategories((prev) => {
+      return prev.includes(categoryId)
+        ? prev.filter((cat) => cat !== categoryId)
+        : [...prev, categoryId];
+    });
+  }
 
   useEffect(() => {
     if (selectedCategories.length !== 0) {
@@ -38,8 +58,8 @@ const FilterByGroup: React.FC<IFilterByGroup> = ({
   }, [selectedCategories, products]);
 
   return (
-    <div className="flex flex-col items-start h-96 dark:bg-dark-base-side">
-      <div className="bg-white dark:bg-dark-base-menu text-black dark:text-dark-text-primary w-[24rem] h-[4rem] rounded-full flex justify-center items-center px-[5.2rem] py-1 mb-8">
+    <div className="flex flex-col h-96  items-start">
+      <div className="bg-white text-black w-[24rem] h-[4rem] rounded-full flex justify-center items-center px-[5.2rem] py-1 mb-8">
         فیلتر دسته بندی
       </div>
       <div className=" h-3/4 overflow-y-auto w-full">

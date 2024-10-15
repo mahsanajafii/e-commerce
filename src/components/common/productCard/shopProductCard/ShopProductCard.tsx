@@ -13,7 +13,7 @@ interface IProductCard {
   id: string;
   productImg: string;
   productTitle: string;
-  badgeTitle: string;
+  badgeTitle: number;
   brandTitle?: string;
   description: string;
   flexOptional: string;

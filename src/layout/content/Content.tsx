@@ -7,14 +7,15 @@ interface IContent {
 }
 
 const Content = ({ children }: IContent) => {
-  const { expanded } = useSidebarStore();
+  const { expanded, setExpanded } = useSidebarStore();
   const { isAdmin } = adminStore();
 
   return (
     <section
       className={`rel w-full  bg-base-backgrond mr-32 min-h-screen ${
-        expanded && "blur-[2px]"
+        expanded && "blur-[0.2rem] brightness-95"
       } `}
+      onClick={() => setExpanded()}
     >
       {isAdmin ? <AdminMenu /> : null}
       {children}

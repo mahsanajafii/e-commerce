@@ -1,22 +1,35 @@
 import { create } from "zustand";
 
+interface cartItem {
+    id: string,
+    name: string,
+    qty: number,
+}
+
 interface ICartStore {
-    cartItems: string[];
-    addItem: (item: string) => void;
+    cartItems: cartItem[];
+    addItem: (id: string, name: string) => void;
     removeItem: (item: string) => void;
     clearCart: () => void
 }
 
 const CartStore = create<ICartStore>((set) => ({
     cartItems: [],
-    addItem: (item) => {
+    addItem: (id, name) => {
         set((state) => ({
-            cartItems: [...state.cartItems, item],
+            cartItems: [
+                ...state.cartItems,
+                {
+                    id: id,
+                    name: name,
+                    qty: 1,
+                }
+            ],
         }));
     },
-    removeItem: (item) => {
+    removeItem: (id) => {
         set((state) => ({
-            cartItems: state.cartItems.filter((cartItem) => cartItem !== item),
+            cartItems: state.cartItems.filter((cartItem) => cartItem.id !== id),
         }));
     },
     clearCart: () => {

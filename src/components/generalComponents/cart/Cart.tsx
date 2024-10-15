@@ -4,16 +4,14 @@ import CartStore from "../../../stores/cartStore";
 import { useEffect, useState } from "react";
 import productService from "../../../services/productService";
 import { useNavigate } from "react-router-dom";
+import categoryService from "../../../services/categoryService";
+
 interface Product {
   _id: string;
   name: string;
   image: string;
   quantity: number;
-  category: {
-    _id: string;
-    name: string;
-    __v: number;
-  };
+  category: string;
   description: string;
   rating: number;
   numReviews: number;
@@ -41,9 +39,14 @@ const Cart = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(cartItems)
     const fetchProductData = async () => {
       const productData = await Promise.all(
-        cartItems.map((productId) => productService.getProduct(productId))
+        cartItems.map(async (item) => {
+          const product = await productService.getProduct(item.id);
+          const category = await categoryService.getCategory(product.category);
+          return { ...product, category: category.name };
+        })
       );
       setProducts(productData);
     };
@@ -60,7 +63,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="h-full flex justify-center items-center mx-[20rem]">
       <div className="w-[90%] h-[48.4rem] gap-[3.2rem] flex flex-col">
         <div className="p-6 w-full flex flex-col gap-5 h-[60%] overflow-auto">
           {products.map((product) => (
@@ -68,18 +71,19 @@ const Cart = () => {
               key={product._id}
               img={product.image}
               productName={product.name}
-              productCategory={product.category.name}
+              productCategory={product.category}
               productPrice={product.price}
               optionCount={product.countInStock}
+              productId={product._id}
             />
           ))}
         </div>
         <div className="w-[50%] h-[40%] flex flex-col justify-between">
           <p className="text-[2rem] font-medium font-Iran-Yekan text-text-primary">
-            تعداد ({products.length})
+            تعداد ({products.length.toLocaleString('fa-IR')})
           </p>
           <p className="font-Iran-Yekan text-text-primary text-[2.4rem]">
-            {products.reduce((total, product) => total + product.price, 0)}{" "}
+            {products.reduce((total, product) => total + product.price, 0).toLocaleString('fa-IR')}{" "}
             تومان
           </p>
           <Button

@@ -21,7 +21,7 @@ import { adminStore } from "../../stores/adminStore";
 import { useDropDownStore } from "../../stores/dropDownStore";
 import UserDropDown from "./dropDowns/UserDropDown";
 import CartStore from "../../stores/cartStore";
-import DarkModeLogo from "../darkMode/darkModeLogo/DarkModeLogo";
+// import DarkModeLogo from "../darkMode/darkModeLogo/DarkModeLogo";
 
 const SideMenu = () => {
   const { expanded, setExpanded } = useSidebarStore();
@@ -75,7 +75,7 @@ const SideMenu = () => {
           ))}
         </nav>
         <span className={` pr-6  ${expanded ? "w-[22rem]" : "w-[8rem]"}`}>
-          <DarkModeLogo  />
+          {/* <DarkModeLogo  /> */}
         </span>
       </div>
       <div>

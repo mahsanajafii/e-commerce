@@ -21,7 +21,7 @@ import { adminStore } from "../../stores/adminStore";
 import { useDropDownStore } from "../../stores/dropDownStore";
 import UserDropDown from "./dropDowns/UserDropDown";
 import CartStore from "../../stores/cartStore";
-import DarkModeLogo from "../darkMode/darkModeLogo/DarkModeLogo";
+// import DarkModeLogo from "../darkMode/darkModeLogo/DarkModeLogo";
 
 const SideMenu = () => {
   const { expanded, setExpanded } = useSidebarStore();
@@ -52,7 +52,7 @@ const SideMenu = () => {
   return (
     <aside
       className={`h-screen z-50  font-Iran-Yekan fixed flex justify-between bg-base-menu text-text-primary flex-col overflow-hidden transition-width duration-500  ${
-        expanded ? "w-[22rem]  shadow-red-700 shadow-2xl" : "w-[8rem]"
+        expanded ? "w-[22rem]  shadow-primary-dark shadow-2xl" : "w-[8rem]"
       }`}
       onClick={() => setExpanded()}
     >
@@ -75,7 +75,7 @@ const SideMenu = () => {
           ))}
         </nav>
         <span className={` pr-6  ${expanded ? "w-[22rem]" : "w-[8rem]"}`}>
-          <DarkModeLogo />
+          {/* <DarkModeLogo  /> */}
         </span>
       </div>
       <div>

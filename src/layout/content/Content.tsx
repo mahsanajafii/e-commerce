@@ -13,7 +13,7 @@ const Content = ({ children }: IContent) => {
   return (
     <section
       className={`rel w-full  bg-base-backgrond mr-32 min-h-screen ${
-        expanded && "blur-[2px]"
+        expanded && "blur-[0.2rem] brightness-95 pointer-events-none"
       } `}
     >
       {isAdmin ? <AdminMenu /> : null}

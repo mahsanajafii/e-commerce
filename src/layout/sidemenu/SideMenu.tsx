@@ -21,14 +21,13 @@ import { adminStore } from "../../stores/adminStore";
 import { useDropDownStore } from "../../stores/dropDownStore";
 import UserDropDown from "./dropDowns/UserDropDown";
 import CartStore from "../../stores/cartStore";
-import DarkModeLogo from "../darkMode/darkModeLogo/DarkModeLogo";
 
 const SideMenu = () => {
   const { expanded, setExpanded } = useSidebarStore();
   const { dropDown, setDropDown } = useDropDownStore();
   const { isAuth } = useAuthStatus();
   const { isAdmin } = adminStore();
-  const { cartItems } = CartStore();
+  const {cartItems} = CartStore();
   const countOfProduct = cartItems.length;
   const sideMenuitems: SlideListProps[] = [
     { icon: <AiOutlineHome size={20} />, name: "خانه", linkTo: "/dashboard" },
@@ -51,15 +50,19 @@ const SideMenu = () => {
 
   return (
     <aside
-      className={`h-screen z-50  font-Iran-Yekan fixed flex justify-between bg-base-menu text-text-primary flex-col overflow-hidden transition-width duration-500  ${
-        expanded ? "w-[22rem]  shadow-red-700 shadow-2xl" : "w-[8rem]"
+      className={`h-screen  font-Iran-Yekan fixed flex justify-between bg-base-menu text-text-primary flex-col overflow-hidden transition-width duration-700 ease-in-out ${
+        expanded ? "w-[22rem]" : "w-[8rem]"
       }`}
       onClick={() => setExpanded()}
     >
-      <div className=" gap-16 flex flex-col">
-        <nav
-          className={`overflow-hidden justify-center items-center gap-16 pt-6    text-right   duration-500  flex  flex-col ${
-            expanded ? "w-[22rem]" : "w-[8rem]"
+      <nav
+        className={`overflow-hidden justify-between items-center   top-8   text-right  transition-width duration-700 ease-in-out flex  flex-col ${
+          expanded ? "w-[22rem]" : "w-[8rem]"
+        }`}
+      >
+        <ul
+          className={`flex flex-col  gap-16 pt-6 items-center justify-center overflow-hidden transition-width duration-700 ease-in-out   ${
+            expanded ? "w-[16rem]" : "w-[8rem]"
           }`}
         >
           {sideMenuitems.map((item: SlideListProps, index) => (
@@ -73,11 +76,8 @@ const SideMenu = () => {
               linkTo={item.linkTo}
             />
           ))}
-        </nav>
-        <span className={` pr-6  ${expanded ? "w-[22rem]" : "w-[8rem]"}`}>
-          <DarkModeLogo />
-        </span>
-      </div>
+        </ul>
+      </nav>
       <div>
         {isAuth ? (
           <div className="flex relative flex-col justify-center items-center pb-4">
@@ -97,39 +97,37 @@ const SideMenu = () => {
           <div>
             <NavLink
               to="/login"
-              className={`  flex  duration-500 pr-12 w-[16rem]  active:text-dark-menu-active-item   hover:bg-[#DB277714] items-center flex-row o rounded-md gap-4 cursor-pointer h-16  ${
-                expanded ? "w-[16rem]" : "w-[8rem]"
+              className={`flex  justify-center  pb-4 active:text-[#DB2777] flex-row transition-width duration-700 ease-in-out overflow-hidden gap-4 cursor-pointer h-11 items-center ${
+                expanded ? "w-[16rem] pr-14" : "w-[8rem]"
               } `}
             >
               <span>
                 <IoEnterOutline size={20} />
               </span>
-              <h2
-                style={{ transitionDelay: `${sideMenuitems.length + 4}00ms` }}
-                className={` text-[1.6rem]   duration-500  ${
-                  !expanded && "w-0 translate-x-48 overflow-hidden"
+              <span
+                className={`overflow-hidden text-[1.6rem]  transition-width duration-700 ease-in-out ${
+                  expanded ? "w-[16rem]" : "w-0"
                 }`}
               >
                 ورود
-              </h2>
+              </span>
             </NavLink>
             <NavLink
               to="/register"
-              className={`  flex  duration-500 pr-12 w-[16rem]  active:text-dark-menu-active-item   hover:bg-[#DB277714] items-center flex-row o rounded-md gap-4 cursor-pointer h-16  ${
-                expanded ? "w-[16rem]" : "w-[8rem]"
+              className={`flex  justify-center  pb-4 active:text-[#DB2777] flex-row transition-width duration-700 ease-in-out overflow-hidden gap-4 cursor-pointer h-11 items-center ${
+                expanded ? "w-[16rem] pr-14" : "w-[8rem]"
               } `}
             >
               <span>
                 <MdOutlinePersonAddAlt size={20} />
               </span>
-              <h2
-                style={{ transitionDelay: `${sideMenuitems.length + 5}00ms` }}
-                className={` text-[1.6rem]   duration-500  ${
-                  !expanded && "w-0 translate-x-48 overflow-hidden"
+              <span
+                className={`overflow-hidden text-[1.6rem]  transition-width duration-700 ease-in-out ${
+                  expanded ? "w-[16rem]" : "w-0"
                 }`}
               >
                 ثبت نام
-              </h2>
+              </span>
             </NavLink>
           </div>
         )}

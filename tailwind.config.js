@@ -76,6 +76,9 @@ export default {
     },
   },
   plugins: [
+  
+    require('tailwind-scrollbar')({ nocompatible: true }),
+
     function ({ addBase }) {
       addBase({
         html: { fontSize: "10px" },

@@ -32,7 +32,7 @@ const ShopProductCard: React.FC<IProductCard> = ({
 }) => {
   const { favoriteProductsId, addToFavorites, removeFromFavorites } = useFavoritesStore()
   const [isLiked, setIsLiked] = useState(favoriteProductsId.includes(id));
-  const addItem = CartStore((state) => state.addItem);
+  const { cartItems, addItem } = CartStore();
 
   const navigate = useNavigate();
 
@@ -49,17 +49,22 @@ const ShopProductCard: React.FC<IProductCard> = ({
     
     setIsLiked(!isLiked);
   };
+
   const handleClick = () => {
    try{
-     addItem(id);
-     toast.success("محصول به سبد خرید شما اضافه شد")
-
+    const isExist = cartItems.find((item) => item.id === id)
+    if (isExist) {
+      toast.error("کالا در سبد خرید موجود است")
+    } else {
+      addItem(id, productTitle);
+      toast.success("محصول به سبد خرید شما اضافه شد")
+    }
    }catch(error){
+    console.error("Error occurred:", error);
     toast.error("لطفا مجدد تلاش کنید")
-
-
    }
   };
+
   return (
     <>
     <Toaster/>

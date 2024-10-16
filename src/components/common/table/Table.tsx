@@ -101,10 +101,9 @@
 // export default Table;
 import Badge from "../badge/Badge";
 import Button from "../button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import EditField from "../editField/EditField";
-import { Toaster, toast } from "react-hot-toast";
-import { useDeleteUser } from "../../../hook/useDeleteUser";
+import { Toaster } from "react-hot-toast";
 import { IoMdClose } from "react-icons/io";
 import { BiCheck } from "react-icons/bi";
 
@@ -119,6 +118,7 @@ interface ITableProps {
   optionalHeight?: string;
   tdOptionalStyle?: string;
   delAction?: boolean;
+  delfunction?:(id: string) => Promise<void>;
 }
 
 const Table = ({
@@ -128,23 +128,10 @@ const Table = ({
   headers,
   tdOptionalStyle: optionalStyle,
   delAction,
+  delfunction
 }: ITableProps) => {
-  const navigate = useNavigate();
-  const delUser = useDeleteUser();
-  const deleteUser = async (id: string) => {
-    return delUser.mutate(id, {
-      onSuccess: () => {
-        toast.success("حدف با موفقیت انجام شد");
-
-        setTimeout(() => {
-          navigate(0);
-        }, 1000);
-      },
-      onError: (error) => {
-        console.error("Registration failed", error);
-      },
-    });
-  };
+  
+ 
   return (
     <>
       <Toaster />
@@ -235,7 +222,7 @@ const Table = ({
                     />
                   ) : head === "عملیات" && delAction ? (
                     <Button
-                      onClick={() => deleteUser(String(item.ID))}
+                      onClick={() => delfunction?.(String(item.ID))}
                       className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal"
                     >
                       {item[head]}

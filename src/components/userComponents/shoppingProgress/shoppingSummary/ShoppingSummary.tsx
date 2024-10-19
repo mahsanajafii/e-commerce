@@ -6,7 +6,7 @@ import { useAddressInfoStore } from "../../../../stores/shoppingProgressStore";
 import productService from "../../../../services/productService";
 import {
   IAddressInfoStore,
-  IItems,
+  ITableItem,
   IShippingAddress,
   IOrderItems,
 } from "../../../../types/orderTypes";
@@ -18,15 +18,14 @@ const ShoppingSummary = () => {
   const headers = ["عکس", "نام محصول", "تعداد", "قیمت", "قیمت نهایی"];
   const navigate = useNavigate();
   const { cartItems } = CartStore();
-  console.log("cartItems in shopping", cartItems);
-  const [Items, setItems] = useState<IItems[]>([]);
+  const [Items, setItems] = useState<ITableItem[]>([]);
   const [orderItems, setorderItems] = useState<IOrderItems[]>([]);
   const [travelPay] = useState(10000);
+
   const calcSummaryItems = () => {
-    const total = Items.map((item) => item.قیمت * item.تعداد).reduce(
-      (acc, cur) => acc + cur,
-      0
-    );
+    const total = Items.map(
+      (item) => Number(item.price) * Number(item.تعداد)
+    ).reduce((acc, cur) => acc + cur, 0);
 
     return total;
   };
@@ -38,10 +37,22 @@ const ShoppingSummary = () => {
   };
 
   const summaryItems = [
-    { label: "قیمت محصولات", value: `${calcSummary.SummaryPrice} تومان` },
-    { label: "هزینه ارسال", value: `${travelPay} تومان` },
-    { label: "مالیات", value: `${calcSummary.tax} تومان` },
-    { label: "مبلغ نهایی", value: `${calcSummary.totalPrice} تومان` },
+    {
+      label: "قیمت محصولات",
+      value: `${calcSummary.SummaryPrice.toLocaleString("fa-IR")} تومان`,
+    },
+    {
+      label: "هزینه ارسال",
+      value: `${travelPay.toLocaleString("fa-IR")} تومان`,
+    },
+    {
+      label: "مالیات",
+      value: `${calcSummary.tax.toLocaleString("fa-IR")} تومان`,
+    },
+    {
+      label: "مبلغ نهایی",
+      value: `${calcSummary.totalPrice.toLocaleString("fa-IR")} تومان`,
+    },
   ];
   const { address, city, postalCode, paymentMethod }: IAddressInfoStore =
     useAddressInfoStore();
@@ -58,25 +69,20 @@ const ShoppingSummary = () => {
   const getorederlist = async () => {
     try {
       const products = await Promise.all(
-        cartItems.map((id) => getProducts(id))
-      );
+        cartItems.map(async(item) =>{
+          const otherInfo=await getProducts(item._id)
+         return  {...item, ...otherInfo}
+    }));
       const items = products.map((product) => ({
+        price: product.price,
         عکس: product.image,
         "نام محصول": product.name,
-        تعداد: 1,
-        قیمت: product.price,
-        "قیمت نهایی": product.price * 1,
-      }));
-      // "قیمت نهایی": product.price * product.quantity,
-      // تعداد: product.quantity,
-      const orderItems = products.map((product) => ({
-        name: product.name,
-        // qty: product.quantity,
-        qty: 1,
-        _id: product._id,
-      }));
+        تعداد: product.qty|| 1 ,
+        قیمت: product.price.toLocaleString('fa-IR'),
+        "قیمت نهایی":(product.qty * product.price).toLocaleString('fa-IR'),
+    }));
       setItems(items);
-      setorderItems(orderItems);
+      setorderItems(cartItems);
     } catch (error) {
       toast.error(`لطفا مجدد تلاش کنید! : ${error}`);
     }

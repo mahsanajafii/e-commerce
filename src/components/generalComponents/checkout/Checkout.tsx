@@ -6,7 +6,7 @@ import orderService from "../../../services/orderService";
 import { adminStore } from "../../../stores/adminStore";
 import CartStore from "../../../stores/cartStore";
 import { IInformation } from "../../../types/orderTypes";
-import { IItem } from "../../../types/orderTypes";
+import { ITableItem } from "../../../types/orderTypes";
 const headers = ["عکس", "نام محصول", "تعداد", "قیمت", "قیمت نهایی"];
 
 const Checkout = () => {
@@ -19,7 +19,7 @@ const Checkout = () => {
     taxPrice: 0,
     totalPrice: 0,
   });
-  const [items, setItems] = useState<IItem[]>([]);
+  const [items, setItems] = useState<ITableItem[]>([]);
   const [status, setStatus] = useState<string>("");
   const [isPaid, setIsPaid] = useState<boolean>(false);
   const [isDelivered, setIsDelivered] = useState<boolean>(false);
@@ -40,14 +40,13 @@ const Checkout = () => {
         taxPrice: res.taxPrice,
         totalPrice: res.totalPrice,
       });
-
-      const filter = res.orderItems.map((item: IItem) => {
+      const filter = res.orderItems.map((item: ITableItem) => {
         return {
-          عکس: "sdfsdf",
+          عکس: item.image,
           "نام محصول": item.name,
           تعداد: item.qty,
-          قیمت: item.price,
-          "قیمت نهایی": res.totalPrice,
+          قیمت: item.price.toLocaleString('fa-IR'),
+          "قیمت نهایی": (item.qty * item.price).toLocaleString('fa-IR'),
         };
       });
       setItems(filter);

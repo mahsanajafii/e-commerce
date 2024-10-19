@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 interface cartItem {
-    id: string,
+    _id: string,
     name: string,
     qty: number,
 }
@@ -20,7 +20,7 @@ const CartStore = create<ICartStore>((set) => ({
             cartItems: [
                 ...state.cartItems,
                 {
-                    id: id,
+                    _id: id,
                     name: name,
                     qty: 1,
                 }
@@ -29,7 +29,7 @@ const CartStore = create<ICartStore>((set) => ({
     },
     removeItem: (id) => {
         set((state) => ({
-            cartItems: state.cartItems.filter((cartItem) => cartItem.id !== id),
+            cartItems: state.cartItems.filter((cartItem) => cartItem._id !== id),
         }));
     },
     clearCart: () => {

@@ -39,11 +39,10 @@ const Cart = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(cartItems)
     const fetchProductData = async () => {
       const productData = await Promise.all(
         cartItems.map(async (item) => {
-          const product = await productService.getProduct(item.id);
+          const product = await productService.getProduct(item._id);
           const category = await categoryService.getCategory(product.category);
           return { ...product, category: category.name };
         })

@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import Score from "./score/Score";
 import CartStore from "../../../stores/cartStore";
 import { useFavoritesStore } from "../../../stores/favoritesStore";
+import toast, { Toaster } from "react-hot-toast";
 
 interface IProductProps {
   children: ReactNode;
@@ -65,10 +66,21 @@ const Product: React.FC<IProductProps> = ({ children }) => {
     }
   }, [selectProduct]);
 
+  
   const handleClick = () => {
-    addItem(selectProduct._id);
-    console.log(items);
-  };
+    try{
+     const isExist = items.find((item) => item._id === id)
+     if (isExist) {
+       toast.error("کالا در سبد خرید موجود است")
+     } else {
+       addItem(selectProduct._id, selectProduct.name);
+       toast.success("محصول به سبد خرید شما اضافه شد")
+     }
+    }catch(error){
+     console.error("Error occurred:", error);
+     toast.error("لطفا مجدد تلاش کنید")
+    }
+   };
 
   if (isLoading) {
     return (
@@ -79,6 +91,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
   }
 
   return (
+    <>
     <div className=" flex flex-col w-[90%] h-full gap-5 justify-start items-center ">
       <LikeIcon handleLikeIcon={handleLikeIcon} isLiked={isLiked} />
 
@@ -96,7 +109,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
             {selectProduct.description}
           </p>
           <p className="text-text-primary text-right text-[4.8rem] font-medium font-Iran-Yekan">
-            {selectProduct.price}
+            {selectProduct.price.toLocaleString("fa-IR")}
           </p>
           <div className="flex justify-between items-center font-normal text-[1.6rem]">
             <div className="flex flex-col justify-center items-start gap-6">
@@ -169,7 +182,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
           <Button
             onClick={handleClick}
             className=" bg-primary-main text-text-button w-[14.3rem] h-[4rem] rounded-[0.8rem] text-center py-[0.8rem] px-[1.2rem]"
-          >
+            >
             افزودن به سبد خرید
           </Button>
         </div>
@@ -187,6 +200,8 @@ const Product: React.FC<IProductProps> = ({ children }) => {
         <div className="w-[90%] h-[90%]">{children}</div>
       </div>
     </div>
+    <Toaster/>
+            </>
   );
 };
 

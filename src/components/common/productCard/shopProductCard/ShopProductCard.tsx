@@ -52,7 +52,7 @@ const ShopProductCard: React.FC<IProductCard> = ({
 
   const handleClick = () => {
    try{
-    const isExist = cartItems.find((item) => item.id === id)
+    const isExist = cartItems.find((item) => item._id === id)
     if (isExist) {
       toast.error("کالا در سبد خرید موجود است")
     } else {

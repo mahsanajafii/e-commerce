@@ -24,7 +24,7 @@ const CardInfo: React.FC<ICartInfoProps> = ({
     removeItem(productId)
   }
 
-const item = cartItems.find((item) => item.id === productId)
+const item = cartItems.find((item) => item._id === productId)
 
 const countHandler = (count: number) => {
   if (item) {

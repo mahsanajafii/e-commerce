@@ -5,7 +5,7 @@ import SpecialProducts from "./specialProducts/SpecialProducts";
 
 const Dashboard = () => {
   return (
-    <div className="px-24 w-full flex flex-col gap-[4.8rem]">
+    <div className="px-24 w-full flex  h-screen flex-col gap-[4.8rem]">
       <TopBox></TopBox>
       <SpecialProducts  />
     </div>

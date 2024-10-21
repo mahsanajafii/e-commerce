@@ -12,7 +12,7 @@ const Content = ({ children }: IContent) => {
 
   return (
     <section
-      className={`rel w-full  bg-base-backgrond mr-32 min-h-screen ${
+      className={`rel w-full overflow-y-auto bg-base-backgrond mr-32 min-h-screen ${
         expanded && "blur-[0.2rem] brightness-95 pointer-events-none"
       } `}
     >

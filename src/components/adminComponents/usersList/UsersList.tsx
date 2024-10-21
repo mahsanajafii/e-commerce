@@ -45,7 +45,7 @@ const UsersList = () => {
           fetchAllUsers()
         }, 1000);
       },
-      onError: (error) => {
+      onError: () => {
         toast.error("ناموفق!مجدد تلاش کنید");
       },
     });

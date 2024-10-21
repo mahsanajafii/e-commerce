@@ -76,6 +76,10 @@ const routes: RouteObject[] = [
       },
     ],
   },
+  {
+    path: "/*",
+    element: <NotFoundPage />
+  }
 ];
 
 const AppRoutes: React.FC = () => {

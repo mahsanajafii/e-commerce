@@ -51,14 +51,14 @@ const SideMenu = () => {
 
   return (
     <aside
-      className={`h-screen z-50  font-Iran-Yekan fixed flex justify-between bg-base-menu text-text-primary flex-col overflow-hidden transition-width duration-500  ${
+      className={`h-screen z-50  font-Iran-Yekan fixed flex justify-between bg-base-menu dark:bg-dark-base-menu text-text-primary flex-col overflow-hidden transition-width duration-500  ${
         expanded ? "w-[22rem]  shadow-primary-dark shadow-2xl" : "w-[8rem]"
       }`}
       onClick={() => setExpanded()}
     >
       <div className=" gap-16 flex flex-col">
         <nav
-          className={`overflow-hidden justify-center items-center gap-16 pt-6    text-right   duration-500  flex  flex-col ${
+          className={`overflow-hidden justify-center items-center gap-16 pt-6 text-right duration-500 flex flex-col ${
             expanded ? "w-[22rem]" : "w-[8rem]"
           }`}
         >
@@ -74,7 +74,7 @@ const SideMenu = () => {
             />
           ))}
         </nav>
-        <span className={` pr-6  ${expanded ? "w-[22rem]" : "w-[8rem]"}`}>
+        <span className={`pr-6 ${expanded ? "w-[22rem]" : "w-[8rem]"}`}>
           {/* <DarkModeLogo  /> */}
         </span>
       </div>
@@ -83,12 +83,12 @@ const SideMenu = () => {
           <div className="flex relative flex-col justify-center items-center pb-4">
             {dropDown && <UserDropDown isAdmin={isAdmin} />}
             <div className="flex flex-row justify-start items-center px-3 w-full h-10  pb-4">
-              <p className="text-[1.6rem] ">{isAdmin ? "ادمین" : "کاربر"}</p>
+              <p className="text-[1.6rem] dark:text-dark-text-primary">{isAdmin ? "ادمین" : "کاربر"}</p>
               <button onClick={() => setDropDown()}>
                 {dropDown ? (
-                  <RiArrowDropUpLine size={20} />
+                  <RiArrowDropUpLine className="dark:text-dark-text-primary" size={20} />
                 ) : (
-                  <RiArrowDropDownLine size={20} />
+                  <RiArrowDropDownLine className="dark:text-dark-text-primary" size={20} />
                 )}
               </button>
             </div>
@@ -97,7 +97,7 @@ const SideMenu = () => {
           <div>
             <NavLink
               to="/login"
-              className={`  flex  duration-500 pr-12 w-[16rem]  active:text-dark-menu-active-item   hover:bg-[#DB277714] items-center flex-row o rounded-md gap-4 cursor-pointer h-16  ${
+              className={`flex duration-500 pr-12 w-[16rem] active:text-dark-menu-active-item hover:bg-[#DB277714] items-center flex-row o rounded-md gap-4 cursor-pointer h-16 ${
                 expanded ? "w-[16rem]" : "w-[8rem]"
               } `}
             >
@@ -106,7 +106,7 @@ const SideMenu = () => {
               </span>
               <h2
                 style={{ transitionDelay: `${sideMenuitems.length + 4}00ms` }}
-                className={` text-[1.6rem]   duration-500  ${
+                className={`text-[1.6rem] duration-500  ${
                   !expanded && "w-0 translate-x-48 overflow-hidden"
                 }`}
               >
@@ -124,7 +124,7 @@ const SideMenu = () => {
               </span>
               <h2
                 style={{ transitionDelay: `${sideMenuitems.length + 5}00ms` }}
-                className={` text-[1.6rem]   duration-500  ${
+                className={` text-[1.6rem] duration-500 ${
                   !expanded && "w-0 translate-x-48 overflow-hidden"
                 }`}
               >

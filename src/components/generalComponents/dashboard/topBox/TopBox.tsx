@@ -88,7 +88,7 @@ const TopBox : React.FC = () => {
                     src={product.src}
                     alt={product.productTitle}
                     productTitle={product.productTitle} 
-                    productTitleStyle="text-text-primary text-[1.1rem] text-normal"
+                    productTitleStyle="text-text-primary text-[1.1rem] text-normal dark:text-dark-text-primary"
                     badgeTitle={`${product.productPrice.toLocaleString('fa-IR')} تومان`}
                     padding="px-2"
                     fontSize="text-[1.1rem]"

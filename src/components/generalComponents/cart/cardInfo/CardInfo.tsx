@@ -41,16 +41,16 @@ const countHandler = (count: number) => {
         <p className="font-normal text[1.6rem] text-primary-main text-right">
           {productName}
         </p>
-        <p className="font-normal text-[1.6rem] text-right text-text-primary">
+        <p className="font-normal text-[1.6rem] text-right text-text-primary dark:text-dark-text-primary">
           {productCategory}
         </p>
-        <p className="text-text-primary text-right text-[1.6rem] font-bold">
+        <p className="text-text-primary text-right text-[1.6rem] font-bold dark:text-dark-text-primary">
           {productPrice.toLocaleString('fa-IR')}
         </p>
       </div>
       <div className="flex-2  flex gap-[1.6rem] pl-3 justify-center items-center h-full">
         <select 
-          className="w-[7rem] h-[3rem] transition-transform border border-base-text-field-stroke rounded-lg"
+          className="w-[7rem] h-[3rem] transition-transform border dark:bg-dark-base-text-field border-base-text-field-stroke dark:border-dark-base-text-field-stroke dark:text-dark-icon-primary rounded-lg"
           onChange={(e) => {countHandler(Number(e.target.value))}}
           defaultValue={item?.qty}
         >

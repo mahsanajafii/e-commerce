@@ -46,7 +46,7 @@ const Checkout = () => {
           "نام محصول": item.name,
           تعداد: item.qty,
           قیمت: item.price.toLocaleString('fa-IR'),
-          "قیمت نهایی": (item.qty * item.price).toLocaleString('fa-IR'),
+          "قیمت نهایی": (Number(item.qty) * Number(item.price)).toLocaleString('fa-IR'),
         };
       });
       setItems(filter);

@@ -65,42 +65,42 @@ const Slider : React.FC<ISliderProps> = ( {items} ) => {
                         <div className="w-[55%] grid grid-flow-col grid-cols-auto grid-rows-3 gap-y-16 items-start dark:text-dark-text-primary">
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaStar className="text-[1.2rem]" />
-                                <p className="text-[1.2rem] text-text-secondary font-normal" >
+                                <p className="text-[1.2rem] text-text-secondary dark:text-dark-text-secondary font-normal" >
                                     امتیاز : 
                                     <span className="text-text-primary dark:text-dark-text-primary">{" " + item.rating}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaShoppingCart className="text-[1.2rem]" />
-                                <p className="text-[1.2rem] text-text-secondary font-normal" >
+                                <p className="text-[1.2rem] text-text-secondary dark:text-dark-text-secondary font-normal" >
                                     تعداد : 
                                     <span className="text-text-primary dark:text-dark-text-primary" >{" " + item.quantity}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaBox className="text-[1.2rem]" />
-                                <p className="text-[1.2rem] text-text-secondary font-normal" >
+                                <p className="text-[1.2rem] text-text-secondary dark:text-dark-text-secondary font-normal" >
                                     موجودی : 
                                     <span className="text-text-primary dark:text-dark-text-primary">{" " + item.countInStock}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <AiFillShop className="text-[1.2rem]" />
-                                <p className="text-[1.2rem] text-text-secondary font-normal" >
+                                <p className="text-[1.2rem] text-text-secondary dark:text-dark-text-secondary font-normal" >
                                     برند : 
                                     <span className="text-text-primary dark:text-dark-text-primary">{" " + item.category.name}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaClock className="text-[1.2rem]" />
-                                <p className="text-[1.2rem] text-text-secondary font-normal" >
+                                <p className="text-[1.2rem] text-text-secondary dark:text-dark-text-secondary font-normal" >
                                     زمان بروزرسانی : 
                                     <span className="text-text-primary dark:text-dark-text-primary">{" " + new Date(item.updatedAt).toLocaleDateString('fa-IR')}</span>
                                 </p>
                             </div>
                             <div className="flex gap-[0.8rem] items-center" >
                                 <FaStar className="text-[1.2rem]" />
-                                <p className="text-[1.2rem] text-text-secondary font-normal" >
+                                <p className="text-[1.2rem] text-text-secondary dark:text-dark-text-secondary font-normal" >
                                     نظرات :  
                                     <span className="text-text-primary dark:text-dark-text-primary">{" " + item.numReviews}</span>
                                 </p>

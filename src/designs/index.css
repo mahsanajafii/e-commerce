@@ -16,21 +16,23 @@
 }
 
 ::-webkit-scrollbar {  
-    width: 8px; 
-  }  
+  width: 8px; 
+}  
   
-  ::-webkit-scrollbar-track {  
-    background: none;  
-  }  
+::-webkit-scrollbar-track {  
+  background: none;  
+}  
   
-  ::-webkit-scrollbar-thumb {  
-    background:linear-gradient(#831747,#DB2777);   
-    border-radius: 10px;  
-  }  
-  
-  ::-webkit-scrollbar-thumb:hover {  
-    background: #DB2777;  
-  }
+::-webkit-scrollbar-thumb {  
+  background:linear-gradient(#831747,#DB2777);   
+  border-radius: 10px;  
+}  
+
+::-webkit-scrollbar-thumb:hover {  
+  background: #DB2777;  
+}
+
+
 @layer utilities {
     .pending-badge{
         @apply bg-info-main text-info-lighter

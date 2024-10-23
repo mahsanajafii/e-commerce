@@ -32,11 +32,14 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
   ) => {
     return (
       <>
-        <label htmlFor={id} className={labelStyle}>
+        <label 
+          htmlFor={id} 
+          className={`${labelStyle} dark:text-dark-text-primary`}
+        >
           {label}
         </label>
         <input
-          className={inputStyle}
+          className={`${inputStyle} outline-none focus:border-secondary-main dark:bg-dark-base-text-field dark:text-dark-text-secondary dark:border-dark-base-text-field-stroke dark:focus:border-secondary-main`}
           type={type}
           placeholder={placeholder}
           id={id}

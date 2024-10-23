@@ -20,7 +20,7 @@ const Sidebar: React.FC<SlideProps> = ({
     <>
       <NavLink
         to={linkTo}
-        className={`flex transition-width duration-500 w-[16rem] active:text-dark-menu-active-item hover:bg-[#DB277714] items-center flex-row overflow-hidden rounded-md gap-4 cursor-pointer h-16 ${
+        className={`flex transition-width duration-500 w-[16rem] active:bg-dark-menu-active-item hover:bg-dark-menu-active-item items-center flex-row overflow-hidden rounded-md gap-4 cursor-pointer h-16 ${
           !expanded && "w-[2.4rem]"
         } `}
       >
@@ -42,7 +42,6 @@ const Sidebar: React.FC<SlideProps> = ({
         >
           {name}
         </h2>
-      
       </NavLink>
     </>
   );

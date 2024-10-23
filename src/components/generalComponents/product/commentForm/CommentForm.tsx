@@ -31,17 +31,17 @@ const CommentForm = () => {
       <div className="flex flex-col justify-center items-start gap-5">
         <label
           htmlFor="score"
-          className="text-text-primary text-[1.6rem] font-normal"
+          className="text-text-primary dark:text-dark-text-primary text-[1.6rem] font-normal"
         >
           امتیاز
         </label>
         <select
           id="score"
-          className="w-full h-14 rounded-xl px-5 outline-none border-slate-200 border-2 text-[1.6rem] font-normal"
+          className="w-full h-14 rounded-xl px-5 outline-none bg-base-text-field dark:bg-dark-base-text-field border text-[1.6rem] font-normal border-base-text-field-stroke dark:border-dark-base-text-field-stroke dark:text-dark-text-secondary"
           value={selectedScore}
           onChange={(e) => setSelectedScore(e.target.value)}
         >
-          <option disabled value="">
+          <option disabled value="" selected className="text-text-secondary dark:text-dark-text-secondary">
             انتخاب امتیاز
           </option>
           <option value="1">1</option>
@@ -54,13 +54,13 @@ const CommentForm = () => {
       <div className="flex flex-col justify-center items-start gap-5">
         <label
           htmlFor="comment-area"
-          className="text-text-primary text-[1.6rem] font-normal"
+          className="text-text-primary text-[1.6rem] font-normal dark:text-dark-text-primary"
         >
           نظر
         </label>
         <textarea
           id="comment-area"
-          className="w-full h-52 rounded-xl p-5 outline-none border-slate-200 border-2 text-[1.6rem] font-normal"
+          className="w-full h-52 rounded-xl p-5 outline-none border text-[1.6rem] font-normal bg-base-text-field dark:bg-dark-base-text-field border-base-text-field-stroke dark:border-dark-base-text-field-stroke resize-none dark:text-dark-text-secondary"
           placeholder="نظر خود را وارد نمایید"
           value={comment}
           onChange={(e) => setComment(e.target.value)}

@@ -95,82 +95,70 @@ const Product: React.FC<IProductProps> = ({ children }) => {
     <div className=" flex flex-col w-[90%] h-full gap-5 justify-start items-center ">
       <LikeIcon handleLikeIcon={handleLikeIcon} isLiked={isLiked} />
 
-      <div className=" w-[90%] h-[80%] flex justify-between items-center mt-[9.5rem] mx-auto">
+      <div className="w-[90%] h-[80%] flex justify-between items-center mt-[9.5rem] mx-auto">
         <img
           src={selectProduct.image}
           alt={selectProduct.name}
-          className="w-[45%] h-full"
+          className="w-[45%] h-full rounded-[0.8rem]"
         />
         <div className=" w-[55%] h-full flex flex-col px-28 justify-between ">
-          <p className="font-Iran-Yekan font-medium text-[2.4rem] text-text-primary text-right">
+          <p className="font-Iran-Yekan font-medium text-[2.4rem] text-text-primary dark:text-dark-text-primary text-right">
             {selectProduct.name}
           </p>
-          <p className="text-text-primary font-normal text-[1.6rem] text-right">
+          <p className="text-text-primary dark:text-dark-text-primary font-normal text-[1.6rem] text-right">
             {selectProduct.description}
           </p>
-          <p className="text-text-primary text-right text-[4.8rem] font-medium font-Iran-Yekan">
+          <p className="text-text-primary dark:text-dark-text-primary text-right text-[4.8rem] font-medium font-Iran-Yekan">
             {selectProduct.price.toLocaleString("fa-IR")}
           </p>
           <div className="flex justify-between items-center font-normal text-[1.6rem]">
             <div className="flex flex-col justify-center items-start gap-6">
               <div className="flex justify-center items-center gap-1">
-                <FaStar className="inline" />
-                <p>
-                  <span className="text-text-secondary">امتیاز</span> :
-                </p>
-                <span>{Math.floor(selectProduct.rating).toFixed(1)}</span>
+                <FaStar className="inline dark:text-dark-text-primary" />
+                <span className="text-text-secondary dark:text-dark-text-secondary">امتیاز:</span>
+                <span className="dark:text-dark-text-primary">{Math.floor(selectProduct.rating).toFixed(1)}</span>
               </div>
               <div className="flex justify-center items-center gap-1">
-                <FaCartShopping className="inline" />
-                <p>
-                  <span className="text-text-secondary">تعداد</span> :
-                </p>
-                <span>{selectProduct.quantity}</span>
+                <FaCartShopping className="inline dark:text-dark-text-primary" />
+                <span className="text-text-secondary dark:text-dark-text-secondary">تعداد:</span>
+                <span className="dark:text-dark-text-primary">{selectProduct.quantity}</span>
               </div>
               <div className="flex justify-center items-center gap-1">
-                <MdInventory className="inline" />
-                <p>
-                  <span className="text-text-secondary">موجودی</span> :
-                </p>
-                <span>{selectProduct.countInStock}</span>
+                <MdInventory className="inline dark:text-dark-text-primary" />
+                <span className="text-text-secondary dark:text-dark-text-secondary">موجودی:</span>
+                <span className="dark:text-dark-text-primary">{selectProduct.countInStock}</span>
               </div>
             </div>
             <div className="flex flex-col justify-center items-start gap-6">
               <div className="flex justify-center items-center gap-1">
-                <TbBrandAppgallery className="inline" />
-                <p>
-                  <span className="text-text-secondary">برند</span> :
-                </p>
-                <span>{brand}</span>
+                <TbBrandAppgallery className="inline dark:text-dark-text-primary" />
+                <span className="text-text-secondary dark:text-dark-text-secondary">برند:</span>
+                <span className="dark:text-dark-text-primary">{brand}</span>
               </div>
               <div className="flex justify-center items-center gap-1">
-                <MdOutlineAccessTimeFilled className="inline" />
-                <p>
-                  <span className="text-text-secondary">زمان بروزرسانی</span> :{" "}
-                </p>
-                <span>
+                <MdOutlineAccessTimeFilled className="inline dark:text-dark-text-primary" />
+                <span className="text-text-secondary dark:text-dark-text-secondary">زمان بروزرسانی:</span>
+                <span className="dark:text-dark-text-primary">
                   {new Date(selectProduct.updatedAt).toLocaleDateString(
                     "fa-IR"
                   )}
                 </span>
               </div>
               <div className="flex justify-center items-center gap-1">
-                <FaStar className="inline" />
-                <p>
-                  <span className="text-text-secondary">نظرات</span> :
-                </p>
-                <span>{selectProduct?.numReviews}</span>
+                <FaStar className="inline dark:text-dark-text-primary" />
+                <span className="text-text-secondary dark:text-dark-text-secondary">نظرات:</span>
+                <span className="dark:text-dark-text-primary">{selectProduct?.numReviews}</span>
               </div>
             </div>
           </div>
           <div className="flex justify-between w-full">
             <div className="flex justify-center items-center gap-2">
-              <p className="font-normal text-[1.6rem] text-text-primary">
+              <p className="font-normal text-[1.6rem] text-text-primary dark:text-dark-text-primary">
                 {selectProduct?.numReviews}
               </p>
               <Score count={selectProduct.rating} />
             </div>
-            <select className="w-[9.6rem] h-[4rem] rounded-[0.8rem] p-[0.8rem] text-[1.6rem]">
+            <select className="w-[9.6rem] h-[4rem] dark:bg-dark-base-text-field border border-base-text-field-stroke dark:border-dark-base-text-field-stroke rounded-[0.8rem] p-[0.8rem] text-[1.6rem] dark:text-dark-text-primary">
               {[...Array(selectProduct.countInStock).keys()].map((x) => (
                 <option key={x + 1} value={x + 1}>
                   {x + 1}
@@ -188,7 +176,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
         </div>
       </div>
       <div className="w-[90%] h-[80%] flex justify-center items-start mx-auto p-5 gap-20">
-        <div className=" h-full text-[1.6rem] text-text-primary flex flex-col gap-4 w-[10%]">
+        <div className=" h-full text-[1.6rem] text-text-primary dark:text-dark-text-primary flex flex-col gap-4 w-[10%]">
           <Link to={`/product/${selectProduct._id}/reviews`}>ثبت نظر</Link>
           <Link to={`/product/${selectProduct._id}/comments`}>
             مشاهده نظرات

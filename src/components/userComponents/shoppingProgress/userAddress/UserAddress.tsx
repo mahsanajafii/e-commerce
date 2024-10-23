@@ -53,7 +53,7 @@ const UserAddress = () => {
 
   return (
     <div className="m-auto flex w-5/6  flex-col">
-      <p className="text-black text-[2.4rem] font-medium mb-[1.6rem]">خرید</p>
+      <p className="text-black dark:text-dark-text-primary text-[2.4rem] font-medium mb-[1.6rem]">خرید</p>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full flex flex-col gap-6"
@@ -135,7 +135,7 @@ const UserAddress = () => {
           )}
         </div>
         <div className="w-full flex flex-col gap-[0.8rem]">
-          <p className="text-text-secondary text-[1.6rem]">روش پرداخت</p>
+          <p className="text-text-secondary dark:text-dark-text-secondary text-[1.6rem]">روش پرداخت</p>
           <RadioButton
             name="bank"
             options={[

@@ -21,7 +21,7 @@ import { adminStore } from "../../stores/adminStore";
 import { useDropDownStore } from "../../stores/dropDownStore";
 import UserDropDown from "./dropDowns/UserDropDown";
 import CartStore from "../../stores/cartStore";
-// import DarkModeLogo from "../darkMode/darkModeLogo/DarkModeLogo";
+import DarkModeLogo from "../darkMode/darkModeLogo/DarkModeLogo";
 
 const SideMenu = () => {
   const { expanded, setExpanded } = useSidebarStore();
@@ -51,12 +51,12 @@ const SideMenu = () => {
 
   return (
     <aside
-      className={`h-screen z-50  font-Iran-Yekan fixed flex justify-between bg-base-menu dark:bg-dark-base-menu text-text-primary flex-col overflow-hidden transition-width duration-500  ${
-        expanded ? "w-[22rem]  shadow-primary-dark shadow-2xl" : "w-[8rem]"
+      className={`h-screen z-50 font-Iran-Yekan fixed flex justify-between bg-base-menu dark:bg-dark-base-menu text-text-primary flex-col overflow-hidden transition-width duration-500  ${
+        expanded ? "w-[22rem] shadow-primary-dark shadow-2xl" : "w-[8rem]"
       }`}
       onClick={() => setExpanded()}
     >
-      <div className=" gap-16 flex flex-col">
+      <div className="gap-16 flex flex-col">
         <nav
           className={`overflow-hidden justify-center items-center gap-16 pt-6 text-right duration-500 flex flex-col ${
             expanded ? "w-[22rem]" : "w-[8rem]"
@@ -75,7 +75,7 @@ const SideMenu = () => {
           ))}
         </nav>
         <span className={`pr-6 ${expanded ? "w-[22rem]" : "w-[8rem]"}`}>
-          {/* <DarkModeLogo  /> */}
+            <DarkModeLogo />
         </span>
       </div>
       <div>
@@ -97,7 +97,7 @@ const SideMenu = () => {
           <div>
             <NavLink
               to="/login"
-              className={`flex duration-500 pr-12 w-[16rem] active:text-dark-menu-active-item hover:bg-[#DB277714] items-center flex-row o rounded-md gap-4 cursor-pointer h-16 ${
+              className={`flex duration-500 pr-12 w-[16rem]  dark:text-dark-text-primary active:text-dark-menu-active-item hover:bg-[#DB277714] items-center flex-row o rounded-md gap-4 cursor-pointer h-16 ${
                 expanded ? "w-[16rem]" : "w-[8rem]"
               } `}
             >
@@ -106,7 +106,7 @@ const SideMenu = () => {
               </span>
               <h2
                 style={{ transitionDelay: `${sideMenuitems.length + 4}00ms` }}
-                className={`text-[1.6rem] duration-500  ${
+                className={`text-[1.6rem] duration-500 ${
                   !expanded && "w-0 translate-x-48 overflow-hidden"
                 }`}
               >
@@ -115,7 +115,7 @@ const SideMenu = () => {
             </NavLink>
             <NavLink
               to="/register"
-              className={`  flex  duration-500 pr-12 w-[16rem]  active:text-dark-menu-active-item   hover:bg-[#DB277714] items-center flex-row o rounded-md gap-4 cursor-pointer h-16  ${
+              className={`  flex  duration-500 pr-12 w-[16rem]  dark:text-dark-text-primary active:text-dark-menu-active-item   hover:bg-[#DB277714] items-center flex-row o rounded-md gap-4 cursor-pointer h-16  ${
                 expanded ? "w-[16rem]" : "w-[8rem]"
               } `}
             >

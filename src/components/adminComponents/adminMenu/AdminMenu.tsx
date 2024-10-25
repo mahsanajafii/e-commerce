@@ -9,6 +9,7 @@ const AdminMenu = () => {
     { label: "محصول جدید", linkTo: "/create-product" },
     { label: "مدیریت کاربران", linkTo: "/users" },
     { label: "سفارشات", linkTo: "/orders" },
+    { label: "همه‌ محصولات", linkTo: "/allProducts" },
   ];
   const handelClick = () => {
     setIsChecked(!isChecked);
@@ -17,7 +18,7 @@ const AdminMenu = () => {
     <div className={`absolute left-5 top-5 rounded-xl flex z-10`}>
       <LogoAdminMenu handelClick={handelClick} />
       <div
-        className={`absolute dark:bg-dark-base-side top-[2rem] w-[17rem] transition-opacity duration-500 ease-in-out bg-base-side border  h-[22.8rem] border-base-text-field-stroke dark:border-dark-base-text-field-stroke py-6 px-3 gap-6 left-[2rem] rounded-xl ${
+        className={`absolute dark:bg-dark-base-side top-[2rem] w-[17rem] transition-opacity duration-500 ease-in-out bg-base-side border border-base-text-field-stroke dark:border-dark-base-text-field-stroke py-6 px-3 gap-6 left-[2rem] rounded-xl ${
           isChecked ? "block " : "hidden"
         } `}
       >

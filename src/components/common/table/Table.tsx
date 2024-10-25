@@ -99,8 +99,7 @@ const Table = ({
                           : "error-badge"
                       }
                     >
-                      {" "}
-                      ?{item[head]}
+                      {item[head]}
                     </Badge>
                   ) : head === "نام" ? (
                     <EditField

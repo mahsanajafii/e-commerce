@@ -78,11 +78,11 @@ const SideMenu = () => {
       <div>
         {isAuth ? (
           <div className="flex relative flex-col justify-center items-center pb-4">
-            <span className={`${expanded && "self-start mr-10"}`}>
+            <span className="self-start px-3 mb-3">
               <DarkModeLogo />
             </span>
             {dropDown && <UserDropDown isAdmin={isAdmin} />}
-            <div className="flex flex-row justify-start items-center px-3 w-full h-10  pb-4">
+            <div className="flex flex-row justify-start items-center px-3 w-full h-10 pb-4">
               <p className="text-[1.6rem] dark:text-dark-text-primary">{isAdmin ? "ادمین" : "کاربر"}</p>
               <button onClick={() => setDropDown()}>
                 {dropDown ? (
@@ -95,7 +95,7 @@ const SideMenu = () => {
           </div>
         ) : (
           <div className="flex flex-col">
-            <span className={`${expanded ? "self-start pr-12" : "self-center"}`}>
+            <span className={`mb-3 ${expanded ? "self-start pr-12" : "self-center"}`}>
               <DarkModeLogo />
             </span>
             <NavLink

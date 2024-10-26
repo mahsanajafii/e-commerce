@@ -6,6 +6,7 @@ import { IAdminOrderResponse } from "../../../types/orderTypes";
 import { isAdmin } from "../../../stores/adminStore";
 import mockPhoto from "../../../assets/images/mockImage.png";
 import { NavLink } from "react-router-dom";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 interface IOrders {
   [index: string]: string | number | boolean | JSX.Element;
@@ -91,19 +92,20 @@ const Orderscopy: React.FC = () => {
         <div key={i} className="flex flex-col justify-between">
           <button
             onClick={() => handelClick(order._id)}
-            className="w-full  flex flex-row justify-between h-32 bg-white items-center rounded-3xl p-8 text-[1.6rem]"
+            className="w-full flex flex-row h-32 bg-white items-center rounded-3xl p-8 text-[1.6rem]"
           >
-            <span className=" w-1/4">شماره سفارش : {order._id}</span>
-            <span className="   w-1/4  ">
+            <IoIosArrowDropdownCircle className={`text-[2.4rem] ml-10 text-primary-main transition-all duration-400 ease-in-out ${isActive === order._id ? "rotate-90" : "rotate-0"}`} />
+            <span className=" w-[35%] text-right">شماره سفارش : {order._id}</span>
+            <span className=" w-[20%] text-right ">
               مبلغ کل : {`${order.totalPrice.toLocaleString("fa-IR")} تومان`}
             </span>
-            <span className="  w-1/4 text-green-700">
+            <span className=" w-[20%] text-green-700">
               وضعیت :{" "}
               {order.isDelivered
                 ? "ارسال شده"
                 : `${order.isPaid ? "پرداخت شده" : "در انتظار پرداخت"}`}
             </span>
-            <span className=" w-1/4">
+            <span className="w-[20%]">
               تاریخ ثبت سفارش :{" "}
               {typeof order.createdAt === "string" ||
               typeof order.createdAt === "number"
@@ -119,7 +121,7 @@ const Orderscopy: React.FC = () => {
           </button>
 
           <div
-            className={`transition-height duration-700 ease-in-out mt-10 ${
+            className={`transition-all duration-700 ease-in-out mt-10 ${
               isActive === order._id ? "block" : "hidden"
             } bg-primary-lighter`}
           >

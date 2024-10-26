@@ -3,9 +3,16 @@ import { PiSmileySadLight } from "react-icons/pi";
 import MainLayout from "../../../layout/mainLayout/MainLayout";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import useThemeStore from "../../../stores/themeStore";
+import { useEffect } from "react";
 
 const NotFound = () => {
     const navigate = useNavigate();
+    const { theme } = useThemeStore();
+
+    useEffect(() => {
+      document.documentElement.classList.toggle("dark", theme === "dark");
+    }, [theme]);
 
     const handleClick = () => {
         navigate("/dashboard");

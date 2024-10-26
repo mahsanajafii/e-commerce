@@ -39,7 +39,7 @@
     }
 
     .success-badge{
-        @apply bg-success-main text-success-lighter
+        @apply bg-success-main text-black
     }
 
     .error-badge{

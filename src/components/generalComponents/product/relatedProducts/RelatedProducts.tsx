@@ -76,7 +76,7 @@ const RelatedProducts = () => {
               src={item?.image}
               alt={item?.name}
               productTitle={item?.name}
-              productTitleStyle="text-text-primary text-[1.1rem] text-normal"
+              productTitleStyle="text-text-primary text-[1.1rem] text-normal dark:text-dark-text-primary"
               badgeTitle={item.price.toLocaleString("fa-IR")}
               padding="px-2"
               fontSize="text-[1.1rem]"

@@ -156,7 +156,7 @@ const Product: React.FC<IProductProps> = ({ children }) => {
                 <p className="font-normal text-[1.6rem] text-text-primary dark:text-dark-text-primary">
                   {selectProduct?.numReviews.toLocaleString("fa-IR")} نظر
                 </p>
-                <Score count={Math.floor(selectProduct.rating)} />
+                <Score count={Math.round(selectProduct.rating)} />
               </div>
               <select className="w-[9.6rem] h-[4rem] dark:bg-dark-base-text-field border border-base-text-field-stroke dark:border-dark-base-text-field-stroke rounded-[0.8rem] p-[0.8rem] text-[1.6rem] dark:text-dark-text-primary">
                 {[...Array(selectProduct.countInStock).keys()].map((x) => (

@@ -6,7 +6,7 @@ interface SlideProps {
   expanded: boolean;
   i: number;
   countOfProduct: number;
-  linkTo: string;
+  linkTo:string
 }
 const Sidebar: React.FC<SlideProps> = ({
   name,

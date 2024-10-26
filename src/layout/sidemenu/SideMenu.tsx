@@ -28,7 +28,7 @@ const SideMenu = () => {
   const { dropDown, setDropDown } = useDropDownStore();
   const { isAuth } = useAuthStatus();
   const { isAdmin } = adminStore();
-  const { cartItems } = CartStore();
+  const {cartItems} = CartStore();
   const countOfProduct = cartItems.length;
   const sideMenuitems: SlideListProps[] = [
     { icon: <AiOutlineHome size={20} />, name: "خانه", linkTo: "/dashboard" },
@@ -114,7 +114,7 @@ const SideMenu = () => {
                 }`}
               >
                 ورود
-              </h2>
+              </span>
             </NavLink>
             <NavLink
               to="/register"
@@ -132,7 +132,7 @@ const SideMenu = () => {
                 }`}
               >
                 ثبت نام
-              </h2>
+              </span>
             </NavLink>
           </div>
         )}

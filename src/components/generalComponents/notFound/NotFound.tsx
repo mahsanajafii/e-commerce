@@ -15,7 +15,7 @@ const NotFound = () => {
     <MainLayout>
         <div className="flex flex-col w-full h-full items-center justify-center">
             <TbError404 className="text-[20rem] text-primary-main" />
-            <p className="text-[1.6rem] mb-8 flex items-center gap-1">
+            <p className="text-[1.6rem] mb-8 flex items-center gap-1 dark:text-dark-text-primary">
                 متاسفانه صفحه مورد نظر شما پیدا نشد
                 <PiSmileySadLight className="text-[2rem]" />
                     </p> 

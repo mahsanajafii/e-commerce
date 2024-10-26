@@ -35,7 +35,7 @@ const SpecialProducts = () => {
   return (
     <div className="flex flex-col gap-y-24">
       <div className="flex justify-between items-center h-28">
-        <p className="font-normal text-[4rem] text-text-primary">
+        <p className="font-normal text-[4rem] text-text-primary dark:text-dark-text-primary">
           محصولات ویژه
         </p>
         <NavLink to="/shop">
@@ -52,7 +52,7 @@ const SpecialProducts = () => {
               <ProductCard
                 id={Product.id}
                 key={index}
-                productTitleStyle="text-text-primary text-[1.1rem] text-normal"
+                productTitleStyle="text-text-primary text-[1.1rem] text-normal dark:text-dark-text-primary"
                 padding="px-2"
                 fontSize="text-[1.1rem]"
                 badgeTitle={Product.productPrice + " تومان"}

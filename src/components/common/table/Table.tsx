@@ -4,8 +4,8 @@ import Button from "../button/Button";
 import { Link  } from "react-router-dom";
 import EditField from "../editField/EditField";
 import { Toaster } from "react-hot-toast";
-import { IoMdClose } from "react-icons/io";
-import { BiCheck } from "react-icons/bi";
+import { IoClose } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa6";
 
 interface ITableItem {
   [index: string]: string | number | boolean | JSX.Element;
@@ -36,11 +36,11 @@ const Table = ({
     <>
       <Toaster />
       <table className={`${optionalWidth} ${optionalHeight} w-full`}>
-        <thead className="border-b-2 font-normal text-[1.6rem] text-text-primary font-Iran-Yekan">
+        <thead className="border-b-2 border-base-text-field-stroke dark:border-dark-base-text-field-stroke font-normal text-[1.6rem] text-text-primary font-Iran-Yekan">
           <tr>
             {headers.map((head, index) => (
               <th
-                className={`p-4 ${
+                className={`p-4 dark:text-dark-text-primary ${
                   index === 1 ? " text-right" : " text-center"
                 }`}
                 key={index}
@@ -54,7 +54,7 @@ const Table = ({
           {items?.map((item, index) => (
             <tr
               key={index}
-              className="font-Iran-Yekan font-normal text-[1.6rem] text-text-primary"
+              className="font-Iran-Yekan font-normal text-[1.6rem] text-text-primary dark:text-dark-text-primary"
             >
               {headers.map((head, headIndex) => (
                 <td
@@ -99,8 +99,7 @@ const Table = ({
                           : "error-badge"
                       }
                     >
-                      {" "}
-                      ?{item[head]}
+                      {item[head]}
                     </Badge>
                   ) : head === "نام" ? (
                     <EditField
@@ -110,9 +109,9 @@ const Table = ({
                     />
                   ) : head === "ادمین" ? (
                     item[head] ? (
-                      <BiCheck />
+                      <FaCheck className="text-center w-full text-success-main text-[2rem]" />
                     ) : (
-                      <IoMdClose />
+                      <IoClose className="text-center w-full text-error-main text-[2.4rem]" />
                     )
                   ) : head === "ایمیل" ? (
                     <EditField
@@ -123,7 +122,7 @@ const Table = ({
                   ) : head === "عملیات" && delAction ? (
                     <Button
                       onClick={() => delfunction?.(String(item.ID))}
-                      className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal"
+                      className="bg-error-main p-[0.5rem] rounded-[0.8rem] text-[2rem] text-text-button font-normal"
                     >
                       {item[head]}
                     </Button>

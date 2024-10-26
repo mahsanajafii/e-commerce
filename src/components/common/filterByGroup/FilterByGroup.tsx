@@ -35,7 +35,7 @@ const FilterByGroup: React.FC<IFilterByGroup> = ({
   }, [selectedCategories, products]);
 
   return (
-    <div className="flex flex-col  items-start h-96 dark:bg-dark-base-side">
+    <div className="flex flex-col items-start h-96 dark:bg-dark-base-side">
       <div className="bg-white dark:bg-dark-base-menu text-black dark:text-dark-text-primary w-[24rem] h-[4rem] rounded-full flex justify-center items-center px-[5.2rem] py-1 mb-8">
         فیلتر دسته بندی
       </div>
@@ -48,6 +48,7 @@ const FilterByGroup: React.FC<IFilterByGroup> = ({
               isClear ? !isClear : selectedCategories.includes(category._id)
             }
             onChange={() => toggleCategorySelection(category._id)}
+            labelStyle="dark:text-dark-text-primary"
             containerStyle="flex flex-row-reverse justify-end gap-2 my-3 mx-8"
           />
         ))}

@@ -76,7 +76,7 @@ const Profile: React.FC = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="w-[64rem] gap-[1.6rem] h-[44rem] flex flex-col"
         >
-          <h1 className="font-Iran-Yekan font-medium text-[2.4rem]">
+          <h1 className="font-Iran-Yekan font-medium text-[2.4rem] dark:text-dark-text-primary">
             بروزرسانی پروفایل
           </h1>
           <div className="w-full gap-2 ">
@@ -174,11 +174,11 @@ const Profile: React.FC = () => {
             <Button
               onClick={navToMyOrders}
               children="سفارشات من"
-              className="w-[10rem] h-full rounded-lg p-2 text-center bg-primary-main text-text-button text-[1.4rem]"
+              className="rounded-lg py-[0.8rem] px-[1.2rem] text-center bg-primary-main text-text-button text-[1.4rem]"
             />
             <Button
               children="بروزرسانی"
-              className="w-[8.1rem] h-full rounded-lg p-2 text-center bg-primary-main text-text-button text-[1.4rem]"
+              className="rounded-lg py-[0.8rem] px-[1.2rem] text-center bg-primary-main text-text-button text-[1.4rem]"
             />
           </div>
         </form>

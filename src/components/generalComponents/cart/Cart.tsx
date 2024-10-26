@@ -85,10 +85,10 @@ const Cart = () => {
             ))}
           </div>
           <div className="w-[50%] h-[40%] flex flex-col justify-between">
-            <p className="text-[2rem] font-medium font-Iran-Yekan text-text-primary">
+            <p className="text-[2rem] font-medium font-Iran-Yekan text-text-primary dark:text-dark-text-primary">
               تعداد ({products.length.toLocaleString('fa-IR')})
             </p>
-            <p className="font-Iran-Yekan text-text-primary text-[2.4rem]">
+            <p className="font-Iran-Yekan text-text-primary text-[2.4rem] dark:text-dark-text-primary">
               {products.reduce((total, product) => total + product.price, 0).toLocaleString('fa-IR')}{" "}
               تومان
             </p>
@@ -106,7 +106,7 @@ const Cart = () => {
     return (
       <div className="flex flex-col h-full w-full items-center justify-center">
       <img src={emptyCart} alt="empty-cart" className="w-1/5" />
-      <p className="text-[1.6rem] text-text-primary mb-6">سبد خرید شما خالی است.</p>
+      <p className="text-[1.6rem] text-text-primary dark:text-dark-text-primary mb-6">سبد خرید شما خالی است.</p>
       <button 
         className="bg-primary-main py-3 px-8 rounded-full text-[1.6rem] text-text-button flex items-center gap-3"
         onClick={navigateToShop}

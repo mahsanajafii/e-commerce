@@ -4,8 +4,8 @@ import Button from "../button/Button";
 import { Link  } from "react-router-dom";
 import EditField from "../editField/EditField";
 import { Toaster } from "react-hot-toast";
-import { IoMdClose } from "react-icons/io";
-import { BiCheck } from "react-icons/bi";
+import { IoClose } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa6";
 
 interface ITableItem {
   [index: string]: string | number | boolean | JSX.Element;
@@ -109,9 +109,9 @@ const Table = ({
                     />
                   ) : head === "ادمین" ? (
                     item[head] ? (
-                      <BiCheck />
+                      <FaCheck className="text-center w-full text-success-main text-[2rem]" />
                     ) : (
-                      <IoMdClose />
+                      <IoClose className="text-center w-full text-error-main text-[2.4rem]" />
                     )
                   ) : head === "ایمیل" ? (
                     <EditField
@@ -122,7 +122,7 @@ const Table = ({
                   ) : head === "عملیات" && delAction ? (
                     <Button
                       onClick={() => delfunction?.(String(item.ID))}
-                      className="bg-primary-main px-[1.2rem] py-[0.8rem] rounded-[0.8rem] text-[1.4rem] text-text-button font-normal"
+                      className="bg-error-main p-[0.5rem] rounded-[0.8rem] text-[2rem] text-text-button font-normal"
                     >
                       {item[head]}
                     </Button>

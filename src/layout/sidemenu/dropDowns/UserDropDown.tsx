@@ -9,7 +9,11 @@ interface IMenu {
   onClick: () => void;
 }
 
-const UserDropDown: React.FC = ({isAdmin}) => {
+interface IIsAdmin {
+  isAdmin: boolean
+}
+
+const UserDropDown: React.FC<IIsAdmin> = ({isAdmin}) => {
   const { setDropDown } = useDropDownStore();
   const { mutate: logout } = useLogout();
 

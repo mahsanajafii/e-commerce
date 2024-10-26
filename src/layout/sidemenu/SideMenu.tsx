@@ -108,13 +108,13 @@ const SideMenu = () => {
                 <IoEnterOutline size={20} />
               </span>
               <h2
-                style={{ translateDelay: `${sideMenuitems.length + 4}00ms` }}
+                style={{ transitionDelay : `${sideMenuitems.length + 4}00ms` }}
                 className={`text-[1.6rem] duration-500 ${
                   !expanded && "w-0 translate-x-48 overflow-hidden"
                 }`}
               >
                 ورود
-              </span>
+              </h2>
             </NavLink>
             <NavLink
               to="/register"
@@ -126,13 +126,13 @@ const SideMenu = () => {
                 <MdOutlinePersonAddAlt size={20} />
               </span>
               <h2
-                style={{ translateDelay: `${sideMenuitems.length + 5}00ms` }}
+                style={{ transitionDelay : `${sideMenuitems.length + 5}00ms` }}
                 className={` text-[1.6rem] duration-500 ${
                   !expanded && "w-0 translate-x-48 overflow-hidden"
                 }`}
               >
                 ثبت نام
-              </span>
+              </h2>
             </NavLink>
           </div>
         )}

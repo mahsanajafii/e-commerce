@@ -45,8 +45,4 @@
     .error-badge{
         @apply bg-error-main text-error-lighter
     }
-
-    .edit-field-input {
-      @apply border-none
-    }
 }

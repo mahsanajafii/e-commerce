@@ -52,11 +52,11 @@ const Dashboard = () => {
             <div className="flex gap-20 w-[80%]">
                 {items.map((item, index) => {
                     return(
-                        <div key={index} className="flex flex-1 flex-col grow gap-8 rounded-[0.8rem] px-8 py-[1.6rem] bg-base-menu">
+                        <div key={index} className="flex flex-1 flex-col grow gap-8 rounded-[0.8rem] px-8 py-[1.6rem] bg-base-menu dark:bg-dark-base-menu">
                             <span className="bg-primary-main text-[1.6rem] text-text-button w-[4.8rem] h-[4.8rem] rounded-full flex justify-center items-center">$</span>
                             <div className="">
-                                <h4 className="text-text-secondary text-[1.6rem] font-normal">{item.title}</h4>
-                                <p className="text-text-primary text-[2rem] font-bold">{item.value}</p>
+                                <h4 className="text-text-secondary dark:text-dark-text-secondary text-[1.6rem] font-normal">{item.title}</h4>
+                                <p className="text-text-primary dark:text-dark-text-primary text-[2rem] font-bold">{item.value}</p>
                             </div>
                         </div>
                     )

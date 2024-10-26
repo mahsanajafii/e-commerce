@@ -12,9 +12,9 @@ const Content = ({ children }: IContent) => {
 
   return (
     <section
-      className={`rel w-full bg-base-backgrond min-h-screen transition-width duration-700 ease-in-out ${
-        !expanded ? "mr-32" : "mr-[22rem]"
-      }`}
+      className={`rel w-full overflow-y-auto bg-base-backgrond dark:bg-dark-base-background mr-32 min-h-screen ${
+        expanded && "blur-[0.2rem] brightness-95 pointer-events-none"
+      } `}
     >
       {isAdmin ? <AdminMenu /> : null}
       {children}

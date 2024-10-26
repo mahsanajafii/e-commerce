@@ -48,7 +48,7 @@ const CreateProduct = () => {
 
   return (
     <div className="flex flex-col justify-start items-start w-[70%] mx-auto my-[10.6rem] gap-[3.2rem]">
-      <p className="text-text-primary  text-2xl font-medium mb-12">
+      <p className="text-text-primary dark:text-dark-text-primary text-2xl font-medium mb-12">
         محصول جدید
       </p>
       <form
@@ -73,7 +73,7 @@ const CreateProduct = () => {
           />
           <label
             htmlFor="image"
-            className=" flex flex-row justify-center items-center w-full bg-white h-[12.4rem] border border-gray-300  border-dashed text-text-secondary text-center rounded-md"
+            className=" flex flex-row justify-center items-center w-full bg-white h-[12.4rem] border border-gray-300  border-dashed text-text-secondary text-center rounded-md dark:bg-dark-base-text-field dark:text-dark-text-secondary dark:border-dark-base-text-field-stroke"
           >
             آپلود عکس
           </label>
@@ -113,7 +113,7 @@ const CreateProduct = () => {
         <div className="h-[17.5rem] w-full">
           <label
             htmlFor="info"
-            className=" text-black text-2xl block mb-5 w-full"
+            className=" text-black text-2xl block mb-5 w-full dark:text-dark-text-primary"
           >
             توضیحات
           </label>
@@ -121,21 +121,21 @@ const CreateProduct = () => {
             {...register("description")}
             id="info"
             placeholder="توضیحات محصول را وارد نمایید"
-            className="w-full rounded-xl h-[14rem] p-4 text-right bg-white text-black block resize-none border border-base-text-field-stroke"
+            className="w-full rounded-xl h-[14rem] p-4 text-right bg-white text-black block resize-none border border-base-text-field-stroke dark:bg-dark-base-text-field dark:text-dark-text-secondary dark:border-dark-base-text-field-stroke dark:focus:border-secondary-main"
           ></textarea>
         </div>
         <div className="flex flex-row-reverse justify-between items-center gap-10">
           <div className="flex flex-col w-[50%] gap-5">
             <label
               htmlFor="select"
-              className=" text-text-primary text-[1.6rem] block"
+              className=" text-text-primary text-[1.6rem] block dark:text-dark-text-primary"
             >
               موجودی
             </label>
             <select
               {...register("quantity")}
               id="select"
-              className="w-full text-right bg-base-text-field text-text-secondary p-4 text-[1.6rem] rounded-[0.8rem] border border-base-text-field-stroke"
+              className="w-full text-right bg-base-text-field text-text-secondary dark:text-dark-text-secondary p-4 text-[1.6rem] rounded-[0.8rem] border border-base-text-field-stroke dark:bg-dark-base-text-field dark:border-dark-base-text-field-stroke"
             >
               <option value="موجودی" disabled>
                 موجودی

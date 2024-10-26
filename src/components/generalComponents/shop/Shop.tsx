@@ -6,6 +6,7 @@ import ShopProductCard from "../../common/productCard/shopProductCard/ShopProduc
 import { ChangeEvent, useEffect, useState } from "react";
 import axiosClient from "../../../api/axiosClient";
 import { IProductCard } from "../../../types/productTypes";
+import { CgSpinner } from "react-icons/cg";
 
 
 const Shop: React.FC = () => {
@@ -61,8 +62,9 @@ const Shop: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="text-green-600 w-full h-full flex justify-center items-center text-5xl">
-        <h1>...Loading</h1>
+      <div className="w-full h-full flex gap-4 justify-center items-center backdrop-brightness-90">
+        <h1 className="text-4xl text-primary-main">...Loading</h1>
+        <CgSpinner className="text-5xl animate-spin text-primary-main" />
       </div>
     );
   }

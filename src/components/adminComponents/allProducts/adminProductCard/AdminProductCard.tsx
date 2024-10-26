@@ -14,7 +14,7 @@ interface IProductCardProps {
 
 const AdminProductCard: React.FC<IProductCardProps> = ({id, image, name, price, description, updatedDate}) => {
   return (
-    <div className="flex bg-base-card p-[0.8rem] rounded-[0.8rem]">
+    <div className="flex bg-base-card dark:bg-dark-base-card p-[0.8rem] rounded-[0.8rem]">
       <img 
         src={image} 
         alt={name}
@@ -22,10 +22,10 @@ const AdminProductCard: React.FC<IProductCardProps> = ({id, image, name, price, 
       />
       <div className="p-[1.6rem] w-full flex flex-col justify-between">
         <div className="flex items-center justify-between">
-          <h2 className="text-[1.6rem] font-medium text-primary">{name}</h2>
-          <span className="text-text-secondary text-[1.2rem]">{updatedDate}</span>
+          <h2 className="text-[1.6rem] font-medium text-primary dark:text-dark-text-primary">{name}</h2>
+          <span className="text-text-secondary dark:text-dark-text-secondary text-[1.2rem]">{updatedDate}</span>
         </div>
-        <div className="line-clamp-2 text-text-secondary text-[1.4rem]">{description}</div>
+        <div className="line-clamp-2 text-text-secondary dark:text-dark-text-secondary text-[1.4rem]">{description}</div>
         <div className="flex justify-between items-center">
           <Link to={`/product/${id}`}>
             <Button 
@@ -35,7 +35,7 @@ const AdminProductCard: React.FC<IProductCardProps> = ({id, image, name, price, 
               <FaArrowLeftLong className="text-text-button" />
             </Button>
           </Link>
-          <span className="text-primary text-[1.6rem]">{`${price} تومان`}</span>
+          <span className="text-primary dark:text-dark-text-primary text-[1.6rem]">{`${price} تومان`}</span>
         </div>
       </div>
     </div>

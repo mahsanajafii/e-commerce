@@ -1,4 +1,3 @@
-import { IconType } from "react-icons";
 
 export interface IUserType {
   _id: string;
@@ -14,6 +13,6 @@ export interface IUserListType {
   "ID": string;
   "نام": string;
   "ایمیل": string;
-  "ادمین": IconType;
-  "عملیات": IconType;
+  "ادمین": boolean;
+  "عملیات": JSX.Element;
 }

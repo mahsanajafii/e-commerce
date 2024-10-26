@@ -66,10 +66,10 @@ const EditField: React.FC<IEditField> = ({ title, type, userid }) => {
   return (
     <>
       <Toaster />
-      <div className="flex flex-col border">
+      <div className="flex flex-col">
         {isEditing ? (
-          <div className="flex flex-row gap-2">
-            <div className="w-10 h-10 bg-info-main rounded-xl text-text-button">
+          <div className="flex flex-row gap-2 items-center">
+            <div className="p-[0.7rem] bg-info-main rounded-xl text-text-button">
               <BiCheck
                 onClick={handleBlur}
                 style={{ cursor: "pointer" }}
@@ -78,7 +78,7 @@ const EditField: React.FC<IEditField> = ({ title, type, userid }) => {
             </div>
             <Input
               value={text}
-              inputStyle="w-[20rem] h-[2.4rem] text-2xl text-text-primary leading-10 font-normal"
+              inputStyle="w-[20rem] text-[1.6rem] text-text-primary leading-10 font-normal dark:text-dark-text-primary rounded-[0.8rem] px-[0.7rem] py-[0.7rem]"
               labelStyle={""}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -91,7 +91,7 @@ const EditField: React.FC<IEditField> = ({ title, type, userid }) => {
               style={{ cursor: "pointer" }}
               size={24}
             />
-            <p className="text-2xl text-text-primary leading-10 font-normal">
+            <p className="text-[1.6rem] text-text-primary leading-10 font-normal dark:text-dark-text-primary">
               {text}
             </p>
           </div>

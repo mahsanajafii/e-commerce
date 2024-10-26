@@ -6,7 +6,7 @@ import { useAddressInfoStore } from "../../../../stores/shoppingProgressStore";
 import productService from "../../../../services/productService";
 import {
   IAddressInfoStore,
-  IItems,
+  ITableItem,
   IShippingAddress,
   IOrderItems,
 } from "../../../../types/orderTypes";
@@ -18,15 +18,14 @@ const ShoppingSummary = () => {
   const headers = ["عکس", "نام محصول", "تعداد", "قیمت", "قیمت نهایی"];
   const navigate = useNavigate();
   const { cartItems } = CartStore();
-  console.log("cartItems in shopping", cartItems);
-  const [Items, setItems] = useState<IItems[]>([]);
+  const [Items, setItems] = useState<ITableItem[]>([]);
   const [orderItems, setorderItems] = useState<IOrderItems[]>([]);
   const [travelPay] = useState(10000);
+
   const calcSummaryItems = () => {
-    const total = Items.map((item) => item.قیمت * item.تعداد).reduce(
-      (acc, cur) => acc + cur,
-      0
-    );
+    const total = Items.map(
+      (item) => Number(item.price) * Number(item.تعداد)
+    ).reduce((acc, cur) => acc + cur, 0);
 
     return total;
   };
@@ -38,10 +37,22 @@ const ShoppingSummary = () => {
   };
 
   const summaryItems = [
-    { label: "قیمت محصولات", value: `${calcSummary.SummaryPrice} تومان` },
-    { label: "هزینه ارسال", value: `${travelPay} تومان` },
-    { label: "مالیات", value: `${calcSummary.tax} تومان` },
-    { label: "مبلغ نهایی", value: `${calcSummary.totalPrice} تومان` },
+    {
+      label: "قیمت محصولات",
+      value: `${calcSummary.SummaryPrice.toLocaleString("fa-IR")} تومان`,
+    },
+    {
+      label: "هزینه ارسال",
+      value: `${travelPay.toLocaleString("fa-IR")} تومان`,
+    },
+    {
+      label: "مالیات",
+      value: `${calcSummary.tax.toLocaleString("fa-IR")} تومان`,
+    },
+    {
+      label: "مبلغ نهایی",
+      value: `${calcSummary.totalPrice.toLocaleString("fa-IR")} تومان`,
+    },
   ];
   const { address, city, postalCode, paymentMethod }: IAddressInfoStore =
     useAddressInfoStore();
@@ -58,25 +69,20 @@ const ShoppingSummary = () => {
   const getorederlist = async () => {
     try {
       const products = await Promise.all(
-        cartItems.map((id) => getProducts(id))
-      );
+        cartItems.map(async(item) =>{
+          const otherInfo=await getProducts(item._id)
+         return  {...item, ...otherInfo}
+    }));
       const items = products.map((product) => ({
+        price: product.price,
         عکس: product.image,
         "نام محصول": product.name,
-        تعداد: 1,
-        قیمت: product.price,
-        "قیمت نهایی": product.price * 1,
-      }));
-      // "قیمت نهایی": product.price * product.quantity,
-      // تعداد: product.quantity,
-      const orderItems = products.map((product) => ({
-        name: product.name,
-        // qty: product.quantity,
-        qty: 1,
-        _id: product._id,
-      }));
+        تعداد: product.qty|| 1 ,
+        قیمت: product.price.toLocaleString('fa-IR'),
+        "قیمت نهایی":(product.qty * product.price).toLocaleString('fa-IR'),
+    }));
       setItems(items);
-      setorderItems(orderItems);
+      setorderItems(cartItems);
     } catch (error) {
       toast.error(`لطفا مجدد تلاش کنید! : ${error}`);
     }
@@ -124,21 +130,21 @@ const ShoppingSummary = () => {
               headers={headers}
             />
             <div className=" h-[30rem] gap-8 w-full flex flex-col justify-between items-center">
-              <p className="w-full h-12  text-[2.4rem] leading-10  font-medium">
+              <p className="w-full h-12 text-[2.4rem] leading-10 font-medium dark:text-dark-text-primary">
                 خلاصه خرید
               </p>
-              <div className="bg-base-side w-full  flex flex-row justify-between items-center p-12 rounded-xl">
+              <div className="bg-base-side dark:bg-dark-base-side w-full  flex flex-row justify-between items-center p-12 rounded-xl">
                 {infoItems.map((item) => (
                   <div
                     key={item.label}
                     className="flex flex-col h-28 gap-6 justify-center items-start w-1/4"
                   >
-                    <p className="h-12  text-[2.4rem] leading-10  font-medium">
+                    <p className="h-12 text-[2.4rem] leading-10 font-medium dark:text-dark-text-primary">
                       {item.label}
                     </p>
-                    <span className="text-text-secondary text-[1.6rem] font-bold">
+                    <span className="text-text-secondary dark:text-dark-text-secondary text-[1.6rem] font-bold">
                       {item.label.split(" ")[0]}:
-                      <span className="text-text-primary text-[1.6rem] font-normal">
+                      <span className="text-text-primary dark:text-dark-text-primary text-[1.6rem] font-normal">
                         {item.value}
                       </span>
                     </span>
@@ -151,8 +157,8 @@ const ShoppingSummary = () => {
                       className="w-full flex flex-row justify-between items-start  text-[1.6rem] leading-10 h-10"
                       key={label}
                     >
-                      <p className="text-text-secondary font-bold">{label} :</p>
-                      <p className="text-text-primary font-normal">{value}</p>
+                      <p className="text-text-secondary dark:text-dark-text-secondary font-bold">{label} :</p>
+                      <p className="text-text-primary dark:text-dark-text-primary font-normal">{value}</p>
                     </div>
                   ))}
                 </div>

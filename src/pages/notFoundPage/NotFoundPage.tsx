@@ -1,5 +1,7 @@
+import NotFound from "../../components/generalComponents/notFound/NotFound";
+
 const NotFoundPage = () => {
-  return <div>NotFoundPage</div>;
+  return <NotFound />;
 };
 
 export default NotFoundPage;

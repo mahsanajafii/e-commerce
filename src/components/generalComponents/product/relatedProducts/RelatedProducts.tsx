@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import productService from "../../../../services/productService";
 import { IProductType } from "../../../../types/productTypes";
 import ProductCard from "../../../common/productCard/ProductCard";
+import noproducts from "../../../../assets/images/no-products.png";
 interface Product {
   _id: string;
   name: string;
@@ -39,16 +40,14 @@ const RelatedProducts = () => {
   const [relatedProducts, setRelatedProduct] = useState([]);
   const { id } = useParams();
 
-  const fetchProduct = async () => {
+  const fetchCategory = async () => {
     const res = await productService.getProduct(String(id));
     setCategory(res.category);
   };
-
-  const fetchRealateProducts = async () => {
-    fetchProduct();
+  const fetchfilterbrand = async () => {
     const response = await productService.getAllProducts();
-    const arr = response.filter((res: Product) => {
-      if (res.category._id === category) {
+    const arr = response?.filter((res: Product) => {
+      if (res.category?._id === category && res._id !== id) {
         return res;
       }
     });
@@ -56,24 +55,47 @@ const RelatedProducts = () => {
   };
 
   useEffect(() => {
+    const fetchRealateProducts = async () => {
+      await fetchCategory();
+
+      if (category) {
+        await fetchfilterbrand();
+      }
+    };
+
     fetchRealateProducts();
-  }, []);
-  return (
-    <div className="w-[45%] grid grid-cols-2 grid-rows-2 gap-[3.2rem]">
-      {relatedProducts.map((item: IProductType, index) => (
-        <ProductCard
-          key={index}
-          src={item?.image}
-          alt={item?.name}
-          productTitle={item?.name}
-          productTitleStyle="text-text-primary text-[1.1rem] text-normal"
-          badgeTitle={item?.price}
-          padding="px-2"
-          fontSize="text-[1.1rem]"
-        />
-      ))}
-    </div>
-  );
+  }, [category, id]);
+
+  {
+    if (relatedProducts.length) {
+      return (
+        <div className="w-[45%] grid grid-cols-2 grid-rows-2 gap-[3.2rem]">
+          {relatedProducts.map((item: IProductType, index) => (
+            <ProductCard
+              key={index}
+              src={item?.image}
+              alt={item?.name}
+              productTitle={item?.name}
+              productTitleStyle="text-text-primary text-[1.1rem] text-normal dark:text-dark-text-primary"
+              badgeTitle={item.price.toLocaleString("fa-IR")}
+              padding="px-2"
+              fontSize="text-[1.1rem]"
+              id={String(id)}
+            />
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <div className="w-full flex flex-col justify-center items-center pt-10 ">
+          <p className="text-[1.6rem] text-primary-main">
+            محصول مشابه پیدا نشد!
+          </p>
+          <img src={noproducts} alt="no-product" className="w-1/4" />
+        </div>
+      );
+    }
+  }
 };
 
 export default RelatedProducts;

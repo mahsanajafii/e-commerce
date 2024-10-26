@@ -30,14 +30,14 @@ const Comment = () => {
     <div className="overflow-y-auto h-full flex flex-col gap-5 justify-start items-center">
       {reviews.map((review) => (
         <div
-          className="bg-base-side w-full rounded-[0.8rem] p-6 flex flex-col gap-5 justify-center items-start"
+          className="bg-base-side dark:bg-dark-base-side w-full rounded-[0.8rem] p-6 flex flex-col gap-5 justify-center items-start"
           key={review._id}
         >
-          <div className="flex justify-between items-center text-text-secondary text-[1.4rem] font-normal w-full">
+          <div className="flex justify-between items-center text-text-secondary dark:text-dark-text-secondary text-[1.4rem] font-normal w-full">
             <p>{review.name}</p>
             <p>{new Date(review.createdAt).toLocaleDateString("fa-IR")}</p>
           </div>
-          <div className="text-text-primary font-normal text-[1.4rem]">
+          <div className="text-text-primary dark:text-dark-text-primary font-normal text-[1.4rem]">
             {review.comment}
           </div>
           <Score count={review.rating} />

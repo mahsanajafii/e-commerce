@@ -23,13 +23,7 @@ export interface IAddressInfoStore {
     setPostalCode: (newPostalCode: string) => void,
     setPaymentMethod: (newPaymentMethod: string) => void,
 }
-export interface IItems {
-    "عکس": string,
-    "نام محصول": string,
-    "تعداد": number,
-    "قیمت": number,
-    "قیمت نهایی": number,
-}
+
 
 interface IOrderItemsResponse {
     image: string,
@@ -90,3 +84,6 @@ export interface IInformation {
 export interface IItem {
     [index: string]: string | number | boolean | JSX.Element;
 }
+export interface ITableItem {
+    [index: string]: string | number | boolean | JSX.Element;
+  }
